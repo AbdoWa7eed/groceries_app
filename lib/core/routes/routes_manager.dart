@@ -1,0 +1,29 @@
+import 'package:go_router/go_router.dart';
+import 'package:groceries_app/features/onboarding/onboarding_view.dart';
+
+abstract class Routes {
+  static const String onBoardingRoute = "/";
+  static const String loginRoute = "/login";
+  static const String registerRoute = "/register";
+  static const String homeRoute = "/home";
+  static const String productDetails = "/productDetails";
+  static const String categoryProducts = "/categoryProducts";
+  static const String profileRoute = "/profile";
+  static const String phoneAuthRoute = "/phoneAuth";
+  static const String verifyPhoneRoute = "/verifyPhone";
+}
+
+abstract class RouteGenerator {
+  static final GoRouter router = GoRouter(routes: _getRoutes());
+
+  static List<GoRoute> _getRoutes() {
+    return [
+      GoRoute(
+        path: Routes.onBoardingRoute,
+        builder: (context, state) {
+          return const OnboardingView();
+        },
+      ),
+    ];
+  }
+}
