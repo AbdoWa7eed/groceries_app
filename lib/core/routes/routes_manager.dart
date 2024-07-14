@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
 import 'package:groceries_app/features/onboarding/onboarding_view.dart';
 
 abstract class Routes {
@@ -22,6 +23,12 @@ abstract class RouteGenerator {
         path: Routes.onBoardingRoute,
         builder: (context, state) {
           return const OnboardingView();
+        },
+      ),
+      GoRoute(
+        path: Routes.loginRoute,
+        builder: (context, state) {
+          return const LoginView();
         },
       ),
     ];
