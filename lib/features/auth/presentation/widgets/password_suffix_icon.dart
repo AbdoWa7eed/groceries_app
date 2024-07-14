@@ -17,6 +17,7 @@ class _PasswordSuffixIconState extends State<PasswordSuffixIcon> {
     super.initState();
     _obscureText = true;
   }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

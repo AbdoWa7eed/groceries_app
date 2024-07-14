@@ -27,8 +27,8 @@ class AuthTextWidget extends StatelessWidget {
           child: Text(subtitleText,
               textAlign: TextAlign.start,
               style: StylesManager.medium16.copyWith(
-                    color: ColorManager.darkGray,
-                  )),
+                color: ColorManager.darkGray,
+              )),
         ),
       ],
     );

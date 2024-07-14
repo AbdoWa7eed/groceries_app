@@ -28,5 +28,4 @@ abstract class DioFactory {
     );
     return dio;
   }
-
 }

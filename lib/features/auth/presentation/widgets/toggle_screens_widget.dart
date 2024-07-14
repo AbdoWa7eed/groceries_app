@@ -22,9 +22,7 @@ class ToggleAuthScreensWidget extends StatelessWidget {
         children: [
           Text(
             descriptionText,
-            style: StylesManager.medium16.copyWith(
-              color: ColorManager.dark
-            ),
+            style: StylesManager.medium16.copyWith(color: ColorManager.dark),
           ),
           const SizedBox(
             width: AppSize.s8,
@@ -34,8 +32,8 @@ class ToggleAuthScreensWidget extends StatelessWidget {
               child: Text(
                 buttonText,
                 style: StylesManager.medium16.copyWith(
-                      color: ColorManager.primary,
-                    ),
+                  color: ColorManager.primary,
+                ),
               )),
         ],
       ),
