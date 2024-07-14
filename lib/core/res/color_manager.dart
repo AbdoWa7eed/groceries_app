@@ -19,5 +19,4 @@ abstract class ColorManager {
   static const Color imageBackground = Color(0xffF2F3F2);
   static const Color softGrey = Color(0xffEBEBEB);
   static const Color deepOrange = Color(0xffF3603F);
-
 }

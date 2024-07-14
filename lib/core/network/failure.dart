@@ -1,9 +1,5 @@
-
-class Failure{
-  int code; 
+class Failure {
+  int code;
   String message;
-  Failure({
-    required this.code,
-    required this.message
-  });
+  Failure({required this.code, required this.message});
 }
