@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:groceries_app/core/res/theme_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 
@@ -19,6 +20,7 @@ class _NectarAppState extends State<NectarApp> {
     return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       routerConfig: RouteGenerator.router,
+      theme: appTheme,
       title: AppStrings.title,
     );
   }
