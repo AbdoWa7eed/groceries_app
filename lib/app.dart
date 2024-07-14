@@ -18,6 +18,7 @@ class _NectarAppState extends State<NectarApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      scrollBehavior: const ScrollBehavior(),
       debugShowCheckedModeBanner: false,
       routerConfig: RouteGenerator.router,
       theme: appTheme,

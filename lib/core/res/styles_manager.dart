@@ -5,25 +5,41 @@ import 'package:groceries_app/core/res/font_manager.dart';
 abstract class StylesManager {
   static const TextStyle regular16 = TextStyle(
       fontSize: FontSize.s16,
-      fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeightManager.regular,
       color: ColorManager.darkGray);
 
-  static const TextStyle regular48 = TextStyle(
-      fontSize: FontSize.s48,
-      fontFamily: FontConstants.fontFamily,
+  static const TextStyle regular18 = TextStyle(
+      fontSize: FontSize.s18,
       fontWeight: FontWeightManager.regular,
       color: ColorManager.white);
 
+  static const TextStyle regular26 = TextStyle(
+      fontSize: FontSize.s26,
+      fontWeight: FontWeightManager.regular,
+      color: ColorManager.dark);
+
+  static const TextStyle regular48 = TextStyle(
+      fontSize: FontSize.s48,
+      fontWeight: FontWeightManager.regular,
+      color: ColorManager.white);
+
+  static TextStyle medium14 = const TextStyle(
+      fontSize: FontSize.s14,
+      fontWeight: FontWeightManager.medium,
+      color: ColorManager.darkGray);
+
   static const TextStyle medium16 = TextStyle(
       fontSize: FontSize.s16,
-      fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeightManager.medium,
       color: ColorManager.gray);
 
+  static const TextStyle medium18 = TextStyle(
+      fontSize: FontSize.s16,
+      fontWeight: FontWeightManager.medium,
+      color: ColorManager.dark);
+
   static const TextStyle semiBold18 = TextStyle(
       fontSize: FontSize.s18,
-      fontFamily: FontConstants.fontFamily,
       fontWeight: FontWeightManager.semiBold,
       color: ColorManager.white);
 }
