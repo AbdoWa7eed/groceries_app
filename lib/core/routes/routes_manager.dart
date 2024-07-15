@@ -1,13 +1,16 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/di/di.dart';
+import 'package:groceries_app/core/utils/app_preferences.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
 import 'package:groceries_app/features/auth/presentation/views/register_view.dart';
 import 'package:groceries_app/features/onboarding/onboarding_view.dart';
 
 abstract class Routes {
-  static const String onBoardingRoute = "/";
+  static const String initialRoute = '/';
+  static const String onBoardingRoute = "/onboarding";
   static const String loginRoute = "/login";
   static const String registerRoute = "/register";
   static const String homeRoute = "/home";
@@ -19,10 +22,33 @@ abstract class Routes {
 }
 
 abstract class RouteGenerator {
-  static final GoRouter router = GoRouter(routes: _getRoutes());
+  static final GoRouter router = GoRouter(
+      initialLocation: Routes.initialRoute,
+      redirect: (context, state) {
+        if (state.fullPath == Routes.initialRoute) {
+          final appPreferences = getIt<AppPreferences>();
+          final loggedIn = appPreferences.getUserAccessToken() != null;
+          final onboardingViewed = appPreferences.isOnboardingViewed();
+          if (!loggedIn && !onboardingViewed) {
+            return Routes.onBoardingRoute;
+          } else if (!loggedIn) {
+            return Routes.loginRoute;
+          } else {
+            return Routes.homeRoute;
+          }
+        }
+        return null;
+      },
+      routes: _getRoutes());
 
   static List<GoRoute> _getRoutes() {
     return [
+      GoRoute(
+        path: Routes.initialRoute,
+        builder: (context, state) {
+          return const SizedBox();
+        },
+      ),
       GoRoute(
         path: Routes.onBoardingRoute,
         builder: (context, state) {
@@ -42,7 +68,10 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.registerRoute,
         builder: (context, state) {
-          return const RegisterView();
+          return BlocProvider<AuthCubit>.value(
+            value: getIt<AuthCubit>(),
+            child: const RegisterView(),
+          );
         },
       ),
     ];

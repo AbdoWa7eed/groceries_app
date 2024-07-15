@@ -16,7 +16,10 @@ class CustomLoadingButton extends StatelessWidget {
     return Builder(
       builder: (context) {
         if (condition) {
-          return const Center(child: CircularProgressIndicator());
+          return const Padding(
+            padding: EdgeInsets.symmetric(vertical: AppPadding.p16),
+            child: Center(child: CircularProgressIndicator()),
+          );
         } else {
           return CustomElevatedButtonWidget(
             verticalPadding: AppPadding.p8,

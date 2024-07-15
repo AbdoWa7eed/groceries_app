@@ -18,7 +18,8 @@ initAuthDi() async {
     ..registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl(getIt()))
     ..registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(getIt()))
     ..registerLazySingleton<LoginUseCase>(() => LoginUseCase(getIt()))
-    ..registerLazySingleton<AuthCubit>(() => AuthCubit(getIt(), getIt()));
+    ..registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(getIt()))
+    ..registerLazySingleton<AuthCubit>(() => AuthCubit(getIt(), getIt() , getIt()));
   }
   
 }

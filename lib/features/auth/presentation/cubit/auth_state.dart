@@ -13,3 +13,14 @@ class LoginErrorState extends AuthStates {
 
   LoginErrorState(this.message);
 }
+
+
+class RegisterLoadingState extends AuthStates {}
+
+class RegisterSuccessState extends AuthStates {}
+
+class RegisterErrorState extends AuthStates {
+  final String message;
+
+  RegisterErrorState(this.message);
+}
