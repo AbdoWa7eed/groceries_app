@@ -1,4 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:groceries_app/core/di/di.dart';
+import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
 import 'package:groceries_app/features/onboarding/onboarding_view.dart';
 
@@ -28,7 +31,11 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.loginRoute,
         builder: (context, state) {
-          return const LoginView();
+          initAuthDi();
+          return BlocProvider<AuthCubit>(
+            create: (context) => getIt<AuthCubit>(),
+            child: const LoginView(),
+          );
         },
       ),
     ];

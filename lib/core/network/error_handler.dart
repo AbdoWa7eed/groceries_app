@@ -27,11 +27,9 @@ class ErrorHandler implements Exception {
         return DataSource.receiveTimeout.getFailure();
       case DioExceptionType.badResponse:
         if (error.response != null &&
-            error.response!.statusCode != null &&
-            error.response!.statusMessage != null) {
-          return Failure(
-              code: error.response!.statusCode!,
-              message: error.response!.statusMessage!);
+            error.response!.statusCode != null) {
+          return Failure.fromJson(error.response!.data)
+              .copyWith(code: error.response!.statusCode);
         } else {
           return DataSource.defaultError.getFailure();
         }
@@ -174,7 +172,6 @@ extension DataSourceExtension on DataSource {
     }
   }
 }
-
 
 class ApiInternalStatus {
   static const int success = 0;
