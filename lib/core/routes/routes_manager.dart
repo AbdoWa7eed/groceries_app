@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
+import 'package:groceries_app/features/auth/presentation/views/register_view.dart';
 import 'package:groceries_app/features/onboarding/onboarding_view.dart';
 
 abstract class Routes {
@@ -36,6 +37,12 @@ abstract class RouteGenerator {
             create: (context) => getIt<AuthCubit>(),
             child: const LoginView(),
           );
+        },
+      ),
+      GoRoute(
+        path: Routes.registerRoute,
+        builder: (context, state) {
+          return const RegisterView();
         },
       ),
     ];
