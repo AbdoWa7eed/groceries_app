@@ -10,7 +10,6 @@ class OnboardingView extends StatelessWidget {
     return const AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
-        statusBarIconBrightness: Brightness.light,
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
