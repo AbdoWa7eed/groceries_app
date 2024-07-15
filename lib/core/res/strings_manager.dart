@@ -18,4 +18,6 @@ abstract class AppStrings {
   static const String forgotPassword = "Forgot password?";
   static const String doNotHaveAnAccount = "Don't have an account?";
   static const String alreadyHaveAnAccount = "Already have an account?";
+  static const String passwordValidationMessage =
+      "Your password must be a minimum of 8 characters, at least one uppercase letter, one lowercase letter, one number, and one special character.";
 }

@@ -29,6 +29,7 @@ class CustomTextFormField extends StatelessWidget {
       obscureText: obscureText,
       style: StylesManager.medium18,
       decoration: InputDecoration(
+        errorMaxLines: 3,
         labelText: labelText,
         suffixIconConstraints: const BoxConstraints(maxHeight: AppSize.s14),
         suffixIcon: suffix,

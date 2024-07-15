@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_validator/form_validator.dart';
+import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/core/routes/routes_manager.dart';
+import 'package:groceries_app/core/utils/ui_constants.dart';
 import 'package:groceries_app/core/widgets/custom_form_field.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/auth_texts_widget.dart';
@@ -60,7 +63,10 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 ),
                 CustomTextFormField(
                   controller: _passwordController,
-                  validator: ValidationBuilder().maxLength(32).build(),
+                  validator: ValidationBuilder()
+                      .minLength(UiConstants.passwordMinLength)
+                      .maxLength(UiConstants.passwordMaxLength)
+                      .build(),
                   obscureText: _obscureText,
                   labelText: AppStrings.password,
                   suffix: PasswordSuffixIcon(
@@ -84,7 +90,7 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                     text: AppStrings.login),
                 ToggleAuthScreensWidget(
                     onButtonPressed: () {
-                      // TODO : GO TO SIGN UP
+                      context.push(Routes.registerRoute);
                     },
                     descriptionText: AppStrings.doNotHaveAnAccount,
                     buttonText: AppStrings.signUp),

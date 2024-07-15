@@ -1,9 +1,12 @@
 import 'package:groceries_app/features/auth/data/api/auth_api_service.dart';
 import 'package:groceries_app/features/auth/data/models/auth_response.dart';
 import 'package:groceries_app/features/auth/data/models/login_request.dart';
+import 'package:groceries_app/features/auth/data/models/register_request.dart';
 
 abstract class AuthDataSource {
   Future<AuthResponse> login(LoginRequest loginRequest);
+
+  Future<AuthResponse> register(RegisterRequest registerRequest);
 }
 
 class AuthDataSourceImpl implements AuthDataSource {
@@ -13,5 +16,10 @@ class AuthDataSourceImpl implements AuthDataSource {
   @override
   Future<AuthResponse> login(LoginRequest loginRequest) async {
     return _authApiService.login(loginRequest);
+  }
+
+  @override
+  Future<AuthResponse> register(RegisterRequest registerRequest) {
+    return _authApiService.register(registerRequest);
   }
 }

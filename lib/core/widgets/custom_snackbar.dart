@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
+import 'package:groceries_app/core/utils/ui_constants.dart';
 
 showSnackBar(BuildContext context,
     {required String text, Color color = ColorManager.error}) {
@@ -10,6 +11,6 @@ showSnackBar(BuildContext context,
       style: StylesManager.semiBold18,
     ),
     backgroundColor: color,
-    duration: const Duration(milliseconds: 3000),
+    duration: const Duration(milliseconds: UiConstants.snackBarDuration),
   ));
 }
