@@ -64,8 +64,8 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 CustomTextFormField(
                   controller: _passwordController,
                   validator: ValidationBuilder()
-                      .minLength(UiConstants.passwordMinLength)
-                      .maxLength(UiConstants.passwordMaxLength)
+                      .regExp(UiConstants.passwordRegex,
+                          AppStrings.passwordValidationMessage)
                       .build(),
                   obscureText: _obscureText,
                   labelText: AppStrings.password,
