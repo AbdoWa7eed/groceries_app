@@ -4,6 +4,7 @@ import 'package:form_validator/form_validator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/ui_constants.dart';
 import 'package:groceries_app/core/widgets/custom_form_field.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -101,6 +102,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                           password: _passwordController.text,
                         );
                       }
+                      context.push(Routes.phoneAuthRoute);
                     },
                   ),
                   ToggleAuthScreensWidget(

@@ -42,4 +42,9 @@ abstract class StylesManager {
       fontSize: FontSize.s18,
       fontWeight: FontWeightManager.semiBold,
       color: ColorManager.white);
+
+  static const TextStyle bold24 = TextStyle(
+      fontSize: FontSize.s24,
+      fontWeight: FontWeightManager.bold,
+      color: ColorManager.dark);
 }

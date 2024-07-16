@@ -7,6 +7,10 @@ import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
 import 'package:groceries_app/features/auth/presentation/views/register_view.dart';
 import 'package:groceries_app/features/onboarding/onboarding_view.dart';
+import 'package:groceries_app/features/phone_auth/presentation/views/phone_auth_view.dart';
+import 'package:groceries_app/features/phone_auth/presentation/views/verify_phone_view.dart';
+
+import '../widgets/slide_transition.dart';
 
 abstract class Routes {
   static const String initialRoute = '/';
@@ -72,6 +76,18 @@ abstract class RouteGenerator {
             value: getIt<AuthCubit>(),
             child: const RegisterView(),
           );
+        },
+      ),
+      GoRoute(
+        path: Routes.phoneAuthRoute,
+        builder: (context, state) {
+          return const PhoneAuthView();
+        },
+      ),
+      GoRoute(
+        path: Routes.verifyPhoneRoute,
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(child: const VerifyPhoneView());
         },
       ),
     ];
