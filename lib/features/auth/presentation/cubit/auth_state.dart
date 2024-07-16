@@ -1,5 +1,5 @@
-
 part of 'auth_cubit.dart';
+
 abstract class AuthStates {}
 
 class AuthInitial extends AuthStates {}
@@ -13,7 +13,6 @@ class LoginErrorState extends AuthStates {
 
   LoginErrorState(this.message);
 }
-
 
 class RegisterLoadingState extends AuthStates {}
 

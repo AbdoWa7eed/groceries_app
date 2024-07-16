@@ -42,7 +42,7 @@ class AuthCubit extends Cubit<AuthStates> {
   }
 
   _setTokens(String accessToken, String refreshToken) {
-     _appPreferences.setUserAccessToken(accessToken);
-     _appPreferences.setUserRefreshToken(refreshToken);
+    _appPreferences.setUserAccessToken(accessToken);
+    _appPreferences.setUserRefreshToken(refreshToken);
   }
 }

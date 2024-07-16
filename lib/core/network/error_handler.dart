@@ -26,8 +26,7 @@ class ErrorHandler implements Exception {
       case DioExceptionType.receiveTimeout:
         return DataSource.receiveTimeout.getFailure();
       case DioExceptionType.badResponse:
-        if (error.response != null &&
-            error.response!.statusCode != null) {
+        if (error.response != null && error.response!.statusCode != null) {
           return Failure.fromJson(error.response!.data)
               .copyWith(code: error.response!.statusCode);
         } else {

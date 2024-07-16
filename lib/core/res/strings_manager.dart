@@ -24,8 +24,8 @@ abstract class AppStrings {
   static const String enterPhoneNumber = 'Enter Your Phone number';
   static const String phoneNumber = 'Phone number';
   static const String verification = 'Verification';
-  static const String verificationSubtitle = 'Enter the code sent to your number';
+  static const String verificationSubtitle =
+      'Enter the code sent to your number';
   static const String resendCode = 'Resend code';
   static const String invalidNumber = 'Please enter a valid number';
- 
 }

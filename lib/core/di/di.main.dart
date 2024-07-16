@@ -14,12 +14,12 @@ initDi() async {
 initAuthDi() async {
   if (!getIt.isRegistered<AuthCubit>()) {
     getIt
-    ..registerLazySingleton<AuthApiService>(() => AuthApiService(getIt()))
-    ..registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl(getIt()))
-    ..registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(getIt()))
-    ..registerLazySingleton<LoginUseCase>(() => LoginUseCase(getIt()))
-    ..registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(getIt()))
-    ..registerLazySingleton<AuthCubit>(() => AuthCubit(getIt(), getIt() , getIt()));
+      ..registerLazySingleton<AuthApiService>(() => AuthApiService(getIt()))
+      ..registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl(getIt()))
+      ..registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(getIt()))
+      ..registerLazySingleton<LoginUseCase>(() => LoginUseCase(getIt()))
+      ..registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(getIt()))
+      ..registerLazySingleton<AuthCubit>(
+          () => AuthCubit(getIt(), getIt(), getIt()));
   }
-  
 }

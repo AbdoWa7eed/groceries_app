@@ -16,4 +16,3 @@ class CustomBackButton extends StatelessWidget {
     );
   }
 }
-
