@@ -30,7 +30,8 @@ class AuthDataResponse {
     required this.refreshToken,
   });
 
-  factory AuthDataResponse.fromJson(Map<String, dynamic> json) => _$AuthDataResponseFromJson(json);
+  factory AuthDataResponse.fromJson(Map<String, dynamic> json) =>
+      _$AuthDataResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthDataResponseToJson(this);
 }

@@ -11,7 +11,6 @@ part 'auth_api_service.g.dart';
 abstract class AuthApiService {
   factory AuthApiService(Dio dio, {String baseUrl}) = _AuthApiService;
 
-  
   @POST('user/login')
   Future<AuthResponse> login(
     @Body() LoginRequest request,
@@ -21,5 +20,4 @@ abstract class AuthApiService {
   Future<AuthResponse> register(
     @Body() RegisterRequest request,
   );
-
 }

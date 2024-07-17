@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 import 'package:groceries_app/core/network/dio_factory.dart';
 import 'package:groceries_app/core/utils/app_preferences.dart';
@@ -9,6 +8,13 @@ import 'package:groceries_app/features/auth/domain/repo/auth_repository.dart';
 import 'package:groceries_app/features/auth/domain/usecases/login_usecase.dart';
 import 'package:groceries_app/features/auth/domain/usecases/register_usecase.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:groceries_app/features/phone_auth/data/api/phone_auth_api_service.dart';
+import 'package:groceries_app/features/phone_auth/data/data_source/phone_auth_data_source.dart';
+import 'package:groceries_app/features/phone_auth/data/repo/phone_auth_repo_impl.dart';
+import 'package:groceries_app/features/phone_auth/domain/repo/phone_auth_repo.dart';
+import 'package:groceries_app/features/phone_auth/domain/usecase/send_otp_usecase.dart';
+import 'package:groceries_app/features/phone_auth/domain/usecase/verify_phone_usecase.dart';
+import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'di.main.dart';

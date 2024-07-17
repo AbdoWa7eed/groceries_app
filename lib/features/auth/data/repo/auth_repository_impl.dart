@@ -29,7 +29,7 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  ResultFuture<UserEntity> register(RegisterRequest registerRequest)async {
+  ResultFuture<UserEntity> register(RegisterRequest registerRequest) async {
     try {
       final result = await _authDataSource.register(registerRequest);
 

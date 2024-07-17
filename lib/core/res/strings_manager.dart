@@ -20,4 +20,16 @@ abstract class AppStrings {
   static const String alreadyHaveAnAccount = "Already have an account?";
   static const String passwordValidationMessage =
       "Your password must be a minimum of 8 characters, at least one uppercase letter, one lowercase letter, one number, and one special character.";
+  // Phone Auth
+  static const String enterPhoneNumber = 'Enter Your Phone number';
+  static const String phoneNumber = 'Phone number';
+  static const String verification = 'Verification';
+  static const String verificationSubtitle =
+      'Enter the code sent to your number';
+  static const String resendCode = 'Resend code';
+  static const String invalidNumber = 'Please enter a valid number';
+  static const String verify = 'Verify';
+  static const String codeWillBeSentTo = "Code will be sent to the number : ";
+  static const String codeIsNotCompleted = "Code must be 6 digits";
+  static const String confirm = 'Confirm';
 }

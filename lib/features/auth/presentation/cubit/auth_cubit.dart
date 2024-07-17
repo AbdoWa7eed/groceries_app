@@ -1,4 +1,5 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:groceries_app/core/network/dio_factory.dart';
 import 'package:groceries_app/core/utils/app_preferences.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/auth/domain/usecases/login_usecase.dart';
@@ -42,7 +43,8 @@ class AuthCubit extends Cubit<AuthStates> {
   }
 
   _setTokens(String accessToken, String refreshToken) {
-     _appPreferences.setUserAccessToken(accessToken);
-     _appPreferences.setUserRefreshToken(refreshToken);
+    DioFactory.setTokenIntoHeader(accessToken);
+    _appPreferences.setUserAccessToken(accessToken);
+    _appPreferences.setUserRefreshToken(refreshToken);
   }
 }
