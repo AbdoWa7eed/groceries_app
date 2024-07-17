@@ -28,4 +28,8 @@ abstract class AppStrings {
       'Enter the code sent to your number';
   static const String resendCode = 'Resend code';
   static const String invalidNumber = 'Please enter a valid number';
+  static const String verify = 'Verify';
+  static const String codeWillBeSentTo = "Code will be sent to the number : ";
+  static const String codeIsNotCompleted = "Code must be 6 digits";
+  static const String confirm = 'Confirm';
 }

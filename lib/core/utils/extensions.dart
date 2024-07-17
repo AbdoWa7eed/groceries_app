@@ -1,4 +1,15 @@
 import 'package:dartz/dartz.dart';
+import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
+
+extension NavigationExtension on BuildContext {
+  void popAllThenPush(String location) {
+    while (canPop()) {
+      pop();
+    }
+    pushReplacement(location);
+  }
+}
 
 extension EitherX<Failure, R> on Either<Failure, R> {
   R get right => (this as Right<Failure, R>).value;

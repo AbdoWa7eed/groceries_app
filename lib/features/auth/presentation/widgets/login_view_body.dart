@@ -3,13 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
+import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/ui_constants.dart';
+import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/core/widgets/custom_form_field.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/auth_texts_widget.dart';
-import 'package:groceries_app/features/auth/presentation/widgets/custom_loading_button.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/custom_logo_widget.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/forget_password_widget.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/password_suffix_icon.dart';
@@ -78,16 +79,21 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   ),
                 ),
                 const ForgetPasswordButtonWidget(),
-                CustomLoadingButton(
-                    condition: state is LoginLoadingState,
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        cubit.login(
-                            email: _emailController.text,
-                            password: _passwordController.text);
-                      }
-                    },
-                    text: AppStrings.login),
+                CustomElevatedButtonWidget(
+                  isLoading: state is LoginLoadingState,
+                  verticalPadding: AppPadding.p8,
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      cubit.login(
+                          email: _emailController.text.trim(),
+                          password: _passwordController.text);
+                    }
+                  },
+                  child: const Text(
+                    AppStrings.login,
+                    style: StylesManager.semiBold18,
+                  ),
+                ),
                 ToggleAuthScreensWidget(
                     onButtonPressed: () {
                       context.push(Routes.registerRoute);

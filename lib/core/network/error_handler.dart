@@ -1,4 +1,5 @@
 // Imports
+import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:groceries_app/core/network/api_error_messages.dart';
 import 'package:groceries_app/core/network/failure.dart';
@@ -27,6 +28,10 @@ class ErrorHandler implements Exception {
         return DataSource.receiveTimeout.getFailure();
       case DioExceptionType.badResponse:
         if (error.response != null && error.response!.statusCode != null) {
+          if (error.response!.data is String) {
+            return Failure.fromJson(jsonDecode(error.response!.data))
+                .copyWith(code: error.response!.statusCode);
+          }
           return Failure.fromJson(error.response!.data)
               .copyWith(code: error.response!.statusCode);
         } else {

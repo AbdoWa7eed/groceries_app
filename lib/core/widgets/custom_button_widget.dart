@@ -8,6 +8,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
   final double height;
   final double verticalPadding;
   final double horizontalPadding;
+  final bool isLoading;
   const CustomElevatedButtonWidget(
       {super.key,
       required this.child,
@@ -15,6 +16,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
       this.width = double.infinity,
       this.height = AppSize.s65,
       this.verticalPadding = AppPadding.p40,
+      this.isLoading = false,
       this.horizontalPadding = 0});
 
   @override
@@ -25,10 +27,12 @@ class CustomElevatedButtonWidget extends StatelessWidget {
       child: SizedBox(
         width: width,
         height: height,
-        child: ElevatedButton(
-          onPressed: onPressed,
-          child: child,
-        ),
+        child: isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : ElevatedButton(
+                onPressed: onPressed,
+                child: child,
+              ),
       ),
     );
   }

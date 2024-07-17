@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/assets_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/widgets/custom_back_button.dart';
@@ -21,10 +22,13 @@ class _CustomHeaderWidgetState extends State<CustomHeaderWidget> {
     return Stack(
       children: [
         Image.asset(AssetsManager.groceries),
-        const Positioned(
-            top: kToolbarHeight / 2,
-            left: AppSize.s8,
-            child: CustomBackButton())
+        Visibility(
+          visible: context.canPop(),
+          child: const Positioned(
+              top: kToolbarHeight / 2,
+              left: AppSize.s8,
+              child: CustomBackButton()),
+        )
       ],
     );
   }

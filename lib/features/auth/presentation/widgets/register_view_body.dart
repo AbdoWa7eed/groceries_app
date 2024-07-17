@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_validator/form_validator.dart';
 import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
+import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
-import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/ui_constants.dart';
+import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/core/widgets/custom_form_field.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/auth_texts_widget.dart';
-import 'package:groceries_app/features/auth/presentation/widgets/custom_loading_button.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/custom_logo_widget.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/custom_rich_text.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/password_suffix_icon.dart';
@@ -91,19 +91,21 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     ),
                   ),
                   const CustomRichTextWidget(),
-                  CustomLoadingButton(
-                    condition: state is RegisterLoadingState,
-                    text: AppStrings.signUp,
+                  CustomElevatedButtonWidget(
+                    isLoading: state is RegisterLoadingState,
+                    verticalPadding: AppPadding.p8,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
                         cubit.register(
-                          username: _usernameController.text,
-                          email: _emailController.text,
-                          password: _passwordController.text,
-                        );
+                            username: _usernameController.text.trim(),
+                            email: _emailController.text.trim(),
+                            password: _passwordController.text);
                       }
-                      context.push(Routes.phoneAuthRoute);
                     },
+                    child: const Text(
+                      AppStrings.signUp,
+                      style: StylesManager.semiBold18,
+                    ),
                   ),
                   ToggleAuthScreensWidget(
                       onButtonPressed: () {

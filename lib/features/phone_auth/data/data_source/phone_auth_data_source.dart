@@ -1,5 +1,6 @@
 import 'package:groceries_app/features/phone_auth/data/api/phone_auth_api_service.dart';
 import 'package:groceries_app/features/phone_auth/data/models/otp_response/otp_response.dart';
+import 'package:groceries_app/features/phone_auth/data/models/send_otp_request.dart';
 import 'package:groceries_app/features/phone_auth/data/models/verify_otp_request.dart';
 
 abstract class PhoneAuthDataSource {
@@ -14,7 +15,7 @@ class PhoneAuthDataSourceImpl extends PhoneAuthDataSource {
   PhoneAuthDataSourceImpl(this._apiService);
   @override
   Future<OTPResponse> sendOTP(String phoneNumber) {
-    return _apiService.sendOTP(phoneNumber);
+    return _apiService.sendOTP(SendOtpRequest(phoneNumber));
   }
 
   @override

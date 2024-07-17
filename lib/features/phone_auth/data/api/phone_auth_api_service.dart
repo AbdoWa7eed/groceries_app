@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:groceries_app/core/network/api_constants.dart';
 import 'package:groceries_app/features/phone_auth/data/models/otp_response/otp_response.dart';
+import 'package:groceries_app/features/phone_auth/data/models/send_otp_request.dart';
 import 'package:groceries_app/features/phone_auth/data/models/verify_otp_request.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -12,7 +13,7 @@ abstract class PhoneAuthApiService {
 
   @POST('otp')
   Future<OTPResponse> sendOTP(
-    @Body() String phoneNumber,
+    @Body() SendOtpRequest otpRequest,
   );
 
   @POST('otp/verify-otp')

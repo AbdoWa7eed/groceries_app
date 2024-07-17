@@ -5,7 +5,7 @@ import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/features/phone_auth/presentation/widgets/code_input_widget.dart';
 import 'package:groceries_app/features/phone_auth/presentation/widgets/custom_header_widget.dart';
-import 'package:groceries_app/features/phone_auth/presentation/widgets/resend_code_widget.dart';
+import 'package:groceries_app/features/phone_auth/presentation/widgets/resend_verify_code_widget.dart';
 
 class VerifyPhoneViewBody extends StatelessWidget {
   const VerifyPhoneViewBody({super.key});
@@ -34,7 +34,9 @@ class VerifyPhoneViewBody extends StatelessWidget {
                 const SizedBox(
                   height: AppSize.s16,
                 ),
-                const ResendCodeWidget(),
+                const VerifyResendButtonsWidget(
+                  code: "1234",
+                ),
               ],
             ),
           ),
