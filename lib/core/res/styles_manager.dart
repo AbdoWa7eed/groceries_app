@@ -23,7 +23,7 @@ abstract class StylesManager {
       fontWeight: FontWeightManager.regular,
       color: ColorManager.white);
 
-  static const TextStyle medium14 =  TextStyle(
+  static const TextStyle medium14 = TextStyle(
       fontSize: FontSize.s14,
       fontWeight: FontWeightManager.medium,
       color: ColorManager.darkGray);
@@ -42,6 +42,11 @@ abstract class StylesManager {
       fontSize: FontSize.s18,
       fontWeight: FontWeightManager.semiBold,
       color: ColorManager.white);
+
+  static const TextStyle semiBold26 = TextStyle(
+      fontSize: FontSize.s26,
+      fontWeight: FontWeightManager.semiBold,
+      color: ColorManager.dark);
 
   static const TextStyle bold24 = TextStyle(
       fontSize: FontSize.s24,

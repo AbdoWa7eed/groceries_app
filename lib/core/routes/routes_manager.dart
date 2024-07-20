@@ -6,6 +6,8 @@ import 'package:groceries_app/core/utils/app_preferences.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
 import 'package:groceries_app/features/auth/presentation/views/register_view.dart';
+import 'package:groceries_app/features/location/presentation/views/map_view.dart';
+import 'package:groceries_app/features/location/presentation/views/select_location_view.dart';
 import 'package:groceries_app/features/onboarding/onboarding_view.dart';
 import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
 import 'package:groceries_app/features/phone_auth/presentation/views/phone_auth_view.dart';
@@ -18,6 +20,8 @@ abstract class Routes {
   static const String onBoardingRoute = "/onboarding";
   static const String loginRoute = "/login";
   static const String registerRoute = "/register";
+  static const String locationRoute = "/location";
+  static const String mapRoute = "/map";
   static const String homeRoute = "/home";
   static const String productDetails = "/productDetails";
   static const String categoryProducts = "/categoryProducts";
@@ -97,6 +101,18 @@ abstract class RouteGenerator {
             value: getIt<PhoneAuthCubit>(),
             child: const VerifyPhoneView(),
           ));
+        },
+      ),
+      GoRoute(
+        path: Routes.locationRoute,
+        builder: (context, state) {
+          return const SelectLocationView();
+        },
+      ),
+      GoRoute(
+        path: Routes.mapRoute,
+        builder: (context, state) {
+          return const MapView();
         },
       ),
     ];

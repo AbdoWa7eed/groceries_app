@@ -31,7 +31,6 @@ ThemeData get appTheme {
         statusBarIconBrightness: Brightness.dark,
       ),
       centerTitle: true,
-      titleTextStyle: StylesManager.regular16,
     ),
     splashColor: Colors.transparent,
     inputDecorationTheme: const InputDecorationTheme(
