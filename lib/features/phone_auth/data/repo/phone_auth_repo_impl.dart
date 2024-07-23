@@ -19,12 +19,10 @@ class PhoneAuthRepositoryImpl extends PhoneAuthRepository {
       final result = await _dataSource.sendOTP(phoneNumber);
 
       if (result.verificationId == null) {
-        return Left(Failure(
-            code: ApiInternalStatus.failure,
-            message: result.message.orEmpty()));
+        return Left(Failure.apiInternalError(result.message.orEmpty()));
       }
       return Right(result.toEntity());
-    } catch (error) {
+    } catch (error) {  
       return Left(ErrorHandler.handle(error).failure);
     }
   }
