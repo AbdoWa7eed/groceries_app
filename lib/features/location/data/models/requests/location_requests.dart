@@ -3,13 +3,16 @@ import 'package:json_annotation/json_annotation.dart';
 part 'location_requests.g.dart';
 
 class LocationRequest {
-  @JsonKey()
+  @JsonKey(name: 'key')
   String? apiKey;
+  @JsonKey(name: 'language')
+  String? _language;
 
-  LocationRequest({required this.apiKey});
+  String get language => _language ?? 'en';
+  LocationRequest({this.apiKey});
 }
 
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class SuggestedPlaceRequestParams extends LocationRequest {
   @JsonKey(name: 'input')
   final String place;
@@ -18,7 +21,7 @@ class SuggestedPlaceRequestParams extends LocationRequest {
 
   SuggestedPlaceRequestParams({
     required this.place,
-    required super.apiKey,
+    super.apiKey,
     required this.sessionToken,
   });
 
@@ -36,19 +39,20 @@ class SuggestedPlaceRequestParams extends LocationRequest {
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class PlaceDetailsRequestParams extends LocationRequest {
   @JsonKey(name: 'place_id')
   final String placeId;
   @JsonKey(name: 'fields')
-  final String fields;
+  String? _fields;
   @JsonKey(name: 'sessiontoken')
   final String sessionToken;
 
+  String get fields => _fields ?? 'place_id,formatted_address,geometry';
+
   PlaceDetailsRequestParams({
     required this.placeId,
-    required super.apiKey,
-    required this.fields,
+    super.apiKey,
     required this.sessionToken,
   });
 
@@ -56,27 +60,25 @@ class PlaceDetailsRequestParams extends LocationRequest {
 
   copyWith({
     String? apiKey,
-    String? fields,
     String? sessionToken,
     String? placeId,
   }) {
     return PlaceDetailsRequestParams(
       apiKey: apiKey ?? this.apiKey,
-      fields: fields ?? this.fields,
       sessionToken: sessionToken ?? this.sessionToken,
       placeId: placeId ?? this.placeId,
     );
   }
 }
 
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class PlaceGeocodeRequestParams extends LocationRequest {
   @JsonKey(name: 'latlng')
   final String latlng;
 
   PlaceGeocodeRequestParams({
     required this.latlng,
-    required super.apiKey,
+    super.apiKey,
   });
 
   Map<String, dynamic> toJson() => _$PlaceGeocodeRequestParamsToJson(this);

@@ -55,7 +55,6 @@ class LocationRepositoryImpl extends LocationRepository {
     try {
       final result =
           await _locationDataSource.getPlaceFromLatLng(placeGeocodeRequest);
-
       if (result.places == null || result.places!.isEmpty) {
         return Left(Failure.apiInternalError(result.status));
       }

@@ -16,8 +16,6 @@ class ConfirmationDialogWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(AppSize.s8)),
       child: Padding(
         padding: const EdgeInsets.only(
             left: AppPadding.p16, right: AppPadding.p16, top: AppPadding.p18),

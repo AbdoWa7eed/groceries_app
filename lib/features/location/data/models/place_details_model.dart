@@ -19,7 +19,7 @@ class PlaceDetailsResponse extends LocationResponse {
 
 @JsonSerializable()
 class PlaceReverseGeocodeResponse extends LocationResponse {
-  @JsonKey(name: "result")
+  @JsonKey(name: "results")
   final List<PlaceDetailsDataModel>? places;
 
   PlaceReverseGeocodeResponse(this.places, super.status);

@@ -19,11 +19,11 @@
 <stop offset="1"/>
 </linearGradient>
 <linearGradient id="paint2_linear_1_507" x1="123.654" y1="82.7482" x2="94.9092" y2="-14.004" gradientUnits="userSpaceOnUse">
-<stop stop-color="#5565EE"/>
-<stop offset="0.3091" stop-color="#5F75FF"/>
-<stop offset="0.5137" stop-color="#6E89FA"/>
-<stop offset="0.7638" stop-color="#6E89FA"/>
-<stop offset="1" stop-color="#7D99FD"/>
+<stop stop-color="#A52A2A"/>
+<stop offset="0.3091" stop-color="#B22222"/>
+<stop offset="0.5137" stop-color="#C24641"/>
+<stop offset="0.7638" stop-color="#CD5C5C"/>
+<stop offset="1" stop-color="#E9967A"/>
 </linearGradient>
 </defs>
 </svg>

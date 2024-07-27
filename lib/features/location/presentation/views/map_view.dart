@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:groceries_app/features/location/presentation/cubit/location_cubit.dart';
 import 'package:groceries_app/features/location/presentation/widgets/map_view_body.dart';
 
 class MapView extends StatelessWidget {
@@ -6,6 +8,9 @@ class MapView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(body: MapViewBody());
+    return BlocListener<LocationCubit, LocationState>(
+      listener: (context, state) {},
+      child: const Scaffold(body: MapViewBody()),
+    );
   }
 }

@@ -26,7 +26,7 @@ Map<String, dynamic> _$PlaceDetailsResponseToJson(
 PlaceReverseGeocodeResponse _$PlaceReverseGeocodeResponseFromJson(
         Map<String, dynamic> json) =>
     PlaceReverseGeocodeResponse(
-      (json['result'] as List<dynamic>?)
+      (json['results'] as List<dynamic>?)
           ?.map(
               (e) => PlaceDetailsDataModel.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -37,7 +37,7 @@ Map<String, dynamic> _$PlaceReverseGeocodeResponseToJson(
         PlaceReverseGeocodeResponse instance) =>
     <String, dynamic>{
       'status': instance.status,
-      'result': instance.places,
+      'results': instance.places,
     };
 
 PlaceDetailsDataModel _$PlaceDetailsDataModelFromJson(

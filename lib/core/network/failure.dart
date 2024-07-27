@@ -2,7 +2,7 @@ import 'package:groceries_app/core/network/error_handler.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'failure.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createToJson: false)
 class Failure {
   int? code;
   String message;

@@ -29,7 +29,8 @@ abstract class DioFactory {
 
     _dio?.interceptors.add(
       PrettyDioLogger(
-        requestBody: true,
+        requestBody: false,
+        responseBody: false,
         requestHeader: true,
         responseHeader: true,
       ),
@@ -39,7 +40,7 @@ abstract class DioFactory {
 
   static void setTokenIntoHeader(String token) {
     _dio?.options.headers = {
-      HttpHeaders.authorizationHeader : 'Bearer $token',
+      HttpHeaders.authorizationHeader: 'Bearer $token',
     };
   }
 }
