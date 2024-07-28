@@ -43,4 +43,5 @@ abstract class AppStrings {
   static const String selectCurrentLocation = "Select current location";
   static const String selectOtherLocation = "Select other location";
   static const String cancel = "Cancel";
+  static const String skip = "Skip";
 }

@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
@@ -7,23 +9,27 @@ import 'package:groceries_app/features/location/domain/entity/suggested_place_en
 import 'package:groceries_app/features/location/domain/usecases/get_place_details_usecase.dart';
 import 'package:groceries_app/features/location/domain/usecases/get_suggested_places_usecase.dart';
 import 'package:groceries_app/features/location/domain/usecases/place_from_coordinates_usecase.dart';
+import 'package:groceries_app/features/location/domain/usecases/update_user_address_usecase.dart';
 import 'package:uuid/uuid.dart';
 part 'location_state.dart';
 
 class LocationCubit extends Cubit<LocationState> {
   LocationCubit(this._placeFromCoordinatesUseCase, this._suggestedPlacesUseCase,
-      this._placeDetailsUseCase)
+      this._placeDetailsUseCase, this._updateUserAddressUseCase)
       : super(LocationInitial());
 
   final GetPlaceFromCoordinatesUseCase _placeFromCoordinatesUseCase;
   final GetSuggestedPlacesUseCase _suggestedPlacesUseCase;
   final GetPlaceDetailsUseCase _placeDetailsUseCase;
+  final UpdateUserAddressUseCase _updateUserAddressUseCase;
 
   Position? _position;
 
   Position? get position => _position;
   Future<void> getPosition([bool isCurrentLocation = false]) async {
-    emit(GetPositionLoading());
+    if (!isCurrentLocation) {
+      emit(GetPositionLoading());
+    }
     final data = await LocationHelper.getCurrentPosition();
     if (data.isRight()) {
       _position = data.right;
@@ -34,7 +40,17 @@ class LocationCubit extends Cubit<LocationState> {
     }
   }
 
-  Future<void> getCurrentLocation() async {
+  Future<void> selectCurrentLocation() async {
+    await _getCurrentLocation();
+
+    if (state is GetCurrentLocationSuccess) {
+      final successState = state as GetCurrentLocationSuccess;
+      log(successState.entity.address.toString());
+      updateUserAddress(successState.entity.address);
+    }
+  }
+
+  Future<void> _getCurrentLocation() async {
     emit(GetCurrentLocationLoading());
     if (position == null) {
       await getPosition(true);
@@ -82,12 +98,23 @@ class LocationCubit extends Cubit<LocationState> {
     }
   }
 
+  Future<void> updateUserAddress(String address) async {
+    emit(UpdateUserAddressLoading());
+    final data = await _updateUserAddressUseCase.execute(address);
+
+    if (data.isRight()) {
+      _isConfirmationDialogShown = false;
+      emit(UpdateUserAddressSuccess());
+    } else {
+      emit(UpdateUserAddressError(data.failure.message));
+    }
+  }
+
   // UI
 
   bool _isConfirmationDialogShown = false;
 
   get isConfirmationDialogShown => _isConfirmationDialogShown;
 
-  set confirmationDialogShown(bool value) =>
-      _isConfirmationDialogShown = value;
+  set confirmationDialogShown(bool value) => _isConfirmationDialogShown = value;
 }

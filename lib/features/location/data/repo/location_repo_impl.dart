@@ -64,4 +64,13 @@ class LocationRepositoryImpl extends LocationRepository {
       return Left(ErrorHandler.handle(error).failure);
     }
   }
+
+  @override
+  ResultFuture<void> updateUserAddress(String address) async {
+    try {
+      return Right(await _locationDataSource.updateUserAddress(address));
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
 }

@@ -4,15 +4,24 @@ import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/core/routes/routes_manager.dart';
+import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/features/location/presentation/cubit/location_cubit.dart';
 
 class LocationConfirmationDialog extends StatelessWidget {
-  const LocationConfirmationDialog({super.key});
+  const LocationConfirmationDialog({super.key, required this.address});
+
+  final String address;
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocationCubit, LocationState>(
+    return BlocConsumer<LocationCubit, LocationState>(
+      listener: (context, state) {
+        if (state is UpdateUserAddressSuccess) {
+          context.popAllThenPush(Routes.homeRoute);
+        }
+      },
       builder: (context, state) {
         final cubit = context.read<LocationCubit>();
         return Dialog(
@@ -31,7 +40,9 @@ class LocationConfirmationDialog extends StatelessWidget {
                     child: CustomElevatedButtonWidget(
                         verticalPadding: 0,
                         height: AppSize.s45,
-                        onPressed: () {},
+                        onPressed: () {
+                          cubit.updateUserAddress(address);
+                        },
                         child: const Text(AppStrings.confirm,
                             style: StylesManager.regular18)),
                   ),

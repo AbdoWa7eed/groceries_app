@@ -43,8 +43,10 @@ initLocationDi() async {
     getIt
       ..registerLazySingleton<LocationApiService>(
           () => LocationApiService(DioFactory.getDio()))
+      ..registerLazySingleton<UpdateAddressApiService>(
+          () => UpdateAddressApiService(DioFactory.getDio()))
       ..registerLazySingleton<LocationDataSource>(
-          () => LocationDataSourceImpl(getIt()))
+          () => LocationDataSourceImpl(getIt(), getIt()))
       ..registerLazySingleton<LocationRepository>(
           () => LocationRepositoryImpl(getIt()))
       ..registerLazySingleton<GetPlaceFromCoordinatesUseCase>(
@@ -53,7 +55,9 @@ initLocationDi() async {
           () => GetSuggestedPlacesUseCase(getIt()))
       ..registerLazySingleton<GetPlaceDetailsUseCase>(
           () => GetPlaceDetailsUseCase(getIt()))
+      ..registerLazySingleton<UpdateUserAddressUseCase>(
+          () => UpdateUserAddressUseCase(getIt()))
       ..registerLazySingleton<LocationCubit>(
-          () => LocationCubit(getIt(), getIt(), getIt()));
+          () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
   }
 }

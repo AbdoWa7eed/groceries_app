@@ -31,6 +31,7 @@ class _MapViewBodyState extends State<MapViewBody> {
               _setMarker(state);
               _setLatLng(state.entity.location.latitude,
                   state.entity.location.longitude);
+              _animateToPosition(state.entity.address);
             });
           });
         }
@@ -58,7 +59,7 @@ class _MapViewBodyState extends State<MapViewBody> {
     _marker = Marker(
       markerId: const MarkerId('1'),
       onTap: () {
-        _showConfirmationDialog();
+        _showConfirmationDialog(state.entity.address);
       },
       position: LatLng(
           state.entity.location.latitude, state.entity.location.longitude),
@@ -70,19 +71,18 @@ class _MapViewBodyState extends State<MapViewBody> {
 
   void _setLatLng(double latitude, double longitude) {
     latLng = LatLng(latitude, longitude);
-    _animateToPosition();
   }
 
-  void _animateToPosition() async {
+  void _animateToPosition(String address) async {
     await _mapController
         .animateCamera(CameraUpdate.newCameraPosition(
             CameraPosition(target: latLng!, zoom: 16)))
         .then((value) {
-      _showConfirmationDialog();
+      _showConfirmationDialog(address);
     });
   }
 
-  _showConfirmationDialog() {
+  _showConfirmationDialog(String address) {
     final cubit = context.read<LocationCubit>();
     if (!cubit.isConfirmationDialogShown) {
       cubit.confirmationDialogShown = true;
@@ -91,7 +91,7 @@ class _MapViewBodyState extends State<MapViewBody> {
           barrierDismissible: false,
           builder: (context) => BlocProvider.value(
                 value: cubit,
-                child: const LocationConfirmationDialog(),
+                child: LocationConfirmationDialog(address: address),
               ));
     }
   }

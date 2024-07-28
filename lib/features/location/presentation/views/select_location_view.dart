@@ -7,11 +7,12 @@ import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/widgets/custom_back_button.dart';
 import 'package:groceries_app/core/widgets/custom_snackbar.dart';
 import 'package:groceries_app/features/location/presentation/cubit/location_cubit.dart';
+import 'package:groceries_app/features/location/presentation/widgets/appbar_skip_button.dart';
 import 'package:groceries_app/features/location/presentation/widgets/select_location_view_body.dart';
 
 class SelectLocationView extends StatelessWidget {
   const SelectLocationView({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
     return BlocListener<LocationCubit, LocationState>(
@@ -26,6 +27,9 @@ class SelectLocationView extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
+          actions: const [
+            AppbarSkipButton(),
+          ],
           title: const Text(
             AppStrings.location,
             style: StylesManager.bold24,

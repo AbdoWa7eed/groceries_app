@@ -53,7 +53,12 @@ class GetPlaceDetailsSuccess extends LocationState {
   GetPlaceDetailsSuccess(this.entity);
 }
 
-class GetPlaceDetailsError extends LocationState {
+class UpdateUserAddressError extends LocationState {
   final String error;
-  GetPlaceDetailsError(this.error);
+  UpdateUserAddressError(this.error);
 }
+
+class UpdateUserAddressLoading extends LocationState {}
+
+class UpdateUserAddressSuccess extends LocationState {}
+

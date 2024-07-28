@@ -13,4 +13,9 @@ abstract class LocationRepository {
   ResultFuture<PlaceDetailsEntity> getPlaceFromCoordinates(
     PlaceGeocodeRequestParams placeGeocodeRequest,
   );
+
+   ResultFuture<void> updateUserAddress(
+    String address,
+  );
+  
 }
