@@ -18,22 +18,25 @@ abstract class Routes {
 abstract class RouteGenerator {
   static final GoRouter router = GoRouter(
       initialLocation: Routes.initialRoute,
-      redirect: (context, state) {
-        if (state.fullPath == Routes.initialRoute) {
-          final appPreferences = getIt<AppPreferences>();
-          final loggedIn = appPreferences.getUserAccessToken() != null;
-          final onboardingViewed = appPreferences.isOnboardingViewed();
-          if (!loggedIn && !onboardingViewed) {
-            return Routes.onBoardingRoute;
-          } else if (!loggedIn) {
-            return Routes.loginRoute;
-          } else {
-            return Routes.homeRoute;
-          }
-        }
-        return null;
-      },
+      redirect: _redirect,
       routes: _getRoutes());
+
+  static String? _redirect(BuildContext context, GoRouterState state) {
+    if (state.fullPath == Routes.initialRoute) {
+      final appPreferences = getIt<AppPreferences>();
+      final onboardingViewed = appPreferences.isOnboardingViewed();
+      if (!onboardingViewed) {
+        return Routes.onBoardingRoute;
+      }
+      final loggedIn = appPreferences.getUserAccessToken() != null;
+      if (!loggedIn) {
+        return Routes.loginRoute;
+      } else {
+        return Routes.homeRoute;
+      }
+    }
+    return null;
+  }
 
   static List<GoRoute> _getRoutes() {
     return [
@@ -72,6 +75,7 @@ abstract class RouteGenerator {
         path: Routes.phoneAuthRoute,
         builder: (context, state) {
           initPhoneAuthDi();
+          getIt<PhoneAuthCubit>().isAuth = state.extra as bool? ?? false;
           return BlocProvider<PhoneAuthCubit>(
             create: (context) => getIt<PhoneAuthCubit>(),
             child: const PhoneAuthView(),
@@ -92,6 +96,7 @@ abstract class RouteGenerator {
         path: Routes.locationRoute,
         builder: (context, state) {
           initLocationDi();
+          getIt<LocationCubit>().isAuth = state.extra as bool? ?? false;
           return BlocProvider<LocationCubit>(
               create: (context) => getIt<LocationCubit>(),
               child: const SelectLocationView());
@@ -104,6 +109,12 @@ abstract class RouteGenerator {
             value: getIt<LocationCubit>(),
             child: const MapView(),
           );
+        },
+      ),
+      GoRoute(
+        path: Routes.homeRoute,
+        builder: (context, state) {
+          return const HomeView();
         },
       ),
     ];

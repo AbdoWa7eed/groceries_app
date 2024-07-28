@@ -83,12 +83,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                   isLoading: state is LoginLoadingState,
                   verticalPadding: AppPadding.p8,
                   onPressed: () {
-                    // if (_formKey.currentState!.validate()) {
-                    //   cubit.login(
-                    //       email: _emailController.text.trim(),
-                    //       password: _passwordController.text);
-                    // }
-                    context.push(Routes.locationRoute);
+                    if (_formKey.currentState!.validate()) {
+                      cubit.login(
+                          email: _emailController.text.trim(),
+                          password: _passwordController.text);
+                    }
                   },
                   child: const Text(
                     AppStrings.login,

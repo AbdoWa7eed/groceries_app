@@ -23,9 +23,7 @@ class PhoneAuthView extends StatelessWidget {
           context.push(Routes.verifyPhoneRoute);
         }
       },
-      child: const Scaffold(
-        body: PhoneAuthViewBody(),
-      ),
+      child: const Scaffold(body: PhoneAuthViewBody()),
     );
   }
 }

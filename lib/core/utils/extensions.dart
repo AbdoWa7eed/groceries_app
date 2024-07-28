@@ -3,11 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 extension NavigationExtension on BuildContext {
-  void popAllThenPush(String location) {
+  void popAllThenPush(String location , {Object? extra}) {
     while (canPop()) {
       pop();
     }
-    pushReplacement(location);
+    pushReplacement(location , extra: extra);
   }
 }
 

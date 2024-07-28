@@ -22,7 +22,7 @@ class RegisterView extends StatelessWidget {
           }
 
           if (state is RegisterSuccessState) {
-            context.popAllThenPush(Routes.phoneAuthRoute);
+            context.popAllThenPush(Routes.phoneAuthRoute, extra: true);
           }
         },
         child: const SafeArea(child: RegisterViewBody()),

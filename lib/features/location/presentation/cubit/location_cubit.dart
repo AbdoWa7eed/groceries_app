@@ -112,6 +112,8 @@ class LocationCubit extends Cubit<LocationState> {
 
   // UI
 
+  bool isAuth = false;
+
   bool _isConfirmationDialogShown = false;
 
   get isConfirmationDialogShown => _isConfirmationDialogShown;
