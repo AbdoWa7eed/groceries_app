@@ -32,4 +32,16 @@ abstract class AppStrings {
   static const String codeWillBeSentTo = "Code will be sent to the number : ";
   static const String codeIsNotCompleted = "Code must be 6 digits";
   static const String confirm = 'Confirm';
+
+  // Location
+  static const String location = "Location";
+  static const String selectLocation = "Select Your Location";
+  static const String selectLocationSubtitle =
+      "Switch on your location to stay in tune with what's happening in your area";
+  static const String searchLocation = "Search for a location";
+  static const String confirmThisLocation = "Do you want to add this location?";
+  static const String selectCurrentLocation = "Select current location";
+  static const String selectOtherLocation = "Select other location";
+  static const String cancel = "Cancel";
+  static const String skip = "Skip";
 }

@@ -10,7 +10,8 @@ initDi() async {
 initAuthDi() async {
   if (!getIt.isRegistered<AuthCubit>()) {
     getIt
-      ..registerLazySingleton<AuthApiService>(() => AuthApiService(DioFactory.getDio()))
+      ..registerLazySingleton<AuthApiService>(
+          () => AuthApiService(DioFactory.getDio()))
       ..registerLazySingleton<AuthDataSource>(() => AuthDataSourceImpl(getIt()))
       ..registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(getIt()))
       ..registerLazySingleton<LoginUseCase>(() => LoginUseCase(getIt()))
@@ -34,5 +35,29 @@ initPhoneAuthDi() async {
           () => VerifyPhoneUsecase(getIt()))
       ..registerLazySingleton<PhoneAuthCubit>(
           () => PhoneAuthCubit(getIt(), getIt()));
+  }
+}
+
+initLocationDi() async {
+  if (!getIt.isRegistered<LocationCubit>()) {
+    getIt
+      ..registerLazySingleton<LocationApiService>(
+          () => LocationApiService(DioFactory.getDio()))
+      ..registerLazySingleton<UpdateAddressApiService>(
+          () => UpdateAddressApiService(DioFactory.getDio()))
+      ..registerLazySingleton<LocationDataSource>(
+          () => LocationDataSourceImpl(getIt(), getIt()))
+      ..registerLazySingleton<LocationRepository>(
+          () => LocationRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetPlaceFromCoordinatesUseCase>(
+          () => GetPlaceFromCoordinatesUseCase(getIt()))
+      ..registerLazySingleton<GetSuggestedPlacesUseCase>(
+          () => GetSuggestedPlacesUseCase(getIt()))
+      ..registerLazySingleton<GetPlaceDetailsUseCase>(
+          () => GetPlaceDetailsUseCase(getIt()))
+      ..registerLazySingleton<UpdateUserAddressUseCase>(
+          () => UpdateUserAddressUseCase(getIt()))
+      ..registerLazySingleton<LocationCubit>(
+          () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
   }
 }

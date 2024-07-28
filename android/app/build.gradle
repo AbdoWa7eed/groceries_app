@@ -4,6 +4,7 @@ plugins {
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id "dev.flutter.flutter-gradle-plugin"
 }
+apply from: project(':flutter_config').projectDir.getPath() + "/dotenv.gradle"
 
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file("local.properties")
@@ -42,6 +43,8 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutterVersionCode.toInteger()
         versionName = flutterVersionName
+        def existingPlaceholders = manifestPlaceholders ?: [:]
+        manifestPlaceholders = existingPlaceholders +  [mapsApiKey: project.env.get("GOOGLE_MAPS_API_KEY")]    
     }
 
     buildTypes {

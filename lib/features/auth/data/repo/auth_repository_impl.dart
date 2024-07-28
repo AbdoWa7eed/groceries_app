@@ -20,7 +20,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
       if (result.data == null) {
         return Left(
-            Failure(code: ApiInternalStatus.failure, message: result.message));
+            Failure.apiInternalError(result.message));
       }
       return Right(result.data!.toUserEntity());
     } catch (error) {
@@ -35,7 +35,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
       if (result.data == null) {
         return Left(
-            Failure(code: ApiInternalStatus.failure, message: result.message));
+           Failure.apiInternalError(result.message));
       }
       return Right(result.data!.toUserEntity());
     } catch (error) {
