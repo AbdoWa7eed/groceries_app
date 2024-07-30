@@ -38,17 +38,6 @@ class LocationConfirmationDialog extends StatelessWidget {
                 Row(children: [
                   Expanded(
                     child: CustomElevatedButtonWidget(
-                        verticalPadding: 0,
-                        height: AppSize.s45,
-                        onPressed: () {
-                          cubit.updateUserAddress(address);
-                        },
-                        child: const Text(AppStrings.confirm,
-                            style: StylesManager.regular18)),
-                  ),
-                  const SizedBox(width: AppSize.s12),
-                  Expanded(
-                    child: CustomElevatedButtonWidget(
                         height: AppSize.s45,
                         verticalPadding: 0,
                         onPressed: () {
@@ -56,6 +45,17 @@ class LocationConfirmationDialog extends StatelessWidget {
                           context.pop();
                         },
                         child: const Text(AppStrings.cancel,
+                            style: StylesManager.regular18)),
+                  ),
+                  const SizedBox(width: AppSize.s12),
+                  Expanded(
+                    child: CustomElevatedButtonWidget(
+                        verticalPadding: 0,
+                        height: AppSize.s45,
+                        onPressed: () {
+                          cubit.updateUserAddress(address);
+                        },
+                        child: const Text(AppStrings.confirm,
                             style: StylesManager.regular18)),
                   ),
                 ]),

@@ -1,5 +1,6 @@
 abstract class AppStrings {
   static const String title = "Nectar App";
+  static const String skip = "Skip";
 
   // Onboarding
   static const String onBoardingTitle = "Welcome to our store";
@@ -27,6 +28,7 @@ abstract class AppStrings {
   static const String verificationSubtitle =
       'Enter the code sent to your number';
   static const String resendCode = 'Resend code';
+  static const String phoneNumberVerified = 'Phone number verified';
   static const String invalidNumber = 'Please enter a valid number';
   static const String verify = 'Verify';
   static const String codeWillBeSentTo = "Code will be sent to the number : ";
@@ -43,5 +45,12 @@ abstract class AppStrings {
   static const String selectCurrentLocation = "Select current location";
   static const String selectOtherLocation = "Select other location";
   static const String cancel = "Cancel";
-  static const String skip = "Skip";
+  static const String locationAdded = "Location Added";
+
+  //Home
+  static const String explore = 'Explore';
+  static const String cart = 'Cart';
+  static const String shop = "Shop";
+  static const String favorite = "Favorite";
+  static const String account = "Account";
 }

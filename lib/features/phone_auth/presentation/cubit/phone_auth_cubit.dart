@@ -46,4 +46,9 @@ class PhoneAuthCubit extends Cubit<PhoneAuthState> {
       emit(VerifyOTPErrorState(data.failure.message));
     }
   }
+
+  // UI Function
+
+  bool isAuth = false;
+  
 }
