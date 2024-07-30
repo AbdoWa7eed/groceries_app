@@ -114,7 +114,10 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.homeRoute,
         builder: (context, state) {
-          return const HomeView();
+          initHomeDi();
+          return ChangeNotifierProvider(
+              create: (context) => getIt<HomeController>(),
+              child: const HomeView());
         },
       ),
     ];

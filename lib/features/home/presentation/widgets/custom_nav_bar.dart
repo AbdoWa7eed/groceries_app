@@ -4,6 +4,8 @@ import 'package:groceries_app/core/res/assets_manager.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
+import 'package:provider/provider.dart';
 
 class CustomNavBarWidget extends StatelessWidget {
   CustomNavBarWidget({super.key});
@@ -56,29 +58,35 @@ class CustomNavBarWidget extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 80,
-        clipBehavior: Clip.antiAliasWithSaveLayer,
-        decoration: const BoxDecoration(
-            color: ColorManager.white,
-            boxShadow: [
-              BoxShadow(
-                color: ColorManager.lightGray,
-                blurRadius: AppSize.s2,
-              )
-            ],
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(AppSize.s20),
-              topRight: Radius.circular(AppSize.s20),
-            )),
-        child: BottomNavigationBar(
-          backgroundColor: ColorManager.white,
-          type: BottomNavigationBarType.fixed,
-          showUnselectedLabels: true,
-          onTap: (value) {},
-          items: items,
-          selectedItemColor: ColorManager.primary,
-          unselectedItemColor: ColorManager.dark,
-        ));
+    return Consumer<HomeController>(
+      builder: (context, provider, child) {
+        return Container(
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            decoration: const BoxDecoration(
+                color: ColorManager.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: ColorManager.lightGray,
+                    blurRadius: AppSize.s2,
+                  )
+                ],
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(AppSize.s20),
+                  topRight: Radius.circular(AppSize.s20),
+                )),
+            child: BottomNavigationBar(
+              backgroundColor: ColorManager.white,
+              type: BottomNavigationBarType.fixed,
+              showUnselectedLabels: true,
+              currentIndex: provider.index,
+              onTap: (index) {
+                provider.setIndex(index);
+              },
+              items: items,
+              selectedItemColor: ColorManager.primary,
+              unselectedItemColor: ColorManager.dark,
+            ));
+      },
+    );
   }
 }

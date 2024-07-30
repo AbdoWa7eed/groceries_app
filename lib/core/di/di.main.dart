@@ -61,3 +61,9 @@ initLocationDi() async {
           () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
   }
 }
+
+initHomeDi() async {
+  if (!getIt.isRegistered<HomeController>()) {
+    getIt.registerLazySingleton<HomeController>(() => HomeController());
+  }
+}

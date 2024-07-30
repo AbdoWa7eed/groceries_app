@@ -8,6 +8,7 @@ import 'package:groceries_app/features/auth/domain/repo/auth_repository.dart';
 import 'package:groceries_app/features/auth/domain/usecases/login_usecase.dart';
 import 'package:groceries_app/features/auth/domain/usecases/register_usecase.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 import 'package:groceries_app/features/location/data/api/location_api_service.dart';
 import 'package:groceries_app/features/location/data/api/update_address_api_service.dart';
 import 'package:groceries_app/features/location/data/data_source/location_data_source.dart';

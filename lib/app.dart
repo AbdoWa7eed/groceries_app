@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:groceries_app/core/res/theme_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
@@ -17,6 +18,10 @@ class NectarApp extends StatefulWidget {
 class _NectarAppState extends State<NectarApp> {
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarIconBrightness: Brightness.dark,
+    ));
     return MaterialApp.router(
       scrollBehavior: const ScrollBehavior(),
       debugShowCheckedModeBanner: false,

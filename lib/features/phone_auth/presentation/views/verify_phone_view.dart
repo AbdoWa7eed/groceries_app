@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:groceries_app/core/res/color_manager.dart';
-import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/custom_snackbar.dart';
