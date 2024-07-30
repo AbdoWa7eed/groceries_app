@@ -11,13 +11,13 @@ class HomeViewBody extends StatefulWidget {
 }
 
 class _HomeViewBodyState extends State<HomeViewBody> {
-
   @override
   Widget build(BuildContext context) {
     return Consumer<HomeController>(
       builder: (context, provider, child) {
         return PageView(
           controller: provider.pageController,
+          physics: const NeverScrollableScrollPhysics(),
           onPageChanged: (index) {
             provider.setIndex(index);
           },
@@ -26,7 +26,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             Placeholder(color: ColorManager.error),
             Placeholder(color: ColorManager.gray),
             Placeholder(color: ColorManager.primary),
-            Placeholder(color: ColorManager.primary),
+            Placeholder(color: ColorManager.deepOrange),
           ],
         );
       },
