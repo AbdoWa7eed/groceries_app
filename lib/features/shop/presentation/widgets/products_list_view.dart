@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:groceries_app/core/entities/product_entity.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/widgets/product/product_card_widget.dart';
 
 class ProductsListView extends StatelessWidget {
-  const ProductsListView({super.key});
+  const ProductsListView({super.key, required this.products});
+
+  final List<ProductEntity> products;
 
   @override
   Widget build(BuildContext context) {
@@ -15,14 +18,14 @@ class ProductsListView extends StatelessWidget {
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return const ProductCardWidget();
+            return ProductCardWidget(entity: products[index]);
           },
           separatorBuilder: (context, index) {
             return const SizedBox(
               width: AppSize.s8,
             );
           },
-          itemCount: 10),
+          itemCount: products.length),
     );
   }
 }

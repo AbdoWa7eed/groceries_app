@@ -12,5 +12,6 @@ abstract class AssetsManager {
   static const explore = "$_navBarImagePath/explore.svg";
   static const account = "$_navBarImagePath/account.svg";
   static const search = "$_imagePath/search.svg";
+  static const noProductImage = '$_imagePath/no_product.png';
 
 }

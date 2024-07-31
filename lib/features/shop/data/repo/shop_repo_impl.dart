@@ -6,12 +6,14 @@ import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/network/error_handler.dart';
 import 'package:groceries_app/core/network/failure.dart';
 import 'package:groceries_app/features/shop/data/data_source/shop_data_source.dart';
+import 'package:groceries_app/features/shop/data/models/banner_mapper.dart';
+import 'package:groceries_app/features/shop/domain/entities/banner_entity.dart';
 import 'package:groceries_app/features/shop/domain/repo/shop_repository.dart';
 
-class ShopRespositoryImpl implements ShopRepository {
+class ShopRepositoryImpl implements ShopRepository {
   final ShopDataSource _shopDataSource;
 
-  ShopRespositoryImpl(this._shopDataSource);
+  ShopRepositoryImpl(this._shopDataSource);
   @override
   ResultFuture<List<ProductEntity>> getBestSelling() async {
     try {
@@ -19,7 +21,7 @@ class ShopRespositoryImpl implements ShopRepository {
       if (result.data == null) {
         return Left(Failure.apiInternalError(result.message));
       }
-      return Right(result.data!.items?.map((e) => e.toEntity()).toList() ?? []);
+      return Right(result.data!.items?.map((product) => product.toEntity()).toList() ?? []);
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);
     }
@@ -32,7 +34,7 @@ class ShopRespositoryImpl implements ShopRepository {
       if (result.data == null) {
         return Left(Failure.apiInternalError(result.message));
       }
-      return Right(result.data!.items?.map((e) => e.toEntity()).toList() ?? []);
+      return Right(result.data!.items?.map((product) => product.toEntity()).toList() ?? []);
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);
     }
@@ -46,7 +48,20 @@ class ShopRespositoryImpl implements ShopRepository {
       if (result.data == null) {
         return Left(Failure.apiInternalError(result.message));
       }
-      return Right(result.data!.items?.map((e) => e.toEntity()).toList() ?? []);
+      return Right(result.data!.items?.map((product) => product.toEntity()).toList() ?? []);
+    } catch (error) {
+      return Left(ErrorHandler.handle(error).failure);
+    }
+  }
+
+  @override
+  ResultFuture<List<BannerEntity>> getBanners() async {
+    try {
+      final result = await _shopDataSource.getBanners();
+      if (result.data == null) {
+        return Left(Failure.apiInternalError(result.message));
+      }
+      return Right(result.data!.items?.map((banner) => banner.toEntity()).toList() ?? []);
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);
     }

@@ -66,4 +66,31 @@ initHomeDi() async {
   if (!getIt.isRegistered<HomeController>()) {
     getIt.registerLazySingleton<HomeController>(() => HomeController());
   }
+
+  if (!getIt.isRegistered<ProductApiService>()) {
+    getIt.registerLazySingleton<ProductApiService>(
+        () => ProductApiService(DioFactory.getDio()));
+  }
+  initShopScreenDi();
+}
+
+initShopScreenDi() async {
+  if (!getIt.isRegistered<ShopCubit>()) {
+    getIt
+      ..registerLazySingleton<ShopApiService>(
+          () => ShopApiService(DioFactory.getDio()))
+      ..registerLazySingleton<ShopDataSource>(
+          () => ShopDataSourceImpl(getIt(), getIt()))
+      ..registerLazySingleton<ShopRepository>(() => ShopRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetBannersUseCase>(
+          () => GetBannersUseCase(getIt()))
+      ..registerLazySingleton<GetBestSellingUseCase>(
+          () => GetBestSellingUseCase(getIt()))
+      ..registerLazySingleton<GetExclusiveOffersUseCase>(
+          () => GetExclusiveOffersUseCase(getIt()))
+      ..registerLazySingleton<GetGroceriesUseCase>(
+          () => GetGroceriesUseCase(getIt()))
+      ..registerLazySingleton<ShopCubit>(
+          () => ShopCubit(getIt(), getIt(), getIt(), getIt()));
+  }
 }

@@ -115,9 +115,17 @@ abstract class RouteGenerator {
         path: Routes.homeRoute,
         builder: (context, state) {
           initHomeDi();
-          return ChangeNotifierProvider(
-              create: (context) => getIt<HomeController>(),
-              child: const HomeView());
+          return MultiBlocProvider(
+            providers: [
+              ChangeNotifierProvider<HomeController>(
+                create: (context) => getIt<HomeController>(),
+              ),
+              BlocProvider<ShopCubit>(
+                create: (context) => getIt<ShopCubit>()..initShopData(),
+              ),
+            ],
+            child: const HomeView(),
+          );
         },
       ),
     ];

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:groceries_app/core/res/assets_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:groceries_app/features/shop/presentation/widgets/shimmer/shop_shimmer_loading.dart';
 import 'package:groceries_app/features/shop/presentation/widgets/shop_view_body.dart';
 
@@ -23,8 +25,18 @@ class ShopView extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          const SliverToBoxAdapter(
-            child: ShopViewBody(),
+          SliverToBoxAdapter(
+            child: BlocBuilder<ShopCubit, ShopState>(
+              builder: (context, state) {
+                if (state is ShopLoading) {
+                  return const ShopShimmerLoading();
+                } else if (state is ShopError) {
+                  return Text(state.error);
+                } else {
+                  return const ShopViewBody();
+                }
+              },
+            ),
           )
         ],
       ),

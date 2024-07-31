@@ -5,9 +5,7 @@ import 'package:groceries_app/core/res/values_manager.dart';
 
 class ProductPriceAndAddButtonWidget extends StatelessWidget {
   const ProductPriceAndAddButtonWidget(
-      {super.key,
-      required this.price,
-      required this.oldPrice});
+      {super.key, required this.price, required this.oldPrice});
 
   final String price;
   final String oldPrice;
@@ -28,16 +26,19 @@ class ProductPriceAndAddButtonWidget extends StatelessWidget {
                   color: ColorManager.dark,
                 ),
               ),
-              Text(
-                '\$$oldPrice',
-                style: StylesManager.medium14.copyWith(
-                  decoration: TextDecoration.lineThrough,
+              Visibility(
+                visible: oldPrice != price,
+                child: Text(
+                  '\$$oldPrice',
+                  style: StylesManager.medium14.copyWith(
+                    decoration: TextDecoration.lineThrough,
+                  ),
                 ),
               ),
             ],
           ),
           GestureDetector(
-            onTap: (){},
+            onTap: () {},
             child: Container(
               height: AppSize.s40,
               width: AppSize.s40,

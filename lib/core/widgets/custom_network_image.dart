@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:groceries_app/core/res/assets_manager.dart';
 
 class CustomNetworkImage extends StatelessWidget {
   const CustomNetworkImage(
@@ -18,12 +19,10 @@ class CustomNetworkImage extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: imageUrl,
       width: width,
+      height: height,
       fit: fit,
       errorWidget: (context, url, error) {
-        return SizedBox(
-          height: height,
-          width: width,
-          child: const Icon(Icons.error));
+        return Image.asset(AssetsManager.noProductImage);
       },
     );
   }

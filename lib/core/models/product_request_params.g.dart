@@ -7,11 +7,19 @@ part of 'product_request_params.dart';
 // **************************************************************************
 
 Map<String, dynamic> _$ProductsRequestParamsToJson(
-        ProductsRequestParams instance) =>
-    <String, dynamic>{
-      'skip': instance.skip,
-      'take': instance.take,
-      'searchText': instance.searchText,
-      'categoryId': instance.categoryId,
-      'categoryName': instance.categoryName,
-    };
+    ProductsRequestParams instance) {
+  final val = <String, dynamic>{};
+
+  void writeNotNull(String key, dynamic value) {
+    if (value != null) {
+      val[key] = value;
+    }
+  }
+
+  writeNotNull('skip', instance.skip);
+  writeNotNull('take', instance.take);
+  writeNotNull('searchText', instance.searchText);
+  writeNotNull('categoryId', instance.categoryId);
+  writeNotNull('categoryName', instance.categoryName);
+  return val;
+}
