@@ -27,7 +27,7 @@ ThemeData get appTheme {
         elevation: 0,
         color: ColorManager.white,
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: Colors.transparent,
+          statusBarColor: ColorManager.white,
           statusBarIconBrightness: Brightness.dark,
         ),
         centerTitle: true,

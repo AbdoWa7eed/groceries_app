@@ -19,4 +19,6 @@ abstract class ColorManager {
   static const Color imageBackground = Color(0xffF2F3F2);
   static const Color softGrey = Color(0xffEBEBEB);
   static const Color deepOrange = Color(0xffF3603F);
+  static const Color shimmerBase = Color(0xFFE0E0E0);
+  static const Color shimmerHighlight = Color(0xFFF5F5F5);
 }

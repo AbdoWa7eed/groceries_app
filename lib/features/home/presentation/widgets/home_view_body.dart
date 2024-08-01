@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
+import 'package:groceries_app/features/shop/presentation/views/shop_view.dart';
 import 'package:provider/provider.dart';
 
 class HomeViewBody extends StatefulWidget {
@@ -22,7 +23,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             provider.setIndex(index);
           },
           children: const [
-            Placeholder(color: ColorManager.blue),
+            ShopView(),
             Placeholder(color: ColorManager.error),
             Placeholder(color: ColorManager.gray),
             Placeholder(color: ColorManager.primary),

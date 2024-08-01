@@ -53,4 +53,11 @@ abstract class AppStrings {
   static const String shop = "Shop";
   static const String favorite = "Favorite";
   static const String account = "Account";
+
+  //Shop
+  static const String search = 'Search store';
+  static const String seeAll = 'See All';
+  static const String exclusiveOffers = 'Exclusive Offers';
+  static const String bestSelling = 'Best Selling';
+  static const String groceries = 'Groceries';
 }

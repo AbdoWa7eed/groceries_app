@@ -15,6 +15,7 @@ import 'package:groceries_app/features/onboarding/onboarding_view.dart';
 import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
 import 'package:groceries_app/features/phone_auth/presentation/views/phone_auth_view.dart';
 import 'package:groceries_app/features/phone_auth/presentation/views/verify_phone_view.dart';
+import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:provider/provider.dart';
 import '../widgets/slide_transition.dart';
 part 'routes_manager.main.dart';
