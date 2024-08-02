@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:groceries_app/core/entities/product_entity.dart';
+import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/shop/domain/entities/banner_entity.dart';
 import 'package:groceries_app/features/shop/domain/usecases/get_banners_usecase.dart';
@@ -69,17 +70,37 @@ class ShopCubit extends Cubit<ShopState> {
     }
   }
 
-  Future<void> getGroceries() async {
+  Future<void> getGroceries({
+    int page = 0,
+  }) async {
     emit(_isInitLoading ? state : GetGroceriesLoading());
-    final result = await _getGroceriesUseCase.execute();
+    final result = await _getGroceriesUseCase
+        .execute(GetGroceriesUsecaseInput(skip: page * 8));
     if (result.isRight()) {
-      _groceries.addAll(result.right);
+      final newProducts = _getNewProducts(_groceries, result.right);
+      if (newProducts.isEmpty && !_isInitLoading) {
+        emit(GetGroceriesError(AppStrings.youReachedTheEnd));
+        return;
+      }
+      _groceries.addAll(newProducts);
+      if (page != 0) {
+        currentList.clear();
+        currentList.addAll(_groceries);
+      }
       emit(_isInitLoading ? state : GetGroceriesSuccess());
     } else {
       emit(_isInitLoading
           ? ShopError(result.failure.message)
           : GetGroceriesError(result.failure.message));
     }
+  }
+
+  _getNewProducts(
+      List<ProductEntity> oldList, List<ProductEntity> newProudcts) {
+    final existingProductsSet = Set<ProductEntity>.from(oldList);
+    return newProudcts
+        .where((product) => !existingProductsSet.contains(product))
+        .toList();
   }
 
   Future<void> getBanners() async {
@@ -93,5 +114,14 @@ class ShopCubit extends Cubit<ShopState> {
           ? ShopError(result.failure.message)
           : GetBannersError(result.failure.message));
     }
+  }
+
+  final List<ProductEntity> _currentList = [];
+
+  List<ProductEntity> get currentList => _currentList;
+
+  set currentList(List<ProductEntity> value) {
+    _currentList.clear();
+    _currentList.addAll(value);
   }
 }

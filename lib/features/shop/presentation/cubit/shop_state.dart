@@ -49,4 +49,8 @@ final class GetBannersError extends ShopState {
   GetBannersError(this.error);
 }
 
+final class SeeAllScreenListChangesState extends ShopState {}
+
+
+
 

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/res/theme_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
+import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
+import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
+import 'package:provider/provider.dart';
 
 class NectarApp extends StatefulWidget {
   const NectarApp._internal();
@@ -22,12 +27,22 @@ class _NectarAppState extends State<NectarApp> {
       statusBarColor: Colors.transparent,
       statusBarIconBrightness: Brightness.dark,
     ));
-    return MaterialApp.router(
-      scrollBehavior: const ScrollBehavior(),
-      debugShowCheckedModeBanner: false,
-      routerConfig: RouteGenerator.router,
-      theme: appTheme,
-      title: AppStrings.title,
+    return MultiBlocProvider(
+      providers: [
+        ChangeNotifierProvider<HomeController>(
+          create: (context) => getIt<HomeController>(),
+        ),
+        BlocProvider<ShopCubit>(
+          create: (context) => getIt<ShopCubit>()..initShopData(),
+        ),
+      ],
+      child: MaterialApp.router(
+        scrollBehavior: const ScrollBehavior(),
+        debugShowCheckedModeBanner: false,
+        routerConfig: RouteGenerator.router,
+        theme: appTheme,
+        title: AppStrings.title,
+      ),
     );
   }
 }
