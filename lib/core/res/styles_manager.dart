@@ -29,6 +29,12 @@ abstract class StylesManager {
       fontWeight: FontWeightManager.regular,
       color: ColorManager.white);
 
+        
+  static const TextStyle medium12 = TextStyle(
+      fontSize: FontSize.s12,
+      fontWeight: FontWeightManager.medium,
+      color: ColorManager.darkGray);    
+
   static const TextStyle medium14 = TextStyle(
       fontSize: FontSize.s14,
       fontWeight: FontWeightManager.medium,

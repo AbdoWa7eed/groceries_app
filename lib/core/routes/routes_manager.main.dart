@@ -122,9 +122,17 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.seeAllRoute,
         pageBuilder: (context, state) {
-          final title = state.extra as String;
+          String title = state.extra as String;
           return CustomSlideTransition(
             child: SeeAllProductsView(title: title),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.productDetails,
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(
+            child: const ProductDetailsView(),
           );
         },
       ),
