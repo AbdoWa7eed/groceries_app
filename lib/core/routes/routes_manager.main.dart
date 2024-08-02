@@ -13,6 +13,7 @@ abstract class Routes {
   static const String profileRoute = "/profile";
   static const String phoneAuthRoute = "/phoneAuth";
   static const String verifyPhoneRoute = "/verifyPhone";
+  static const String seeAllRoute = '/seeAll';
 }
 
 abstract class RouteGenerator {
@@ -115,16 +116,15 @@ abstract class RouteGenerator {
         path: Routes.homeRoute,
         builder: (context, state) {
           initHomeDi();
-          return MultiBlocProvider(
-            providers: [
-              ChangeNotifierProvider<HomeController>(
-                create: (context) => getIt<HomeController>(),
-              ),
-              BlocProvider<ShopCubit>(
-                create: (context) => getIt<ShopCubit>()..initShopData(),
-              ),
-            ],
-            child: const HomeView(),
+          return const HomeView();
+        },
+      ),
+      GoRoute(
+        path: Routes.seeAllRoute,
+        pageBuilder: (context, state) {
+          final title = state.extra as String;
+          return CustomSlideTransition(
+            child: SeeAllProductsView(title: title),
           );
         },
       ),

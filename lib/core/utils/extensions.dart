@@ -48,3 +48,14 @@ extension NonNullDouble on double? {
     }
   }
 }
+
+
+extension ScrollControllerExtension on ScrollController {
+
+  bool isReached70PrecentPosition(){
+    final maxScroll = position.maxScrollExtent;
+    final currentScroll = position.pixels;
+    final delta = 0.3 * maxScroll;
+    return (maxScroll - currentScroll) <= delta;
+  }
+}
