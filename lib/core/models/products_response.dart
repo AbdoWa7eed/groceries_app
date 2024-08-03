@@ -1,13 +1,13 @@
+import 'package:groceries_app/core/models/base_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'products_response.g.dart';
 
 @JsonSerializable(createToJson: false)
-class ProductsResponse {
-  final String message;
+class ProductsResponse extends BaseResponse {
   final ProductsResponseData? data;
 
   ProductsResponse({
-    required this.message,
+    required super.message,
     required this.data,
   });
 

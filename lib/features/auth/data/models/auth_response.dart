@@ -1,14 +1,14 @@
+import 'package:groceries_app/core/models/base_response.dart';
 import 'package:groceries_app/features/auth/data/models/user_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'auth_response.g.dart';
 
 @JsonSerializable()
-class AuthResponse {
-  final String message;
+class AuthResponse extends BaseResponse{
   final AuthDataResponse? data;
 
   AuthResponse({
-    required this.message,
+    required super.message,
     required this.data,
   });
 

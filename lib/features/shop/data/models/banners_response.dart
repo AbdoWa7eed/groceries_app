@@ -1,11 +1,11 @@
+import 'package:groceries_app/core/models/base_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'banners_response.g.dart';
 @JsonSerializable(createToJson: false)
-class BannersResponse {
-  String message;
+class BannersResponse extends BaseResponse{
   BannersResponseData? data;
 
-  BannersResponse({required this.message, this.data});
+  BannersResponse({required super.message, this.data});
 
   factory BannersResponse.fromJson(Map<String, dynamic> json) =>
       _$BannersResponseFromJson(json);

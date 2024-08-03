@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'phone_auth_api_service.dart';
+part of 'product_details_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'phone_auth_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _PhoneAuthApiService implements PhoneAuthApiService {
-  _PhoneAuthApiService(
+class _ProductDetailsApiService implements ProductDetailsApiService {
+  _ProductDetailsApiService(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,20 +21,20 @@ class _PhoneAuthApiService implements PhoneAuthApiService {
   String? baseUrl;
 
   @override
-  Future<OTPResponse> sendOTP(String phoneNumber) async {
+  Future<ProductDetailsResponse> getProductDetails(String productId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = {'phoneNumber': phoneNumber};
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<OTPResponse>(Options(
-      method: 'POST',
+    const Map<String, dynamic>? _data = null;
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<ProductDetailsResponse>(Options(
+      method: 'GET',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'otp',
+              'products/${productId}',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -43,34 +43,34 @@ class _PhoneAuthApiService implements PhoneAuthApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = OTPResponse.fromJson(_result.data!);
+    final _value = ProductDetailsResponse.fromJson(_result.data!);
     return _value;
   }
 
   @override
-  Future<String> verifyOTP(VerifyOTPRequest verifyOTPRequest) async {
+  Future<BaseResponse> addProductToFavorites(int productId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(verifyOTPRequest.toJson());
-    final _result = await _dio.fetch<String>(_setStreamType<String>(Options(
+    final _data = {'productId': productId};
+    final _result = await _dio
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
-        .compose(
-          _dio.options,
-          'otp/verify-otp',
-          queryParameters: queryParameters,
-          data: _data,
-        )
-        .copyWith(
-            baseUrl: _combineBaseUrls(
-          _dio.options.baseUrl,
-          baseUrl,
-        ))));
-    final _value = _result.data!;
+            .compose(
+              _dio.options,
+              'favorites',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final _value = BaseResponse.fromJson(_result.data!);
     return _value;
   }
 
