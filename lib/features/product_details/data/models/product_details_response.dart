@@ -18,13 +18,24 @@ class ProductDetailsResponse {
 @JsonSerializable(createToJson: false)
 class ProductDetailsModel extends ProductModel {
   final bool? isFavorite;
+  final String? productDetails;
   final CategoryModel? category;
+  @JsonKey(name: 'nutritions')
   final NutritionModel? nutrition;
 
   ProductDetailsModel(
       {required this.isFavorite,
+      required this.productDetails,
       required this.nutrition,
-      required this.category});
+      required this.category,
+      required super.productId,
+      required super.name,
+      required super.quantityInStock,
+      required super.description,
+      required super.unitPrice,
+      required super.rate,
+      required super.imageUrl,
+      required super.discountPercentage});
 
   factory ProductDetailsModel.fromJson(Map<String, dynamic> json) =>
       _$ProductDetailsModelFromJson(json);
@@ -35,13 +46,13 @@ class NutritionModel {
   final int? nutritionId;
   final int? calories;
   final int? protein;
-  final int? carbs;
+  final int? carbohydrates;
 
   NutritionModel(
       {required this.nutritionId,
       required this.calories,
       required this.protein,
-      required this.carbs});
+      required this.carbohydrates});
 
   factory NutritionModel.fromJson(Map<String, dynamic> json) =>
       _$NutritionModelFromJson(json);

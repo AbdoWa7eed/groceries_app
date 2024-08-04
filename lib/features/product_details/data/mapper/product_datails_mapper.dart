@@ -15,6 +15,7 @@ extension ProductDetailsMapper on ProductDetailsModel {
       imageUrl: imageUrl.orEmpty(),
       discountPercentage: discountPercentage.orZero(),
       isFavorite: isFavorite ?? false,
+      productDetails: productDetails.orEmpty(),
       category: category?.toEntity(),
       nutrition: nutrition?.toEntity(),
     );
@@ -25,7 +26,7 @@ extension NutritionMapper on NutritionModel {
   NutritionEntity toEntity() {
     return NutritionEntity(
       nutritionId: nutritionId.orZero(),
-      carb: carbs.orZero(),
+      carb: carbohydrates.orZero(),
       protein: protein.orZero(),
       calories: calories.orZero(),
     );

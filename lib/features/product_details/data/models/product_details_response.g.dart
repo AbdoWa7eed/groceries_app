@@ -18,12 +18,21 @@ ProductDetailsResponse _$ProductDetailsResponseFromJson(
 ProductDetailsModel _$ProductDetailsModelFromJson(Map<String, dynamic> json) =>
     ProductDetailsModel(
       isFavorite: json['isFavorite'] as bool?,
-      nutrition: json['nutrition'] == null
+      productDetails: json['productDetails'] as String?,
+      nutrition: json['nutritions'] == null
           ? null
-          : NutritionModel.fromJson(json['nutrition'] as Map<String, dynamic>),
+          : NutritionModel.fromJson(json['nutritions'] as Map<String, dynamic>),
       category: json['category'] == null
           ? null
           : CategoryModel.fromJson(json['category'] as Map<String, dynamic>),
+      productId: (json['productId'] as num?)?.toInt(),
+      name: json['name'] as String?,
+      quantityInStock: (json['quantityInStock'] as num?)?.toInt(),
+      description: json['description'] as String?,
+      unitPrice: (json['unitPrice'] as num?)?.toDouble(),
+      rate: (json['rate'] as num?)?.toDouble(),
+      imageUrl: json['imageUrl'] as String?,
+      discountPercentage: (json['discountPercentage'] as num?)?.toInt(),
     );
 
 NutritionModel _$NutritionModelFromJson(Map<String, dynamic> json) =>
@@ -31,5 +40,5 @@ NutritionModel _$NutritionModelFromJson(Map<String, dynamic> json) =>
       nutritionId: (json['nutritionId'] as num?)?.toInt(),
       calories: (json['calories'] as num?)?.toInt(),
       protein: (json['protein'] as num?)?.toInt(),
-      carbs: (json['carbs'] as num?)?.toInt(),
+      carbohydrates: (json['carbohydrates'] as num?)?.toInt(),
     );

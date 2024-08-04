@@ -20,6 +20,7 @@ class _ProductDetailsTextWidgetState extends State<ProductDetailsTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisSize: MainAxisSize.min,
       children: [
         Row(

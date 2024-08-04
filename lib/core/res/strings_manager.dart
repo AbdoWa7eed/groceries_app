@@ -67,4 +67,7 @@ abstract class AppStrings {
   static const String nutrition = "Nutrition";
   static const String productDetails = "Product Details";
   static const String addToBasket = "Add To Basket";
+  static const String noNutritionData =
+      "Nutrition is not available for this product";
+  static const String grams = '100gr';    
 }

@@ -16,7 +16,7 @@ class ProductCardWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(Routes.productDetails);
+        context.push(Routes.productDetails, extra: entity.productId);
       },
       child: AspectRatio(
         aspectRatio: 0.7,

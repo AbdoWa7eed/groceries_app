@@ -36,19 +36,19 @@ class ProductModel {
   final int? quantityInStock;
   final String? description;
   final double? unitPrice;
-  final int? rate;
+  final double? rate;
   final String? imageUrl;
   final int? discountPercentage;
 
   ProductModel({
-    this.productId,
-    this.name,
-    this.quantityInStock,
-    this.description,
-    this.unitPrice,
-    this.rate,
-    this.imageUrl,
-    this.discountPercentage,
+    required this.productId,
+    required this.name,
+    required this.quantityInStock,
+    required this.description,
+    required this.unitPrice,
+    required this.rate,
+    required this.imageUrl,
+    required this.discountPercentage,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>

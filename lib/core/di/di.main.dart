@@ -94,3 +94,21 @@ initShopScreenDi() async {
           () => ShopCubit(getIt(), getIt(), getIt(), getIt()));
   }
 }
+
+initProductDetailsDi() async {
+  if (!getIt.isRegistered<ProductDetailsCubit>()) {
+    getIt
+      ..registerLazySingleton<ProductDetailsApiService>(
+          () => ProductDetailsApiService(DioFactory.getDio()))
+      ..registerLazySingleton<ProductDetailsDataSource>(
+          () => ProductDetailsDataSourceImpl(getIt()))
+      ..registerLazySingleton<ProductDetailsRepository>(
+          () => ProductDetailsRepoImpl(getIt()))
+      ..registerLazySingleton<GetProductDetailsUseCase>(
+          () => GetProductDetailsUseCase(getIt()))
+      ..registerLazySingleton<AddProductToFavoritesUseCase>(
+          () => AddProductToFavoritesUseCase(getIt()))
+      ..registerFactory<ProductDetailsCubit>(
+          () => ProductDetailsCubit(getIt(), getIt()));
+  }
+}

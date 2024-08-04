@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
 
 class ProductReviewWidget extends StatelessWidget {
   const ProductReviewWidget({super.key});
@@ -24,7 +26,8 @@ class ProductReviewWidget extends StatelessWidget {
           RatingBar.builder(
             ignoreGestures: true,
             minRating: 0,
-            initialRating: 2.5,
+            initialRating:
+                context.read<ProductDetailsCubit>().productDetailsEntity.rate,
             allowHalfRating: true,
             itemCount: 5,
             itemSize: AppSize.s20,

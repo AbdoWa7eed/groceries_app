@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:groceries_app/core/res/color_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
-import 'package:groceries_app/core/widgets/custom_rounded_container.dart';
+import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
+import 'package:groceries_app/features/product_details/presentation/widgets/quantity_counter_widget.dart';
 
 class ProductDetailsPriceWidget extends StatefulWidget {
-  const ProductDetailsPriceWidget({super.key, required this.price});
-  final double price;
+  const ProductDetailsPriceWidget({super.key});
 
   @override
   State<ProductDetailsPriceWidget> createState() =>
@@ -14,58 +14,33 @@ class ProductDetailsPriceWidget extends StatefulWidget {
 }
 
 class _ProductDetailsPriceWidgetState extends State<ProductDetailsPriceWidget> {
-  int numberOfPieces = 1;
-
+  int quantity = 1;
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: AppPadding.p28),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
+    return BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
+      builder: (context, state) {
+        final cubit = context.read<ProductDetailsCubit>();
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: AppPadding.p28),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              IconButton(
-                  onPressed: () {
-                    setState(() {
-                      if (numberOfPieces != 1) {
-                        numberOfPieces--;
-                      }
-                    });
-                  },
-                  icon: const Icon(
-                    Icons.remove,
-                    color: ColorManager.gray,
-                  )),
-              CustomRoundedContainer(
-                  size: AppSize.s45,
-                  backgroundColor: ColorManager.white,
-                  borderColor: ColorManager.lightGray,
-                  child: Text(
-                    '$numberOfPieces',
-                    style: StylesManager.bold16,
-                  )),
-              IconButton(
-                  onPressed: () {
-                    setState(() {
-                      if (numberOfPieces != 50) {
-                        numberOfPieces++;
-                      }
-                    });
-                  },
-                  icon: const Icon(
-                    Icons.add,
-                    color: ColorManager.primary,
-                  )),
+              QuantityCounterWidget(
+                onQuantityChanged: (value) {
+                  quantity = value;
+                  setState(() {});
+                },
+              ),
+              Text('\$${_getPrice(cubit.productDetailsEntity.unitPrice)}',
+                  style: StylesManager.bold24),
             ],
           ),
-          Text('\$$_getPrice', style: StylesManager.bold24),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  String get _getPrice {
-    return (widget.price * numberOfPieces).toStringAsFixed(2);
+  String _getPrice(double price) {
+    return (price * quantity).toStringAsFixed(2);
   }
 }

@@ -3,6 +3,7 @@ import 'package:groceries_app/core/entities/product_entity.dart';
 
 class ProductDetailsEntity extends ProductEntity {
   final bool isFavorite;
+  final String productDetails;
   final CategoryEntity? category;
   final NutritionEntity? nutrition;
 
@@ -15,6 +16,7 @@ class ProductDetailsEntity extends ProductEntity {
       required super.rate,
       required super.imageUrl,
       required super.discountPercentage,
+      required this.productDetails,
       required this.isFavorite,
       required this.category,
       required this.nutrition});

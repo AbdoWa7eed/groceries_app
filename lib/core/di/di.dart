@@ -27,6 +27,13 @@ import 'package:groceries_app/features/phone_auth/domain/repo/phone_auth_repo.da
 import 'package:groceries_app/features/phone_auth/domain/usecase/send_otp_usecase.dart';
 import 'package:groceries_app/features/phone_auth/domain/usecase/verify_phone_usecase.dart';
 import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
+import 'package:groceries_app/features/product_details/data/api/product_details_api_service.dart';
+import 'package:groceries_app/features/product_details/data/data_source/product_details_data_source.dart';
+import 'package:groceries_app/features/product_details/data/repo/product_details_repo_impl.dart';
+import 'package:groceries_app/features/product_details/domain/repo/product_details_repo.dart';
+import 'package:groceries_app/features/product_details/domain/usecases/add_to_favorite_usecase.dart';
+import 'package:groceries_app/features/product_details/domain/usecases/get_product_details_usecase.dart';
+import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
 import 'package:groceries_app/features/shop/data/api/shop_api_service.dart';
 import 'package:groceries_app/features/shop/data/data_source/shop_data_source.dart';
 import 'package:groceries_app/features/shop/data/repo/shop_repo_impl.dart';

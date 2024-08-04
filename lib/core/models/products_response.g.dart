@@ -29,7 +29,7 @@ ProductModel _$ProductModelFromJson(Map<String, dynamic> json) => ProductModel(
       quantityInStock: (json['quantityInStock'] as num?)?.toInt(),
       description: json['description'] as String?,
       unitPrice: (json['unitPrice'] as num?)?.toDouble(),
-      rate: (json['rate'] as num?)?.toInt(),
+      rate: (json['rate'] as num?)?.toDouble(),
       imageUrl: json['imageUrl'] as String?,
       discountPercentage: (json['discountPercentage'] as num?)?.toInt(),
     );
