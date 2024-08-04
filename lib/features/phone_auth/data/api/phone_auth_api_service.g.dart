@@ -21,12 +21,11 @@ class _PhoneAuthApiService implements PhoneAuthApiService {
   String? baseUrl;
 
   @override
-  Future<OTPResponse> sendOTP(SendOtpRequest otpRequest) async {
+  Future<OTPResponse> sendOTP(String phoneNumber) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
-    _data.addAll(otpRequest.toJson());
+    final _data = {'phoneNumber': phoneNumber};
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<OTPResponse>(Options(
       method: 'POST',

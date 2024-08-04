@@ -61,4 +61,13 @@ abstract class AppStrings {
   static const String exclusiveOffers = 'Exclusive Offers';
   static const String bestSelling = 'Best Selling';
   static const String groceries = 'Groceries';
+
+  //Product Details
+  static const String review = "Review";
+  static const String nutrition = "Nutrition";
+  static const String productDetails = "Product Details";
+  static const String addToBasket = "Add To Basket";
+  static const String noNutritionData =
+      "Nutrition is not available for this product";
+  static const String grams = '100gr';    
 }

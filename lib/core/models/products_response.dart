@@ -1,13 +1,13 @@
+import 'package:groceries_app/core/models/base_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'products_response.g.dart';
 
 @JsonSerializable(createToJson: false)
-class ProductsResponse {
-  final String message;
+class ProductsResponse extends BaseResponse {
   final ProductsResponseData? data;
 
   ProductsResponse({
-    required this.message,
+    required super.message,
     required this.data,
   });
 
@@ -36,19 +36,19 @@ class ProductModel {
   final int? quantityInStock;
   final String? description;
   final double? unitPrice;
-  final int? rate;
+  final double? rate;
   final String? imageUrl;
   final int? discountPercentage;
 
   ProductModel({
-    this.productId,
-    this.name,
-    this.quantityInStock,
-    this.description,
-    this.unitPrice,
-    this.rate,
-    this.imageUrl,
-    this.discountPercentage,
+    required this.productId,
+    required this.name,
+    required this.quantityInStock,
+    required this.description,
+    required this.unitPrice,
+    required this.rate,
+    required this.imageUrl,
+    required this.discountPercentage,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) =>

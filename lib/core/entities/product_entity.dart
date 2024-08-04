@@ -6,7 +6,7 @@ class ProductEntity extends Equatable {
   final int quantityInStock;
   final String description;
   final double unitPrice;
-  final int rate;
+  final double rate;
   final String imageUrl;
   final int discountPercentage;
 

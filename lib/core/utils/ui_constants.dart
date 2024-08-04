@@ -7,6 +7,7 @@ abstract class UiConstants {
   static const int pageReverseTransitionDelay = 500;
   static const int searchBarTransistionDuration = 500;
   static const int debounceDelay = 400;
+  static const int arrowTurnDelay = 300;
   static RegExp passwordRegex =
       RegExp(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$');
 }

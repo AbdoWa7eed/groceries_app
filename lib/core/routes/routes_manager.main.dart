@@ -122,9 +122,24 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.seeAllRoute,
         pageBuilder: (context, state) {
-          final title = state.extra as String;
+          String title = state.extra as String;
           return CustomSlideTransition(
             child: SeeAllProductsView(title: title),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.productDetails,
+        pageBuilder: (context, state) {
+          initProductDetailsDi();
+          int productId = state.extra as int;
+          log(productId.toString());
+          return CustomSlideTransition(
+            child: BlocProvider(
+              create: (context) =>
+                  getIt<ProductDetailsCubit>()..getProductDetails(productId),
+              child: const ProductDetailsView(),
+            ),
           );
         },
       ),
