@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groceries_app/core/entities/product_entity.dart';
+import 'package:groceries_app/core/domain/entities/product_entity.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/product/product_card_widget.dart';

@@ -1,5 +1,10 @@
 import 'package:get_it/get_it.dart';
+import 'package:groceries_app/core/data/data_source/favorite_data_source.dart';
+import 'package:groceries_app/core/data/repo/favorite_repo_impl.dart';
+import 'package:groceries_app/core/domain/repo/favorite_repo.dart';
+import 'package:groceries_app/core/domain/usecases/remove_favorite_usecase.dart';
 import 'package:groceries_app/core/network/dio_factory.dart';
+import 'package:groceries_app/core/network/favorites/favorite_api_service.dart';
 import 'package:groceries_app/core/network/products/product_api_service.dart';
 import 'package:groceries_app/core/utils/app_preferences.dart';
 import 'package:groceries_app/features/auth/data/api/auth_api_service.dart';

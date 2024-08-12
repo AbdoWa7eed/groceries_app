@@ -3,6 +3,4 @@ import 'package:groceries_app/features/product_details/domain/entities/product_d
 
 abstract class ProductDetailsRepository {
   ResultFuture<ProductDetailsEntity> getProductDetails(int productId);
-
-  ResultFuture<String> addToFavorites(int productId);
 }

@@ -1,7 +1,7 @@
-import 'package:groceries_app/core/entities/category_entity.dart';
-import 'package:groceries_app/core/entities/product_entity.dart';
-import 'package:groceries_app/core/models/category_model.dart';
-import 'package:groceries_app/core/models/products_response.dart';
+import 'package:groceries_app/core/domain/entities/category_entity.dart';
+import 'package:groceries_app/core/domain/entities/product_entity.dart';
+import 'package:groceries_app/core/data/models/category_model.dart';
+import 'package:groceries_app/core/data/models/products_response.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 
 extension ProductsMapper on ProductModel {

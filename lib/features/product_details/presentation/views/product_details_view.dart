@@ -36,7 +36,10 @@ class ProductDetailsView extends StatelessWidget {
                   ? null
                   : ColorManager.imageBackground,
             ),
-            const SliverToBoxAdapter(child: ProductDetailsViewBody()),
+            const SliverFillRemaining(
+              hasScrollBody: false,
+              child: ProductDetailsViewBody(),
+            ),
           ]),
         );
       },

@@ -1,5 +1,5 @@
 import 'package:bloc/bloc.dart';
-import 'package:groceries_app/core/entities/product_entity.dart';
+import 'package:groceries_app/core/domain/entities/product_entity.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/shop/domain/entities/banner_entity.dart';

@@ -64,6 +64,7 @@ dependencies:
   shimmer: ^3.0.0
   blur: ^4.0.0
   flutter_rating_bar: ^4.0.1
+  lottie: ^3.1.2
 
 dev_dependencies:
   flutter_test:
@@ -90,6 +91,7 @@ flutter:
   assets:
     - assets/images/
     - assets/images/nav_bar/
+    - assets/json/
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

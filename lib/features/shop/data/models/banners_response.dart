@@ -1,4 +1,4 @@
-import 'package:groceries_app/core/models/base_response.dart';
+import 'package:groceries_app/core/data/models/base_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 part 'banners_response.g.dart';
 @JsonSerializable(createToJson: false)
