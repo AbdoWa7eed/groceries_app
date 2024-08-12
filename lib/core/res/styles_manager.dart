@@ -3,12 +3,11 @@ import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/font_manager.dart';
 
 abstract class StylesManager {
-
   static const TextStyle regular14 = TextStyle(
       fontSize: FontSize.s14,
       fontWeight: FontWeightManager.regular,
       color: ColorManager.darkGray);
-  
+
   static const TextStyle regular16 = TextStyle(
       fontSize: FontSize.s16,
       fontWeight: FontWeightManager.regular,
@@ -29,11 +28,10 @@ abstract class StylesManager {
       fontWeight: FontWeightManager.regular,
       color: ColorManager.white);
 
-        
   static const TextStyle medium12 = TextStyle(
       fontSize: FontSize.s12,
       fontWeight: FontWeightManager.medium,
-      color: ColorManager.darkGray);    
+      color: ColorManager.darkGray);
 
   static const TextStyle medium14 = TextStyle(
       fontSize: FontSize.s14,
@@ -54,8 +52,7 @@ abstract class StylesManager {
       fontSize: FontSize.s18,
       fontWeight: FontWeightManager.semiBold,
       color: ColorManager.white);
-   
-     
+
   static const TextStyle semiBold22 = TextStyle(
       fontSize: FontSize.s22,
       fontWeight: FontWeightManager.semiBold,
@@ -69,7 +66,12 @@ abstract class StylesManager {
   static const TextStyle bold16 = TextStyle(
       fontSize: FontSize.s16,
       fontWeight: FontWeightManager.bold,
-      color: ColorManager.dark);    
+      color: ColorManager.dark);
+
+  static const TextStyle bold20 = TextStyle(
+      fontSize: FontSize.s20,
+      fontWeight: FontWeightManager.bold,
+      color: ColorManager.dark);
 
   static const TextStyle bold24 = TextStyle(
       fontSize: FontSize.s24,

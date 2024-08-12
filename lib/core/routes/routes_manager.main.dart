@@ -133,13 +133,21 @@ abstract class RouteGenerator {
         pageBuilder: (context, state) {
           initProductDetailsDi();
           int productId = state.extra as int;
-          log(productId.toString());
           return CustomSlideTransition(
             child: BlocProvider(
               create: (context) =>
                   getIt<ProductDetailsCubit>()..getProductDetails(productId),
               child: const ProductDetailsView(),
             ),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.categoryProducts,
+        pageBuilder: (context, state) {
+          final title = state.extra as String;
+          return CustomSlideTransition(
+            child: CategoryProductsView(title: title),
           );
         },
       ),
