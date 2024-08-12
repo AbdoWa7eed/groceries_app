@@ -1,4 +1,4 @@
-import 'package:groceries_app/core/models/base_response.dart';
+import 'package:groceries_app/core/data/models/base_response.dart';
 
 class OTPResponse extends BaseResponse {
   final String? verificationId;

@@ -2,6 +2,7 @@ abstract class AppStrings {
   static const String title = "Nectar App";
   static const String skip = "Skip";
   static const String youReachedTheEnd = "You have reached the end of list";
+  static const String reload = 'Reload';
 
   // Onboarding
   static const String onBoardingTitle = "Welcome to our store";

@@ -6,6 +6,7 @@ import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:groceries_app/features/shop/presentation/widgets/shimmer/shop_shimmer_loading.dart';
 import 'package:groceries_app/features/shop/presentation/widgets/shop_view_body.dart';
+import 'package:groceries_app/core/widgets/error_widget.dart';
 
 class ShopView extends StatelessWidget {
   const ShopView({super.key});
@@ -25,13 +26,20 @@ class ShopView extends StatelessWidget {
             ),
             centerTitle: true,
           ),
-          SliverToBoxAdapter(
+          SliverFillRemaining(
+            hasScrollBody: false,
             child: BlocBuilder<ShopCubit, ShopState>(
               builder: (context, state) {
+                final cubit = context.read<ShopCubit>();
                 if (state is ShopLoading) {
                   return const ShopShimmerLoading();
                 } else if (state is ShopError) {
-                  return Text(state.error);
+                  return CustomErrorWidget(
+                    error: state.error,
+                    onTryAgain: () {
+                      cubit.initShopData();
+                    },
+                  );
                 } else {
                   return const ShopViewBody();
                 }

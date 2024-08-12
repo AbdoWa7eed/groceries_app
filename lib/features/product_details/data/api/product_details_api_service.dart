@@ -1,5 +1,4 @@
 import 'package:dio/dio.dart';
-import 'package:groceries_app/core/models/base_response.dart';
 import 'package:groceries_app/core/network/api_constants.dart';
 import 'package:groceries_app/features/product_details/data/models/product_details_response.dart';
 import 'package:retrofit/http.dart';
@@ -15,8 +14,4 @@ abstract class ProductDetailsApiService {
     @Path('productId') String productId,
   );
 
-  @POST('favorites')
-  Future<BaseResponse> addProductToFavorites(
-    @Field('productId') int productId,
-  );
 }

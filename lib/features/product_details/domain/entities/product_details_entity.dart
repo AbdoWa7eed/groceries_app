@@ -1,5 +1,5 @@
-import 'package:groceries_app/core/entities/category_entity.dart';
-import 'package:groceries_app/core/entities/product_entity.dart';
+import 'package:groceries_app/core/domain/entities/category_entity.dart';
+import 'package:groceries_app/core/domain/entities/product_entity.dart';
 
 class ProductDetailsEntity extends ProductEntity {
   final bool isFavorite;

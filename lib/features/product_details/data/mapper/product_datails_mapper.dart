@@ -1,4 +1,4 @@
-import 'package:groceries_app/core/models/mapper.dart';
+import 'package:groceries_app/core/data/models/mapper.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/product_details/data/models/product_details_response.dart';
 import 'package:groceries_app/features/product_details/domain/entities/product_details_entity.dart';

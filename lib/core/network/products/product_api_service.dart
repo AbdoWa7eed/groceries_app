@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:groceries_app/core/models/product_request_params.dart';
-import 'package:groceries_app/core/models/products_response.dart';
+import 'package:groceries_app/core/data/models/product_request_params.dart';
+import 'package:groceries_app/core/data/models/products_response.dart';
 import 'package:groceries_app/core/network/api_constants.dart';
 import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';

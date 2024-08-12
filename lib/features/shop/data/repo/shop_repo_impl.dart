@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:groceries_app/core/entities/product_entity.dart';
-import 'package:groceries_app/core/models/mapper.dart';
-import 'package:groceries_app/core/models/product_request_params.dart';
+import 'package:groceries_app/core/domain/entities/product_entity.dart';
+import 'package:groceries_app/core/data/models/mapper.dart';
+import 'package:groceries_app/core/data/models/product_request_params.dart';
 import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/network/error_handler.dart';
 import 'package:groceries_app/core/network/failure.dart';

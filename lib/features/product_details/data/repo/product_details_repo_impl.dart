@@ -13,18 +13,6 @@ class ProductDetailsRepoImpl extends ProductDetailsRepository {
   ProductDetailsRepoImpl(this._productDetailsDataSource);
 
   @override
-  ResultFuture<String> addToFavorites(int productId) async {
-    try {
-      final result =
-          await _productDetailsDataSource.addProductToFavorites(productId);
-
-      return Right(result.message);
-    } catch (error) {
-      return Left(ErrorHandler.handle(error).failure);
-    }
-  }
-
-  @override
   ResultFuture<ProductDetailsEntity> getProductDetails(int productId) async {
     try {
       final result = await _productDetailsDataSource

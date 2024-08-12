@@ -1,5 +1,5 @@
-import 'package:groceries_app/core/models/product_request_params.dart';
-import 'package:groceries_app/core/models/products_response.dart';
+import 'package:groceries_app/core/data/models/product_request_params.dart';
+import 'package:groceries_app/core/data/models/products_response.dart';
 import 'package:groceries_app/core/network/products/product_api_service.dart';
 import 'package:groceries_app/features/shop/data/api/shop_api_service.dart';
 import 'package:groceries_app/features/shop/data/models/banners_response.dart';

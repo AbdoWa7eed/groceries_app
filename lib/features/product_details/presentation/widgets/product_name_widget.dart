@@ -34,12 +34,7 @@ class ProductDetailsNameWidget extends StatelessWidget {
                 )
               ],
             ),
-            FavoriteButtonWidget(
-              initialValue: cubit.productDetailsEntity.isFavorite,
-              onChanged: (value) {
-                cubit.addToFavorites();
-              },
-            )
+            const FavoriteButtonWidget(),
           ],
         );
       },

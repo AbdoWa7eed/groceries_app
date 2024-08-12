@@ -2,13 +2,13 @@ import 'package:groceries_app/core/domain/repo/favorite_repo.dart';
 import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/utils/base_usecase.dart';
 
-class AddProductToFavoritesUseCase extends BaseUseCase<int, String> {
+class RemoveFromFavoriteUseCase extends BaseUseCase<int, String> {
   final FavoriteRepository _favoriteRepository;
 
-  AddProductToFavoritesUseCase(this._favoriteRepository);
+  RemoveFromFavoriteUseCase(this._favoriteRepository);
 
   @override
   ResultFuture<String> execute(int input) {
-    return _favoriteRepository.addFavorite(input);
+    return _favoriteRepository.removeFavorite(input);
   }
 }
