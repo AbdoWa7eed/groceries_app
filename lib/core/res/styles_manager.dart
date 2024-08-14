@@ -68,8 +68,8 @@ abstract class StylesManager {
       fontWeight: FontWeightManager.bold,
       color: ColorManager.dark);
 
-  static const TextStyle bold20 = TextStyle(
-      fontSize: FontSize.s20,
+  static const TextStyle bold18 = TextStyle(
+      fontSize: FontSize.s18,
       fontWeight: FontWeightManager.bold,
       color: ColorManager.dark);
 

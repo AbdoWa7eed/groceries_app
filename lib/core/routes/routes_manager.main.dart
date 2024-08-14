@@ -145,9 +145,11 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.categoryProducts,
         pageBuilder: (context, state) {
-          final title = state.extra as String;
+          final category = state.extra as CategoryEntity;
+          getIt<ExploreCubit>()
+              .getCategoryProducts(categoryId: category.categoryId);
           return CustomSlideTransition(
-            child: CategoryProductsView(title: title),
+            child: CategoryProductsView(entity: category),
           );
         },
       ),

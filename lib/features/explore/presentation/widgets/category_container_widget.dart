@@ -15,7 +15,7 @@ class CategoryContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push(Routes.categoryProducts, extra: category.name);
+        context.push(Routes.categoryProducts, extra: category);
       },
       child: Container(
         padding: const EdgeInsets.all(AppPadding.p20),
@@ -37,7 +37,7 @@ class CategoryContainerWidget extends StatelessWidget {
             Text(
               category.name,
               textAlign: TextAlign.center,
-              style: StylesManager.bold20,
+              style: StylesManager.bold18,
             ),
           ],
         ),

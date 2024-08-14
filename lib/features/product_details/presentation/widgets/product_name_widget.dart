@@ -17,22 +17,24 @@ class ProductDetailsNameWidget extends StatelessWidget {
         return Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  cubit.productDetailsEntity.name,
-                  style: StylesManager.bold24,
-                ),
-                const SizedBox(
-                  height: AppSize.s4,
-                ),
-                Text(
-                  cubit.productDetailsEntity.description,
-                  style: StylesManager.medium16
-                      .copyWith(color: ColorManager.darkGray),
-                )
-              ],
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    cubit.productDetailsEntity.name,
+                    style: StylesManager.bold24,
+                  ),
+                  const SizedBox(
+                    height: AppSize.s4,
+                  ),
+                  Text(
+                    cubit.productDetailsEntity.description,
+                    style: StylesManager.medium16
+                        .copyWith(color: ColorManager.darkGray),
+                  )
+                ],
+              ),
             ),
             const FavoriteButtonWidget(),
           ],

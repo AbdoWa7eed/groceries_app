@@ -8,7 +8,7 @@ class GetCategoriesUseCase extends BaseUseCase<void, List<CategoryEntity>> {
   GetCategoriesUseCase(this._exploreRepository);
 
   @override
-  ResultFuture<List<CategoryEntity>> execute(void input) {
+  ResultFuture<List<CategoryEntity>> execute([void input]) {
     return _exploreRepository.getCategories();
   }
 }
