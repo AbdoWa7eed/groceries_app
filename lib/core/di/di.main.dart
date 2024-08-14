@@ -127,3 +127,21 @@ initFavoriteDi() {
           () => RemoveFromFavoriteUseCase(getIt()));
   }
 }
+
+initExploreDi() {
+  if (!getIt.isRegistered<ExploreCubit>()) {
+    getIt
+      ..registerLazySingleton<ExploreApiService>(
+          () => ExploreApiService(DioFactory.getDio()))
+      ..registerLazySingleton<ExploreDataSource>(
+          () => ExploreDataSourceImpl(getIt(), getIt()))
+      ..registerLazySingleton<ExploreRepository>(
+          () => ExploreRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetCategoriesUseCase>(
+          () => GetCategoriesUseCase(getIt()))
+      ..registerLazySingleton<GetCategoryProductsUseCase>(
+          () => GetCategoryProductsUseCase(getIt()))
+      ..registerLazySingleton<ExploreCubit>(
+          () => ExploreCubit(getIt(), getIt()));
+  }
+}

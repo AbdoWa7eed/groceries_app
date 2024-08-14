@@ -5,6 +5,7 @@ import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/res/theme_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
+import 'package:groceries_app/features/explore/presentation/cubit/explore_cubit.dart';
 import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:provider/provider.dart';
@@ -34,6 +35,9 @@ class _NectarAppState extends State<NectarApp> {
         ),
         BlocProvider<ShopCubit>(
           create: (context) => getIt<ShopCubit>()..initShopData(),
+        ),
+        BlocProvider<ExploreCubit>(
+          create: (context) => getIt<ExploreCubit>()..getCategories(),
         ),
       ],
       child: MaterialApp.router(

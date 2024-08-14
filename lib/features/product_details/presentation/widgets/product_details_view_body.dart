@@ -21,8 +21,6 @@ class ProductDetailsViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
       builder: (context, state) {
-        final cubit = context.read<ProductDetailsCubit>();
-
         if (state is GetProductDetailsError) {
           return CustomErrorWidget(error: state.message);
         }
@@ -40,9 +38,7 @@ class ProductDetailsViewBody extends StatelessWidget {
                   const ProductDetailsNameWidget(),
                   const ProductDetailsPriceWidget(),
                   const Divider(color: ColorManager.lightGray),
-                  ProductDetailsTextWidget(
-                      productDetails:
-                          cubit.productDetailsEntity.productDetails),
+                  const ProductDetailsTextWidget(),
                   const Divider(color: ColorManager.lightGray),
                   const ProductNutritionWidget(),
                   const Divider(color: ColorManager.lightGray),

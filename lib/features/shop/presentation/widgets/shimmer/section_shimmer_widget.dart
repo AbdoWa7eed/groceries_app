@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
-import 'package:groceries_app/features/shop/presentation/widgets/shimmer/shimmer_container_widget.dart';
+import 'package:groceries_app/core/widgets/shimmer_container_widget.dart';
 
 class SectionShimmerWidget extends StatelessWidget {
   const SectionShimmerWidget({super.key});

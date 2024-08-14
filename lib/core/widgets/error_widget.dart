@@ -24,7 +24,11 @@ class CustomErrorWidget extends StatelessWidget {
           height: AppSize.s120,
           width: AppSize.s120,
         ),
-        Text(error, style: StylesManager.medium18),
+        Text(
+          error,
+          style: StylesManager.medium18,
+          textAlign: TextAlign.center,
+        ),
         const SizedBox(height: AppSize.s16),
         Visibility(
           visible: onTryAgain != null,
