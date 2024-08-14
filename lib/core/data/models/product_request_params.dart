@@ -10,11 +10,11 @@ class ProductsRequestParams {
   String? categoryName;
 
   ProductsRequestParams({
-    this.skip,
-    this.take,
-    this.searchText,
-    this.categoryId,
-    this.categoryName,
+   required this.skip,
+   required this.take,
+   required this.searchText,
+   required this.categoryId,
+   required this.categoryName,
   });
 
   Map<String, dynamic> toJson() => _$ProductsRequestParamsToJson(this);

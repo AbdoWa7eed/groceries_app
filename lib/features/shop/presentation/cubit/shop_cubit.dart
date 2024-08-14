@@ -1,12 +1,12 @@
 import 'package:bloc/bloc.dart';
 import 'package:groceries_app/core/domain/entities/product_entity.dart';
+import 'package:groceries_app/core/domain/usecases/get_products_usecase.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/shop/domain/entities/banner_entity.dart';
 import 'package:groceries_app/features/shop/domain/usecases/get_banners_usecase.dart';
 import 'package:groceries_app/features/shop/domain/usecases/get_best_selling_usecase.dart';
 import 'package:groceries_app/features/shop/domain/usecases/get_exclusive_offers_usecase.dart';
-import 'package:groceries_app/features/shop/domain/usecases/get_groceries_usecase.dart';
 
 part 'shop_state.dart';
 
@@ -17,7 +17,7 @@ class ShopCubit extends Cubit<ShopState> {
 
   final GetBestSellingUseCase _getBestSellingUseCase;
   final GetExclusiveOffersUseCase _getExclusiveOffersUseCase;
-  final GetGroceriesUseCase _getGroceriesUseCase;
+  final GetProductsUseCase _getGroceriesUseCase;
   final GetBannersUseCase _getBannersUseCase;
 
   final List<ProductEntity> _bestSelling = [];
@@ -75,7 +75,7 @@ class ShopCubit extends Cubit<ShopState> {
   }) async {
     emit(_isInitLoading ? state : GetGroceriesLoading());
     final result = await _getGroceriesUseCase
-        .execute(GetGroceriesUsecaseInput(skip: page * 8));
+        .execute(GetProductsUseCaseInput(skip: page * 8));
     if (result.isRight()) {
       final newProducts = _getNewProducts(_groceries, result.right);
       if (newProducts.isEmpty && !_isInitLoading) {

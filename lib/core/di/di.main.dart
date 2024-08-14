@@ -67,11 +67,22 @@ initHomeDi() async {
     getIt.registerLazySingleton<HomeController>(() => HomeController());
   }
 
-  if (!getIt.isRegistered<ProductApiService>()) {
-    getIt.registerLazySingleton<ProductApiService>(
-        () => ProductApiService(DioFactory.getDio()));
-  }
+  initProductsResources();
   initShopScreenDi();
+}
+
+initProductsResources() {
+  if (!getIt.isRegistered<GetProductsUseCase>()) {
+    getIt
+      ..registerLazySingleton<ProductsApiService>(
+          () => ProductsApiService(DioFactory.getDio()))
+      ..registerLazySingleton<ProductsDataSource>(
+          () => ProductsDataSourceImpl(getIt()))
+      ..registerLazySingleton<ProductsRepository>(
+          () => ProductsRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetProductsUseCase>(
+          () => GetProductsUseCase(getIt()));
+  }
 }
 
 initShopScreenDi() async {
@@ -79,8 +90,7 @@ initShopScreenDi() async {
     getIt
       ..registerLazySingleton<ShopApiService>(
           () => ShopApiService(DioFactory.getDio()))
-      ..registerLazySingleton<ShopDataSource>(
-          () => ShopDataSourceImpl(getIt(), getIt()))
+      ..registerLazySingleton<ShopDataSource>(() => ShopDataSourceImpl(getIt()))
       ..registerLazySingleton<ShopRepository>(() => ShopRepositoryImpl(getIt()))
       ..registerLazySingleton<GetBannersUseCase>(
           () => GetBannersUseCase(getIt()))
@@ -88,8 +98,6 @@ initShopScreenDi() async {
           () => GetBestSellingUseCase(getIt()))
       ..registerLazySingleton<GetExclusiveOffersUseCase>(
           () => GetExclusiveOffersUseCase(getIt()))
-      ..registerLazySingleton<GetGroceriesUseCase>(
-          () => GetGroceriesUseCase(getIt()))
       ..registerLazySingleton<ShopCubit>(
           () => ShopCubit(getIt(), getIt(), getIt(), getIt()));
   }
@@ -134,13 +142,11 @@ initExploreDi() {
       ..registerLazySingleton<ExploreApiService>(
           () => ExploreApiService(DioFactory.getDio()))
       ..registerLazySingleton<ExploreDataSource>(
-          () => ExploreDataSourceImpl(getIt(), getIt()))
+          () => ExploreDataSourceImpl(getIt()))
       ..registerLazySingleton<ExploreRepository>(
           () => ExploreRepositoryImpl(getIt()))
       ..registerLazySingleton<GetCategoriesUseCase>(
           () => GetCategoriesUseCase(getIt()))
-      ..registerLazySingleton<GetCategoryProductsUseCase>(
-          () => GetCategoryProductsUseCase(getIt()))
       ..registerLazySingleton<ExploreCubit>(
           () => ExploreCubit(getIt(), getIt()));
   }
