@@ -8,8 +8,8 @@ part of 'product_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _ProductApiService implements ProductApiService {
-  _ProductApiService(
+class _ProductsApiService implements ProductsApiService {
+  _ProductsApiService(
     this._dio, {
     this.baseUrl,
   }) {

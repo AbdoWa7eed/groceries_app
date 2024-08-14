@@ -7,8 +7,8 @@ import 'package:retrofit/retrofit.dart';
 part 'product_api_service.g.dart';
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
-abstract class ProductApiService {
-  factory ProductApiService(Dio dio, {String? baseUrl}) = _ProductApiService;
+abstract class ProductsApiService {
+  factory ProductsApiService(Dio dio, {String? baseUrl}) = _ProductsApiService;
 
   @GET('products')
   Future<ProductsResponse> getProducts(

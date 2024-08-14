@@ -1,10 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:groceries_app/core/domain/entities/category_entity.dart';
 import 'package:groceries_app/core/domain/entities/product_entity.dart';
+import 'package:groceries_app/core/domain/usecases/get_products_usecase.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/explore/domain/usecases/get_categories_usecase.dart';
-import 'package:groceries_app/features/explore/domain/usecases/get_category_products_usecase.dart';
-
 part 'explore_state.dart';
 
 class ExploreCubit extends Cubit<ExploreState> {
@@ -12,7 +11,7 @@ class ExploreCubit extends Cubit<ExploreState> {
       : super(ExploreInitial());
 
   final GetCategoriesUseCase _getCategoriesUseCase;
-  final GetCategoryProductsUseCase _getCategoryProductsUseCase;
+  final GetProductsUseCase _getCategoryProductsUseCase;
 
   final List<CategoryEntity> _categories = [];
 
@@ -41,8 +40,7 @@ class ExploreCubit extends Cubit<ExploreState> {
       _products.clear();
     }
     final result = await _getCategoryProductsUseCase.execute(
-        GetCategoryProductsUseCaseInput(
-            categoryId: categoryId, skip: page * 8));
+        GetProductsUseCaseInput(categoryId: categoryId, skip: page * 8));
     if (result.isRight()) {
       _products.addAll(result.right);
       emit(GetCategoryProductsSuccess());

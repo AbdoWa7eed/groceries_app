@@ -1,7 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:groceries_app/core/data/data_source/favorite_data_source.dart';
+import 'package:groceries_app/core/data/data_source/products_data_source.dart';
 import 'package:groceries_app/core/data/repo/favorite_repo_impl.dart';
+import 'package:groceries_app/core/data/repo/products_repo_impl.dart';
 import 'package:groceries_app/core/domain/repo/favorite_repo.dart';
+import 'package:groceries_app/core/domain/repo/products_repo.dart';
+import 'package:groceries_app/core/domain/usecases/get_products_usecase.dart';
 import 'package:groceries_app/core/domain/usecases/remove_favorite_usecase.dart';
 import 'package:groceries_app/core/network/dio_factory.dart';
 import 'package:groceries_app/core/network/favorites/favorite_api_service.dart';
@@ -19,7 +23,6 @@ import 'package:groceries_app/features/explore/data/data_source/explore_data_sou
 import 'package:groceries_app/features/explore/data/repo/explore_repo_impl.dart';
 import 'package:groceries_app/features/explore/domain/repo/explore_repository.dart';
 import 'package:groceries_app/features/explore/domain/usecases/get_categories_usecase.dart';
-import 'package:groceries_app/features/explore/domain/usecases/get_category_products_usecase.dart';
 import 'package:groceries_app/features/explore/presentation/cubit/explore_cubit.dart';
 import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 import 'package:groceries_app/features/location/data/api/location_api_service.dart';
@@ -53,7 +56,6 @@ import 'package:groceries_app/features/shop/domain/repo/shop_repository.dart';
 import 'package:groceries_app/features/shop/domain/usecases/get_banners_usecase.dart';
 import 'package:groceries_app/features/shop/domain/usecases/get_best_selling_usecase.dart';
 import 'package:groceries_app/features/shop/domain/usecases/get_exclusive_offers_usecase.dart';
-import 'package:groceries_app/features/shop/domain/usecases/get_groceries_usecase.dart';
 import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
