@@ -77,7 +77,7 @@ class ShopCubit extends Cubit<ShopState> {
     final result = await _getGroceriesUseCase
         .execute(GetProductsUseCaseInput(skip: page * 8));
     if (result.isRight()) {
-      final newProducts = _getNewProducts(_groceries, result.right);
+      final newProducts = _groceries.getOnlyNewItems(result.right);
       if (newProducts.isEmpty && !_isInitLoading) {
         emit(GetGroceriesError(AppStrings.youReachedTheEnd));
         return;
@@ -93,14 +93,6 @@ class ShopCubit extends Cubit<ShopState> {
           ? ShopError(result.failure.message)
           : GetGroceriesError(result.failure.message));
     }
-  }
-
-  _getNewProducts(
-      List<ProductEntity> oldList, List<ProductEntity> newProudcts) {
-    final existingProductsSet = Set<ProductEntity>.from(oldList);
-    return newProudcts
-        .where((product) => !existingProductsSet.contains(product))
-        .toList();
   }
 
   Future<void> getBanners() async {

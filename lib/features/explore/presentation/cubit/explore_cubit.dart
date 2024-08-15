@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:groceries_app/core/domain/entities/category_entity.dart';
 import 'package:groceries_app/core/domain/entities/product_entity.dart';
 import 'package:groceries_app/core/domain/usecases/get_products_usecase.dart';
+import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/explore/domain/usecases/get_categories_usecase.dart';
 part 'explore_state.dart';
@@ -42,6 +43,11 @@ class ExploreCubit extends Cubit<ExploreState> {
     final result = await _getCategoryProductsUseCase.execute(
         GetProductsUseCaseInput(categoryId: categoryId, skip: page * 8));
     if (result.isRight()) {
+      final newItems = _products.getOnlyNewItems(result.right);
+      if (newItems.isEmpty && page != 0) {
+        emit(GetCategoryProductsError(AppStrings.youReachedTheEnd));
+        return;
+      }
       _products.addAll(result.right);
       emit(GetCategoryProductsSuccess());
     } else {
