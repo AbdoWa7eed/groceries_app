@@ -70,8 +70,8 @@ abstract class AppStrings {
   static const String addToBasket = "Add To Basket";
   static const String noNutritionData =
       "Nutrition is not available for this product";
-  static const String grams = '100gr';  
+  static const String grams = '100gr';
 
-  //Explore 
-  static const String findProducts = 'Find Products';  
+  //Explore
+  static const String findProducts = 'Find Products';
 }

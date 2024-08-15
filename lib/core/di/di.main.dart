@@ -151,3 +151,9 @@ initExploreDi() {
           () => ExploreCubit(getIt(), getIt()));
   }
 }
+
+initSearchDi() async {
+  if (!getIt.isRegistered<SearchCubit>()) {
+    getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt()));
+  }
+}

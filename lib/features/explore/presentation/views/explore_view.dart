@@ -24,7 +24,12 @@ class ExploreView extends StatelessWidget {
           return const CategoriesShimmerLoading();
         }
         if (state is GetCategoriesError) {
-          return CustomErrorWidget(error: state.error);
+          return Center(
+              child: CustomErrorWidget(
+                  error: state.error,
+                  onTryAgain: () {
+                    context.read<ExploreCubit>().getCategories();
+                  }));
         }
         return const ExploreViewBody();
       }),

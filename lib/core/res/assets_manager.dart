@@ -2,7 +2,6 @@ const _imagePath = "assets/images";
 const _navBarImagePath = "$_imagePath/nav_bar";
 const _jsonPath = "assets/json";
 
-
 abstract class AssetsManager {
   static const onBoardingImage = "$_imagePath/onboarding.png";
   static const onBoardingLogo = '$_imagePath/logo.png';
@@ -16,5 +15,5 @@ abstract class AssetsManager {
   static const search = "$_imagePath/search.svg";
   static const noProductImage = '$_imagePath/no_product.png';
   static const errorJson = '$_jsonPath/error.json';
-
+  static const clearIcon = '$_imagePath/clear.svg';
 }

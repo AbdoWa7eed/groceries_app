@@ -45,7 +45,7 @@ class _CategoryProductsViewState extends State<CategoryProductsView> {
                   child: CircularProgressIndicator(),
                 );
               }
-              if (state is GetCategoryProductsError) {
+              if (state is GetCategoryProductsError && cubit.products.isEmpty) {
                 return CustomErrorWidget(error: state.error);
               }
               return ProductsGridView(

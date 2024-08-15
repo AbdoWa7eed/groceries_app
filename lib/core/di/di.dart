@@ -49,6 +49,7 @@ import 'package:groceries_app/features/product_details/domain/repo/product_detai
 import 'package:groceries_app/features/product_details/domain/usecases/add_to_favorite_usecase.dart';
 import 'package:groceries_app/features/product_details/domain/usecases/get_product_details_usecase.dart';
 import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
+import 'package:groceries_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:groceries_app/features/shop/data/api/shop_api_service.dart';
 import 'package:groceries_app/features/shop/data/data_source/shop_data_source.dart';
 import 'package:groceries_app/features/shop/data/repo/shop_repo_impl.dart';

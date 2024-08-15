@@ -14,6 +14,7 @@ abstract class Routes {
   static const String phoneAuthRoute = "/phoneAuth";
   static const String verifyPhoneRoute = "/verifyPhone";
   static const String seeAllRoute = '/seeAll';
+  static const String searchResult = '/searchResult';
 }
 
 abstract class RouteGenerator {
@@ -150,6 +151,19 @@ abstract class RouteGenerator {
               .getCategoryProducts(categoryId: category.categoryId);
           return CustomSlideTransition(
             child: CategoryProductsView(entity: category),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.searchResult,
+        pageBuilder: (context, state) {
+          initSearchDi();
+          final query = state.extra as String;
+          return CustomSlideTransition(
+            child: BlocProvider<SearchCubit>(
+                create: (context) =>
+                    getIt<SearchCubit>()..getInitialProducts(query),
+                child: const SearchResultView()),
           );
         },
       ),

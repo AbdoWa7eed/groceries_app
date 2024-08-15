@@ -3,11 +3,11 @@ import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
 extension NavigationExtension on BuildContext {
-  void popAllThenPush(String location , {Object? extra}) {
+  void popAllThenPush(String location, {Object? extra}) {
     while (canPop()) {
       pop();
     }
-    pushReplacement(location , extra: extra);
+    pushReplacement(location, extra: extra);
   }
 }
 
@@ -37,8 +37,6 @@ extension NonNullInteger on int? {
   }
 }
 
-
-
 extension NonNullDouble on double? {
   double orZero() {
     if (this == null) {
@@ -49,13 +47,22 @@ extension NonNullDouble on double? {
   }
 }
 
-
 extension ScrollControllerExtension on ScrollController {
-
-  bool isReached70PrecentPosition(){
+  bool isReached70PrecentPosition() {
     final maxScroll = position.maxScrollExtent;
     final currentScroll = position.pixels;
     final delta = 0.3 * maxScroll;
     return (maxScroll - currentScroll) <= delta;
   }
+}
+
+extension GetOnlyNewItems<T> on List<T> {
+  List<T> getOnlyNewItems(Iterable<T> newItems) {
+    final existingItems = Set<T>.from(this);
+
+    newItems = newItems.where((element) => !existingItems.contains(element));
+    return newItems.toList();
+  }
+
+  int get nextPage => (length ~/ 8) + 1;
 }
