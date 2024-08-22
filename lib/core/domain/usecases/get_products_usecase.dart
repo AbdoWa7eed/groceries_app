@@ -10,8 +10,8 @@ class GetProductsUseCase
   GetProductsUseCase(this._productsRepository);
 
   @override
-  ResultFuture<List<ProductEntity>> execute(GetProductsUseCaseInput input) {
-    return _productsRepository.getProducts(input);
+  ResultFuture<List<ProductEntity>> execute([GetProductsUseCaseInput? input]) {
+    return _productsRepository.getProducts(input ?? GetProductsUseCaseInput());
   }
 }
 

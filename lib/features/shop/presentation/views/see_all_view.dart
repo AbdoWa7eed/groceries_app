@@ -22,7 +22,7 @@ class _SeeAllProductsViewState extends State<SeeAllProductsView> {
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopState>(
       listener: (context, state) {
-        if (state is GetGroceriesError && (!_isSnackbarShown)) {
+        if (state is GetMoreGroceriesError && (!_isSnackbarShown)) {
           showSnackBar(context, text: state.error);
           _isSnackbarShown = true;
         }
@@ -38,8 +38,7 @@ class _SeeAllProductsViewState extends State<SeeAllProductsView> {
               products: cubit.currentList,
               onScroll: () async {
                 if (widget.title == AppStrings.groceries) {
-                  final currentPage = (cubit.currentList.length ~/ 8) + 1;
-                  await cubit.getGroceries(page: currentPage);
+                  cubit.getMoreGroceries();
                 }
               },
             ));

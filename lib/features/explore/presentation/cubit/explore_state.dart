@@ -25,3 +25,15 @@ final class GetCategoryProductsError extends ExploreState {
 }
 
 
+final class GetMoreCategoryProductsLoading extends ExploreState {}
+
+final class GetMoreCategoryProductsSuccess extends ExploreState {}
+
+final class GetMoreCategoryProductsError extends ExploreState {
+  final String error;
+  GetMoreCategoryProductsError(this.error);
+}
+
+
+
+

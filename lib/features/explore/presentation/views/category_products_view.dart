@@ -22,7 +22,7 @@ class _CategoryProductsViewState extends State<CategoryProductsView> {
   Widget build(BuildContext context) {
     return BlocListener<ExploreCubit, ExploreState>(
         listener: (context, state) {
-          if (state is GetCategoryProductsError && !isSnakbarShown) {
+          if (state is GetMoreCategoryProductsError && !isSnakbarShown) {
             showSnackBar(context, text: state.error);
             isSnakbarShown = true;
           }
@@ -51,9 +51,7 @@ class _CategoryProductsViewState extends State<CategoryProductsView> {
               return ProductsGridView(
                 products: cubit.products,
                 onScroll: () async {
-                  final currentPage = (cubit.products.length ~/ 8) + 1;
-                  await cubit.getCategoryProducts(
-                      page: currentPage, categoryId: widget.entity.categoryId);
+                  cubit.getMoreProducts(categoryId: widget.entity.categoryId);
                 },
               );
             },

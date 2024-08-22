@@ -7,9 +7,9 @@ import 'package:groceries_app/core/utils/extensions.dart';
 part 'search_state.dart';
 
 class SearchCubit extends Cubit<SearchState> {
-  SearchCubit(this._getProductDetailsUseCase) : super(SearchInitial());
+  SearchCubit(this._getProductsUseCase) : super(SearchInitial());
 
-  final GetProductsUseCase _getProductDetailsUseCase;
+  final GetProductsUseCase _getProductsUseCase;
 
   late String searchText;
 
@@ -21,7 +21,7 @@ class SearchCubit extends Cubit<SearchState> {
     this.searchText = searchText;
     emit(GetInitialProductsLoading());
     final result =
-        await _getProductDetailsUseCase.execute(GetProductsUseCaseInput(
+        await _getProductsUseCase.execute(GetProductsUseCaseInput(
       searchText: searchText,
     ));
     if (result.isRight()) {
@@ -35,7 +35,7 @@ class SearchCubit extends Cubit<SearchState> {
 
   void getMoreProducts() async {
     final result =
-        await _getProductDetailsUseCase.execute(GetProductsUseCaseInput(
+        await _getProductsUseCase.execute(GetProductsUseCaseInput(
       searchText: searchText,
       skip: _products.nextPage * 8,
     ));

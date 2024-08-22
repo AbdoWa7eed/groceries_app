@@ -13,43 +13,14 @@ final class ShopError extends ShopState {
   ShopError(this.error);
 }
 
-final class GetBestSellingLoading extends ShopState {}
+final class GetMoreGroceriesLoading extends ShopState {}
 
-final class GetBestSellingError extends ShopState {
+final class GetMoreGroceriesSuccess extends ShopState {}
+
+final class GetMoreGroceriesError extends ShopState {
   final String error;
-  GetBestSellingError(this.error);
+  GetMoreGroceriesError(this.error);
 }
-
-final class GetBestSellingSuccess extends ShopState {}
-
-final class GetExclusiveOffersLoading extends ShopState {}
-
-final class GetExclusiveOffersSuccess extends ShopState {}
-
-final class GetExclusiveOffersError extends ShopState {
-  final String error;
-  GetExclusiveOffersError(this.error);
-}
-
-final class GetGroceriesLoading extends ShopState {}
-
-final class GetGroceriesSuccess extends ShopState {}
-
-final class GetGroceriesError extends ShopState {
-  final String error;
-  GetGroceriesError(this.error);
-}
-
-final class GetBannersLoading extends ShopState {}
-
-final class GetBannersSuccess extends ShopState {}
-
-final class GetBannersError extends ShopState {
-  final String error;
-  GetBannersError(this.error);
-}
-
-final class SeeAllScreenListChangesState extends ShopState {}
 
 
 
