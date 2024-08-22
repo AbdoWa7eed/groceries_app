@@ -34,24 +34,37 @@ class ExploreCubit extends Cubit<ExploreState> {
   List<ProductEntity> get products => _products;
   getCategoryProducts({
     required int categoryId,
-    int page = 0,
   }) async {
     emit(GetCategoryProductsLoading());
-    if (page == 0) {
-      _products.clear();
-    }
-    final result = await _getCategoryProductsUseCase.execute(
-        GetProductsUseCaseInput(categoryId: categoryId, skip: page * 8));
+    final result = await _getCategoryProductsUseCase
+        .execute(GetProductsUseCaseInput(categoryId: categoryId));
     if (result.isRight()) {
-      final newItems = _products.getOnlyNewItems(result.right);
-      if (newItems.isEmpty && page != 0) {
-        emit(GetCategoryProductsError(AppStrings.youReachedTheEnd));
-        return;
-      }
+      _products.clear();
       _products.addAll(result.right);
       emit(GetCategoryProductsSuccess());
     } else {
       emit(GetCategoryProductsError(result.failure.message));
+    }
+  }
+
+  void getMoreProducts({
+    required int categoryId,
+  }) async {
+    final result =
+        await _getCategoryProductsUseCase.execute(GetProductsUseCaseInput(
+      categoryId: categoryId,
+      skip: _products.nextPage * 8,
+    ));
+    if (result.isRight()) {
+      final newItems = _products.getOnlyNewItems(result.right);
+      if (newItems.isEmpty) {
+        emit(GetMoreCategoryProductsError(AppStrings.youReachedTheEnd));
+        return;
+      }
+      _products.addAll(newItems);
+      emit(GetMoreCategoryProductsSuccess());
+    } else {
+      emit(GetMoreCategoryProductsError(result.failure.message));
     }
   }
 }

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:groceries_app/core/domain/entities/product_entity.dart';
 import 'package:groceries_app/core/domain/usecases/get_products_usecase.dart';
+import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/shop/domain/entities/banner_entity.dart';
@@ -20,91 +21,56 @@ class ShopCubit extends Cubit<ShopState> {
   final GetProductsUseCase _getGroceriesUseCase;
   final GetBannersUseCase _getBannersUseCase;
 
-  final List<ProductEntity> _bestSelling = [];
-  final List<ProductEntity> _exclusiveOffers = [];
-  final List<ProductEntity> _groceries = [];
-  final List<BannerEntity> _banners = [];
+  final List<ProductEntity> bestSelling = [];
+  final List<ProductEntity> exclusiveOffers = [];
+  final List<ProductEntity> groceries = [];
+  final List<BannerEntity> banners = [];
 
-  List<ProductEntity> get bestSelling => _bestSelling;
-  List<ProductEntity> get exclusiveOffers => _exclusiveOffers;
-  List<ProductEntity> get groceries => _groceries;
-  List<BannerEntity> get banners => _banners;
-
-  bool get _isInitLoading => state is ShopLoading;
-  bool get _isInitError => state is ShopError;
   Future<void> initShopData() async {
     emit(ShopLoading());
-    await getBanners();
-    if (_isInitError) return;
-    await getBestSelling();
-    if (_isInitError) return;
-    await getExclusiveOffers();
-    if (_isInitError) return;
-    await getGroceries();
-    emit(ShopSuccess());
-  }
+    final results = await Future.wait([
+      _fetchData(_getBestSellingUseCase.execute, bestSelling),
+      _fetchData(_getExclusiveOffersUseCase.execute, exclusiveOffers),
+      _fetchData(_getGroceriesUseCase.execute, groceries),
+      _fetchData(_getBannersUseCase.execute, banners),
+    ]);
 
-  Future<void> getBestSelling() async {
-    emit(_isInitLoading ? state : GetBestSellingLoading());
-    final result = await _getBestSellingUseCase.execute();
-    if (result.isRight()) {
-      _bestSelling.addAll(result.right);
-      emit(_isInitLoading ? state : GetBestSellingSuccess());
+    final error =
+        results.firstWhere((result) => result != null, orElse: () => null);
+    if (error != null) {
+      emit(ShopError(error));
     } else {
-      emit(_isInitLoading
-          ? ShopError(result.failure.message)
-          : GetBestSellingError(result.failure.message));
+      emit(ShopSuccess());
     }
   }
 
-  Future<void> getExclusiveOffers() async {
-    emit(_isInitLoading ? state : GetExclusiveOffersLoading());
-    final result = await _getExclusiveOffersUseCase.execute();
+  Future<String?> _fetchData<T>(
+      ResultFuture<List<T>> Function() useCase, List<T> targetList) async {
+    final result = await useCase();
     if (result.isRight()) {
-      _exclusiveOffers.addAll(result.right);
-      emit(_isInitLoading ? state : GetExclusiveOffersSuccess());
+      targetList.addAll(result.right);
+      return null;
     } else {
-      emit(_isInitLoading
-          ? ShopError(result.failure.message)
-          : GetExclusiveOffersError(result.failure.message));
+      return result.failure.message;
     }
   }
 
-  Future<void> getGroceries({
-    int page = 0,
-  }) async {
-    emit(_isInitLoading ? state : GetGroceriesLoading());
-    final result = await _getGroceriesUseCase
-        .execute(GetProductsUseCaseInput(skip: page * 8));
+  void getMoreGroceries() async {
+    final result = await _getGroceriesUseCase.execute(GetProductsUseCaseInput(
+      skip: groceries.nextPage * 8,
+    ));
+
     if (result.isRight()) {
-      final newProducts = _groceries.getOnlyNewItems(result.right);
-      if (newProducts.isEmpty && !_isInitLoading) {
-        emit(GetGroceriesError(AppStrings.youReachedTheEnd));
+      final newItems = groceries.getOnlyNewItems(result.right);
+      if (newItems.isEmpty) {
+        emit(GetMoreGroceriesError(AppStrings.youReachedTheEnd));
         return;
       }
-      _groceries.addAll(newProducts);
-      if (page != 0) {
-        currentList.clear();
-        currentList.addAll(_groceries);
-      }
-      emit(_isInitLoading ? state : GetGroceriesSuccess());
+      groceries.addAll(newItems);
+      _currentList.addAll(newItems);
+      emit(GetMoreGroceriesSuccess());
     } else {
-      emit(_isInitLoading
-          ? ShopError(result.failure.message)
-          : GetGroceriesError(result.failure.message));
-    }
-  }
-
-  Future<void> getBanners() async {
-    emit(_isInitLoading ? state : GetBannersLoading());
-    final result = await _getBannersUseCase.execute();
-    if (result.isRight()) {
-      _banners.addAll(result.right);
-      emit(_isInitLoading ? state : GetBannersSuccess());
-    } else {
-      emit(_isInitLoading
-          ? ShopError(result.failure.message)
-          : GetBannersError(result.failure.message));
+      emit(GetMoreGroceriesError(result.failure.message));
     }
   }
 
