@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
+import 'package:groceries_app/features/cart/presentation/views/cart_view.dart';
 import 'package:groceries_app/features/explore/presentation/views/explore_view.dart';
 import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 import 'package:groceries_app/features/shop/presentation/views/shop_view.dart';
@@ -26,7 +27,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
           children: const [
             ShopView(),
             ExploreView(),
-            Placeholder(color: ColorManager.gray),
+            CartView(),
             Placeholder(color: ColorManager.primary),
             Placeholder(color: ColorManager.deepOrange),
           ],

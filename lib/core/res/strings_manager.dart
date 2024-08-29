@@ -74,4 +74,7 @@ abstract class AppStrings {
 
   //Explore
   static const String findProducts = 'Find Products';
+
+  // Cart
+  static const String myCart = 'My Cart';
 }

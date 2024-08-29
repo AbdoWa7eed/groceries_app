@@ -45,7 +45,9 @@ class _ProductDetailsTextWidgetState extends State<ProductDetailsTextWidget> {
           visible: isVisible,
           child: CustomFadeTransition(
             child: Text(
-              context.read<ProductDetailsCubit>().productDetailsEntity
+              context
+                  .read<ProductDetailsCubit>()
+                  .productDetailsEntity
                   .productDetails,
               style: StylesManager.medium14,
             ),

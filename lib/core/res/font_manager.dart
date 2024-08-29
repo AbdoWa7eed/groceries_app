@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 abstract class FontConstants {
   static const String fontFamily = "Gilroy";
 }
