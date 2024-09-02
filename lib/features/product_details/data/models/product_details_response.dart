@@ -1,6 +1,7 @@
-import 'package:groceries_app/core/data/models/category_model.dart';
+import 'package:groceries_app/core/data/models/category/category_model.dart';
 import 'package:groceries_app/core/data/models/products_response.dart';
 import 'package:json_annotation/json_annotation.dart';
+
 part 'product_details_response.g.dart';
 
 @JsonSerializable(createToJson: false)

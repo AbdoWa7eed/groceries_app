@@ -1,7 +1,9 @@
+import 'package:groceries_app/core/data/models/cart/cart_response.dart';
+import 'package:groceries_app/core/data/models/category/category_model.dart';
+import 'package:groceries_app/core/data/models/products_response.dart';
+import 'package:groceries_app/core/domain/entities/cart_entity.dart';
 import 'package:groceries_app/core/domain/entities/category_entity.dart';
 import 'package:groceries_app/core/domain/entities/product_entity.dart';
-import 'package:groceries_app/core/data/models/category_model.dart';
-import 'package:groceries_app/core/data/models/products_response.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 
 extension ProductsMapper on ProductModel {
@@ -25,5 +27,14 @@ extension CategoryMapper on CategoryModel {
         categoryId: categoryId.orZero(),
         name: name.orEmpty(),
         imageUrl: imageUrl.orEmpty());
+  }
+}
+
+extension CartMapper on CartModel {
+  CartEntity toEntity() {
+    return CartEntity(
+      cartId: cartId,
+      products: items.map((e) => e.toEntity()).toList(),
+    );
   }
 }
