@@ -6,10 +6,10 @@ import '../models/cart/cart_response.dart';
 
 abstract class CartDataSource {
   Future<CartResponse> getCart();
-  Future<CartResponse> addToCart(CartRequestBody cartRequestBody);
+  Future<BaseResponse> addToCart(CartRequestBody cartRequestBody);
   Future<BaseResponse> addAllToCart(List<CartRequestBody> cartRequestBodyList);
-  Future<CartResponse> removeFromCart(int productId);
-  Future<CartResponse> updateItemQuantity(CartRequestBody cartRequestBody);
+  Future<BaseResponse> removeFromCart(int productId);
+  Future<BaseResponse> updateItemQuantity(CartRequestBody cartRequestBody);
 }
 
 class CartDataSourceImpl implements CartDataSource {
@@ -23,7 +23,7 @@ class CartDataSourceImpl implements CartDataSource {
   }
 
   @override
-  Future<CartResponse> addToCart(CartRequestBody cartRequestBody) {
+  Future<BaseResponse> addToCart(CartRequestBody cartRequestBody) {
     return _cartApiService.addToCart(cartRequestBody);
   }
 
@@ -33,12 +33,12 @@ class CartDataSourceImpl implements CartDataSource {
   }
 
   @override
-  Future<CartResponse> removeFromCart(int productId) {
+  Future<BaseResponse> removeFromCart(int productId) {
     return _cartApiService.removeFromCart(productId);
   }
 
   @override
-  Future<CartResponse> updateItemQuantity(CartRequestBody cartRequestBody) {
+  Future<BaseResponse> updateItemQuantity(CartRequestBody cartRequestBody) {
     return _cartApiService.updateItemQuantity(cartRequestBody);
   }
 }

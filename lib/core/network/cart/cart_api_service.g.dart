@@ -21,14 +21,14 @@ class _CartApiService implements CartApiService {
   String? baseUrl;
 
   @override
-  Future<CartResponse> addToCart(CartRequestBody cartItem) async {
+  Future<BaseResponse> addToCart(CartRequestBody cartItem) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(cartItem.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CartResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -44,19 +44,19 @@ class _CartApiService implements CartApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = CartResponse.fromJson(_result.data!);
+    final _value = BaseResponse.fromJson(_result.data!);
     return _value;
   }
 
   @override
-  Future<CartResponse> updateItemQuantity(CartRequestBody cartItem) async {
+  Future<BaseResponse> updateItemQuantity(CartRequestBody cartItem) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(cartItem.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CartResponse>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse>(Options(
       method: 'PUT',
       headers: _headers,
       extra: _extra,
@@ -72,7 +72,7 @@ class _CartApiService implements CartApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = CartResponse.fromJson(_result.data!);
+    final _value = BaseResponse.fromJson(_result.data!);
     return _value;
   }
 
@@ -131,14 +131,14 @@ class _CartApiService implements CartApiService {
   }
 
   @override
-  Future<CartResponse> removeFromCart(int productId) async {
+  Future<BaseResponse> removeFromCart(int productId) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = {'productId': productId};
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<CartResponse>(Options(
-      method: 'GET',
+        .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse>(Options(
+      method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )
@@ -153,7 +153,7 @@ class _CartApiService implements CartApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = CartResponse.fromJson(_result.data!);
+    final _value = BaseResponse.fromJson(_result.data!);
     return _value;
   }
 

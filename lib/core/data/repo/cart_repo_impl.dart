@@ -60,9 +60,6 @@ class CartRepositoryImpl implements CartRepository {
       CartRequestBody cartRequestBody) async {
     try {
       final result = await _cartDataSource.updateItemQuantity(cartRequestBody);
-      if (result.data == null) {
-        return Left(Failure.apiInternalError(result.message));
-      }
       return Right(result.message);
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);

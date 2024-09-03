@@ -77,7 +77,8 @@ abstract class AppStrings {
 
   // Cart
   static const String myCart = 'My Cart';
-  static const String checkout = 'Checkout';
+  static const String checkout = 'Go To Checkout';
+  static const String emptyCart = 'No items in cart, Add some';
 
   // Favorites
   static const String favorites = 'Favorites';

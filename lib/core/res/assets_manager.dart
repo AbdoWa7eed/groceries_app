@@ -15,5 +15,6 @@ abstract class AssetsManager {
   static const search = "$_imagePath/search.svg";
   static const noProductImage = '$_imagePath/no_product.png';
   static const errorJson = '$_jsonPath/error.json';
+  static const emptyCartJson = '$_jsonPath/empty_cart.json';
   static const clearIcon = '$_imagePath/clear.svg';
 }

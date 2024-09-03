@@ -3,10 +3,10 @@ import 'package:groceries_app/core/domain/repo/cart_repo.dart';
 import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/utils/base_usecase.dart';
 
-class AddToCartUsecase extends BaseUseCase<CartUsecaseInput, String> {
+class AddToCartUseCase extends BaseUseCase<CartUsecaseInput, String> {
   final CartRepository _cartRepository;
 
-  AddToCartUsecase(this._cartRepository);
+  AddToCartUseCase(this._cartRepository);
   @override
   ResultFuture<String> execute(CartUsecaseInput input) {
     return _cartRepository.addToCart(input);

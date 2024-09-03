@@ -6,6 +6,7 @@ import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/core/widgets/error_widget.dart';
+import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
 import 'package:groceries_app/features/product_details/presentation/widgets/product_details_header_widget.dart';
 import 'package:groceries_app/features/product_details/presentation/widgets/product_details_price_widget.dart';
@@ -47,7 +48,11 @@ class ProductDetailsViewBody extends StatelessWidget {
                     child: Text(AppStrings.addToBasket,
                         style: StylesManager.semiBold18
                             .copyWith(color: ColorManager.white)),
-                    onPressed: () {},
+                    onPressed: () {
+                      final product = (state as GetProductDetailsSuccess)
+                          .productDetailsEntity;
+                      context.read<CartCubit>().addToCart(product.productId);
+                    },
                   ),
                 ],
               ),

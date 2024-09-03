@@ -5,8 +5,8 @@ import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/widgets/custom_rounded_container.dart';
 
 class CartItemCounterWidget extends StatefulWidget {
-  const CartItemCounterWidget({super.key, required this.onQuantityChanged});
-
+  const CartItemCounterWidget({super.key, required this.onQuantityChanged , required this.initialValue});
+  final int initialValue;
   final Function(int value) onQuantityChanged;
 
   @override
@@ -14,7 +14,13 @@ class CartItemCounterWidget extends StatefulWidget {
 }
 
 class _CartItemCounterWidgetState extends State<CartItemCounterWidget> {
-  int numberOfPieces = 1;
+  late int numberOfPieces;
+
+  @override
+  void initState() {
+    numberOfPieces = widget.initialValue;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:groceries_app/core/domain/entities/product_entity.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
+import 'package:groceries_app/core/widgets/add_item_to_cart_listener.dart';
 import 'package:groceries_app/core/widgets/product/product_card_widget.dart';
 
 class ProductsGridView extends StatefulWidget {
@@ -41,21 +42,23 @@ class _ProductsGridViewState extends State<ProductsGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        controller: _scrollController,
-        physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsetsDirectional.symmetric(
-          horizontal: AppPadding.p16,
-        ),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
-            childAspectRatio: 0.7,
-            crossAxisSpacing: AppSize.s8,
-            mainAxisSpacing: AppSize.s8),
-        itemCount: widget.products.length,
-        itemBuilder: (context, index) {
-          return ProductCardWidget(entity: widget.products[index]);
-        });
+    return AddItemToCartListener(
+      child: GridView.builder(
+          controller: _scrollController,
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsetsDirectional.symmetric(
+            horizontal: AppPadding.p16,
+          ),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.7,
+              crossAxisSpacing: AppSize.s8,
+              mainAxisSpacing: AppSize.s8),
+          itemCount: widget.products.length,
+          itemBuilder: (context, index) {
+            return ProductCardWidget(entity: widget.products[index]);
+          }),
+    );
   }
 
   @override

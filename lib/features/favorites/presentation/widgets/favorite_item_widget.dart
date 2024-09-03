@@ -16,33 +16,33 @@ class FavoriteItemWidget extends StatelessWidget {
       onDismissed: (direction) {
         log(direction.index.toString());
       },
-      key: Key('1'),
+      key: const Key('1'),
       child: GestureDetector(
         onTap: () {},
         child: const SizedBox(
           height: 110,
           child: Row(
             children: [
-              const CustomNetworkImage(
+              CustomNetworkImage(
                 imageUrl: 'imageUrl',
                 height: 80,
                 width: 100,
               ),
-              const SizedBox(width: AppSize.s12),
-              const Expanded(
+              SizedBox(width: AppSize.s12),
+              Expanded(
                 child: ProductTitleWidget(
                     description: 'description',
                     productName: 'Banana Apple GOGOGO SHSHSH'),
               ),
-              const SizedBox(width: AppSize.s12),
+              SizedBox(width: AppSize.s12),
               Row(
                 children: [
-                  const Text(
+                  Text(
                     '\$5646',
                     style: StylesManager.bold16,
                   ),
-                  const SizedBox(width: 10),
-                  const Icon(
+                  SizedBox(width: AppSize.s12),
+                  Icon(
                     Icons.arrow_forward_ios_rounded,
                     color: ColorManager.dark,
                   )
