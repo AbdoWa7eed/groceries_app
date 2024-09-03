@@ -31,4 +31,8 @@ class ProductEntity extends Equatable {
         imageUrl,
         discountPercentage
       ];
+
+  double get price =>
+      double.parse((unitPrice - (unitPrice * (discountPercentage / 100)))
+          .toStringAsFixed(2));
 }

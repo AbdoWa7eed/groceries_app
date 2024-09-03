@@ -10,12 +10,19 @@ CartResponse _$CartResponseFromJson(Map<String, dynamic> json) => CartResponse(
       message: json['message'] as String,
       data: json['data'] == null
           ? null
-          : CartModel.fromJson(json['data'] as Map<String, dynamic>),
+          : CartResponseData.fromJson(json['data'] as Map<String, dynamic>),
     );
 
-CartModel _$CarteResponseDataFromJson(Map<String, dynamic> json) => CartModel(
+CartResponseData _$CartResponseDataFromJson(Map<String, dynamic> json) =>
+    CartResponseData(
       cartId: (json['cartId'] as num).toInt(),
-      items: (json['items'] as List<dynamic>)
-          .map((e) => ProductModel.fromJson(e as Map<String, dynamic>))
+      cartItems: (json['cartItems'] as List<dynamic>)
+          .map((e) => CartItemModel.fromJson(e as Map<String, dynamic>))
           .toList(),
+    );
+
+CartItemModel _$CartItemModelFromJson(Map<String, dynamic> json) =>
+    CartItemModel(
+      product: ProductModel.fromJson(json['product'] as Map<String, dynamic>),
+      quantity: (json['quantity'] as num).toInt(),
     );

@@ -30,11 +30,20 @@ extension CategoryMapper on CategoryModel {
   }
 }
 
-extension CartMapper on CartModel {
+extension CartMapper on CartResponseData {
   CartEntity toEntity() {
     return CartEntity(
       cartId: cartId,
-      products: items.map((e) => e.toEntity()).toList(),
+      cartItems: cartItems.map((e) => e.toEntity()).toList(),
+    );
+  }
+}
+
+extension CartItemMapper on CartItemModel {
+  CartItemEntity toEntity() {
+    return CartItemEntity(
+      product: product.toEntity(),
+      quantity: quantity,
     );
   }
 }

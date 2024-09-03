@@ -6,7 +6,7 @@ part 'cart_response.g.dart';
 
 @JsonSerializable(createToJson: false)
 class CartResponse extends BaseResponse {
-  final CartModel? data;
+  final CartResponseData? data;
   CartResponse({
     required super.message,
     required this.data,
@@ -16,14 +16,26 @@ class CartResponse extends BaseResponse {
 }
 
 @JsonSerializable(createToJson: false)
-class CartModel {
+class CartResponseData {
   int cartId;
-  List<ProductModel> items;
-  CartModel({
+  List<CartItemModel> cartItems;
+  CartResponseData({
     required this.cartId,
-    required this.items,
+    required this.cartItems,
   });
 
-  factory CartModel.fromJson(Map<String, dynamic> json) =>
-      _$CarteResponseDataFromJson(json);
+  factory CartResponseData.fromJson(Map<String, dynamic> json) =>
+      _$CartResponseDataFromJson(json);
+}
+
+@JsonSerializable(createToJson: false)
+class CartItemModel {
+  ProductModel product;
+  int quantity;
+  CartItemModel({
+    required this.product,
+    required this.quantity,
+  });
+  factory CartItemModel.fromJson(Map<String, dynamic> json) =>
+      _$CartItemModelFromJson(json);
 }

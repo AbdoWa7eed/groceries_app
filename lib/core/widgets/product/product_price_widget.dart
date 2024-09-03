@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:groceries_app/core/domain/entities/product_entity.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
 
 class ProductPriceAndAddButtonWidget extends StatelessWidget {
-  const ProductPriceAndAddButtonWidget(
-      {super.key, required this.price, required this.oldPrice});
+  const ProductPriceAndAddButtonWidget({super.key, required this.product});
 
-  final String price;
-  final String oldPrice;
+  final ProductEntity product;
 
   @override
   Widget build(BuildContext context) {
@@ -21,15 +22,16 @@ class ProductPriceAndAddButtonWidget extends StatelessWidget {
           Column(
             children: [
               Text(
-                '\$$price',
+                '\$${product.price}',
                 style: StylesManager.semiBold18.copyWith(
                   color: ColorManager.dark,
                 ),
               ),
               Visibility(
-                visible: oldPrice != price,
+                visible:
+                    product.unitPrice.toString() != product.price.toString(),
                 child: Text(
-                  '\$$oldPrice',
+                  '\$${product.unitPrice}',
                   style: StylesManager.medium14.copyWith(
                     decoration: TextDecoration.lineThrough,
                   ),
@@ -38,7 +40,9 @@ class ProductPriceAndAddButtonWidget extends StatelessWidget {
             ],
           ),
           GestureDetector(
-            onTap: () {},
+            onTap: () {
+              context.read<CartCubit>().addToCart(product.productId);
+            },
             child: Container(
               height: AppSize.s40,
               width: AppSize.s40,

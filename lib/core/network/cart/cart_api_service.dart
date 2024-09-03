@@ -12,10 +12,10 @@ abstract class CartApiService {
   factory CartApiService(Dio dio) = _CartApiService;
 
   @POST('cart')
-  Future<CartResponse> addToCart(@Body() CartRequestBody cartItem);
+  Future<BaseResponse> addToCart(@Body() CartRequestBody cartItem);
 
   @PUT('cart')
-  Future<CartResponse> updateItemQuantity(@Body() CartRequestBody cartItem);
+  Future<BaseResponse> updateItemQuantity(@Body() CartRequestBody cartItem);
 
   @PUT('cart/add_all')
   Future<BaseResponse> addAllToCart(
@@ -24,6 +24,6 @@ abstract class CartApiService {
   @GET('cart')
   Future<CartResponse> getCart();
 
-  @GET('cart')
-  Future<CartResponse> removeFromCart(@Field() int productId);
+  @DELETE('cart')
+  Future<BaseResponse> removeFromCart(@Field() int productId);
 }

@@ -69,6 +69,7 @@ initHomeDi() async {
 
   initProductsResources();
   initShopScreenDi();
+  initCartDi();
 }
 
 initProductsResources() {
@@ -155,5 +156,23 @@ initExploreDi() {
 initSearchDi() async {
   if (!getIt.isRegistered<SearchCubit>()) {
     getIt.registerFactory<SearchCubit>(() => SearchCubit(getIt()));
+  }
+}
+
+initCartDi() async {
+  if (!getIt.isRegistered<CartCubit>()) {
+    getIt
+      ..registerLazySingleton<CartApiService>(
+          () => CartApiService(DioFactory.getDio()))
+      ..registerLazySingleton<CartDataSource>(() => CartDataSourceImpl(getIt()))
+      ..registerLazySingleton<CartRepository>(() => CartRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetCartUseCase>(() => GetCartUseCase(getIt()))
+      ..registerLazySingleton<AddToCartUseCase>(() => AddToCartUseCase(getIt()))
+      ..registerLazySingleton<UpdateItemQuantityUseCase>(
+          () => UpdateItemQuantityUseCase(getIt()))
+      ..registerLazySingleton<RemoveFromCartUseCase>(
+          () => RemoveFromCartUseCase(getIt()))
+      ..registerLazySingleton<CartCubit>(
+          () => CartCubit(getIt(), getIt(), getIt(), getIt()));
   }
 }

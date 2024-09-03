@@ -35,11 +35,7 @@ class ProductCardWidget extends StatelessWidget {
                 ProductTitleWidget(
                     description: entity.description, productName: entity.name),
                 ProductPriceAndAddButtonWidget(
-                  price: (entity.unitPrice -
-                          (entity.unitPrice *
-                              (entity.discountPercentage / 100)))
-                      .toStringAsFixed(2),
-                  oldPrice: '${entity.unitPrice}',
+                  product: entity,
                 )
               ],
             ),
