@@ -83,4 +83,5 @@ abstract class AppStrings {
   // Favorites
   static const String favorites = 'Favorites';
   static const String addAllToCart = 'Add All To Cart';
+  static const String favoriteListEmpty = 'Your Favorite list is empty';
 }

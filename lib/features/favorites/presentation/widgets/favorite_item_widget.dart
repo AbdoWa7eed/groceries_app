@@ -1,48 +1,57 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:groceries_app/core/domain/entities/product_entity.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/widgets/custom_network_image.dart';
 import 'package:groceries_app/core/widgets/product/product_title_widget.dart';
+import 'package:groceries_app/features/favorites/presentation/cubit/favorite_cubit.dart';
 
 class FavoriteItemWidget extends StatelessWidget {
-  const FavoriteItemWidget({super.key});
+  final ProductEntity product;
+  const FavoriteItemWidget({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
     return Dismissible(
+      direction: DismissDirection.startToEnd,
       onDismissed: (direction) {
-        log(direction.index.toString());
+        context.read<FavoriteCubit>().removeFromFavorite(product);
       },
-      key: const Key('1'),
+      key: Key(product.productId.toString()),
       child: GestureDetector(
-        onTap: () {},
-        child: const SizedBox(
-          height: 110,
+        onTap: () {
+          context.push(Routes.productDetails, extra: product.productId);
+        },
+        child: SizedBox(
+          height: AppSize.s120,
           child: Row(
             children: [
               CustomNetworkImage(
-                imageUrl: 'imageUrl',
-                height: 80,
-                width: 100,
+                imageUrl: product.imageUrl,
+                fit: BoxFit.contain,
+                height: AppSize.s80,
+                width: AppSize.s100,
               ),
-              SizedBox(width: AppSize.s12),
+              const SizedBox(width: AppSize.s12),
               Expanded(
                 child: ProductTitleWidget(
-                    description: 'description',
-                    productName: 'Banana Apple GOGOGO SHSHSH'),
+                  description: product.description,
+                  productName: product.name,
+                ),
               ),
-              SizedBox(width: AppSize.s12),
+              const SizedBox(width: AppSize.s12),
               Row(
                 children: [
                   Text(
-                    '\$5646',
+                    '${product.price}\$',
                     style: StylesManager.bold16,
                   ),
-                  SizedBox(width: AppSize.s12),
-                  Icon(
+                  const SizedBox(width: AppSize.s12),
+                  const Icon(
                     Icons.arrow_forward_ios_rounded,
                     color: ColorManager.dark,
                   )

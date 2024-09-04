@@ -84,7 +84,7 @@ class _CartApiService implements CartApiService {
     final _data = {'items': cartItemsList};
     final _result = await _dio
         .fetch<Map<String, dynamic>>(_setStreamType<BaseResponse>(Options(
-      method: 'PUT',
+      method: 'POST',
       headers: _headers,
       extra: _extra,
     )

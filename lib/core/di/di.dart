@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get_it/get_it.dart';
 import 'package:groceries_app/core/data/data_source/cart_data_source.dart';
 import 'package:groceries_app/core/data/data_source/favorite_data_source.dart';
@@ -33,6 +35,9 @@ import 'package:groceries_app/features/explore/data/repo/explore_repo_impl.dart'
 import 'package:groceries_app/features/explore/domain/repo/explore_repository.dart';
 import 'package:groceries_app/features/explore/domain/usecases/get_categories_usecase.dart';
 import 'package:groceries_app/features/explore/presentation/cubit/explore_cubit.dart';
+import 'package:groceries_app/features/favorites/domain/usecases/add_all_to_cart_usecase.dart';
+import 'package:groceries_app/features/favorites/domain/usecases/get_favorite_usecase.dart';
+import 'package:groceries_app/features/favorites/presentation/cubit/favorite_cubit.dart';
 import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 import 'package:groceries_app/features/location/data/api/location_api_service.dart';
 import 'package:groceries_app/features/location/data/api/update_address_api_service.dart';
