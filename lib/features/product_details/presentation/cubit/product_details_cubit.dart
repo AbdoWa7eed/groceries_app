@@ -4,6 +4,7 @@ import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/product_details/domain/entities/product_details_entity.dart';
 import 'package:groceries_app/features/product_details/domain/usecases/add_to_favorite_usecase.dart';
 import 'package:groceries_app/features/product_details/domain/usecases/get_product_details_usecase.dart';
+
 part 'product_details_state.dart';
 
 class ProductDetailsCubit extends Cubit<ProductDetailsState> {
@@ -57,4 +58,6 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
       emit(UpdateFavoriteError(result.failure.message));
     }
   }
+
+  int quantity = 1;
 }

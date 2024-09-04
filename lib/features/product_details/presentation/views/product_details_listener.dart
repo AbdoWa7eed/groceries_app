@@ -6,7 +6,7 @@ import 'package:groceries_app/features/product_details/presentation/cubit/produc
 
 class ProductDetailsListener extends StatelessWidget {
   const ProductDetailsListener({super.key, required this.child});
-  final Widget? child;
+  final Widget child;
 
   @override
   Widget build(BuildContext context) {
