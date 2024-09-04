@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:groceries_app/features/favorites/presentation/cubit/favorite_cubit.dart';
 
 class HomeController extends ChangeNotifier {
   int _currentIndex = 0;
@@ -22,6 +23,7 @@ class HomeController extends ChangeNotifier {
         getIt<CartCubit>().initCart();
         break;
       case 3:
+        getIt<FavoriteCubit>().initFavorite();
         break;
     }
   }

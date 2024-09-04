@@ -17,7 +17,7 @@ abstract class CartApiService {
   @PUT('cart')
   Future<BaseResponse> updateItemQuantity(@Body() CartRequestBody cartItem);
 
-  @PUT('cart/add_all')
+  @POST('cart/add_all')
   Future<BaseResponse> addAllToCart(
       @Field('items') List<CartRequestBody> cartItemsList);
 

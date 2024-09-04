@@ -25,7 +25,6 @@ class ProductDetailsViewBody extends StatelessWidget {
         if (state is GetProductDetailsError) {
           return CustomErrorWidget(error: state.message);
         }
-
         if (state is GetProductDetailsLoading) {
           return const Center(child: CircularProgressIndicator());
         }

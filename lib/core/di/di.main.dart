@@ -70,6 +70,7 @@ initHomeDi() async {
   initProductsResources();
   initShopScreenDi();
   initCartDi();
+  initFavoriteDi();
 }
 
 initProductsResources() {
@@ -105,7 +106,6 @@ initShopScreenDi() async {
 }
 
 initProductDetailsDi() async {
-  initFavoriteDi();
   if (!getIt.isRegistered<ProductDetailsCubit>()) {
     getIt
       ..registerLazySingleton<ProductDetailsApiService>(
@@ -124,7 +124,7 @@ initProductDetailsDi() async {
 }
 
 initFavoriteDi() {
-  if (!getIt.isRegistered<FavoriteRepository>()) {
+  if (!getIt.isRegistered<FavoriteCubit>()) {
     getIt
       ..registerLazySingleton<FavoriteApiService>(
           () => FavoriteApiService(DioFactory.getDio()))
@@ -132,8 +132,14 @@ initFavoriteDi() {
           () => FavoriteDataSourceImpl(getIt()))
       ..registerLazySingleton<FavoriteRepository>(
           () => FavoriteRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetFavoriteUseCase>(
+          () => GetFavoriteUseCase(getIt()))
+      ..registerLazySingleton<AddAllToCartUseCase>(
+          () => AddAllToCartUseCase(getIt()))
       ..registerLazySingleton<RemoveFromFavoriteUseCase>(
-          () => RemoveFromFavoriteUseCase(getIt()));
+          () => RemoveFromFavoriteUseCase(getIt()))
+      ..registerLazySingleton<FavoriteCubit>(
+          () => FavoriteCubit(getIt(), getIt(), getIt()));
   }
 }
 

@@ -1,13 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:groceries_app/core/data/models/base_response.dart';
 import 'package:groceries_app/core/data/models/products_response.dart';
-import 'package:retrofit/retrofit.dart';
 import 'package:groceries_app/core/network/api_constants.dart';
+import 'package:retrofit/retrofit.dart';
+
 part 'favorite_api_service.g.dart';
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
 abstract class FavoriteApiService {
-  factory FavoriteApiService(Dio dio , {String? baseUrl}) = _FavoriteApiService;
+  factory FavoriteApiService(Dio dio, {String? baseUrl}) = _FavoriteApiService;
 
   @POST('favorites')
   Future<BaseResponse> addFavorite(
@@ -19,6 +20,6 @@ abstract class FavoriteApiService {
     @Field() int productId,
   );
 
-  @DELETE('favorites')
+  @GET('favorites')
   Future<ProductsResponse> getFavorites();
 }

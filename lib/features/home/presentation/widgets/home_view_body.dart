@@ -22,9 +22,6 @@ class _HomeViewBodyState extends State<HomeViewBody> {
         return PageView(
           controller: provider.pageController,
           physics: const NeverScrollableScrollPhysics(),
-          onPageChanged: (index) {
-            provider.setIndex(index);
-          },
           children: const [
             ShopView(),
             ExploreView(),
