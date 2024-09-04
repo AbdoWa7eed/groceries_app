@@ -14,33 +14,33 @@ class ProductDetailsPriceWidget extends StatefulWidget {
 }
 
 class _ProductDetailsPriceWidgetState extends State<ProductDetailsPriceWidget> {
-  int quantity = 1;
+  late final ProductDetailsCubit _cubit;
+  @override
+  void initState() {
+    _cubit = context.read<ProductDetailsCubit>();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ProductDetailsCubit, ProductDetailsState>(
-      builder: (context, state) {
-        final cubit = context.read<ProductDetailsCubit>();
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: AppPadding.p28),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              QuantityCounterWidget(
-                onQuantityChanged: (value) {
-                  quantity = value;
-                  setState(() {});
-                },
-              ),
-              Text('\$${_getPrice(cubit.productDetailsEntity.unitPrice)}',
-                  style: StylesManager.bold24),
-            ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: AppPadding.p28),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          QuantityCounterWidget(
+            onQuantityChanged: (value) {
+              setState(() {
+                _cubit.quantity = value;
+              });
+            },
           ),
-        );
-      },
+          Text('\$$price', style: StylesManager.bold24),
+        ],
+      ),
     );
   }
 
-  String _getPrice(double price) {
-    return (price * quantity).toStringAsFixed(2);
-  }
+  String get price =>
+      (_cubit.productDetailsEntity.price * _cubit.quantity).toStringAsFixed(2);
 }

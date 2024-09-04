@@ -42,9 +42,9 @@ class CartCubit extends Cubit<CartState> {
     }
   }
 
-  void addToCart(int product) async {
-    final result =
-        await _addToCartUsecase.execute(CartUseCaseInput(productId: product));
+  void addToCart(int productId, {int quantity = 1}) async {
+    final result = await _addToCartUsecase
+        .execute(CartUseCaseInput(productId: productId, quantity: quantity));
     if (result.isRight()) {
       emit(AddToCartSuccess(result.right));
     } else {
