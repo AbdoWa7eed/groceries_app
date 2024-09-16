@@ -77,11 +77,31 @@ abstract class AppStrings {
 
   // Cart
   static const String myCart = 'My Cart';
-  static const String checkout = 'Go To Checkout';
+  static const String goToCheckout = 'Go To Checkout';
+  static const String checkout = 'Checkout';
   static const String emptyCart = 'No items in cart, Add some';
 
   // Favorites
   static const String favorites = 'Favorites';
   static const String addAllToCart = 'Add All To Cart';
   static const String favoriteListEmpty = 'Your Favorite list is empty';
+
+  //Checkout
+  static const String placeOrder = "Place Order";
+  static const String card = "Card";
+  static const String cash = "Cash";
+  static const String paymentMethod = "Payment Method";
+  static const String deliveryAddress = "Delivery Address";
+  static const String totalAmount = "Total Amount";
+  static const String change = "Change";
+  static const String placingOrderTerms =
+      "By placing an order you agree to our ";
+  static const String termsAndConditions = "Terms & Conditions";
+
+  static const String orderPlacedTitle = "Your Order has been accepted";
+  static const String orderPlacedSubTitle =
+      "Your items has been placed and on its way to being processed";
+  static const String orderFailedTitle = "Oops! Order Failed";
+  static const String tryAgain = "Please Try Again";
+  static const String backToHome = "Back To Home";
 }

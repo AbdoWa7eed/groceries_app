@@ -4,10 +4,14 @@ import 'package:go_router/go_router.dart';
 
 extension NavigationExtension on BuildContext {
   void popAllThenPush(String location, {Object? extra}) {
-    while (canPop()) {
-      pop();
-    }
+    popAll(extra: extra);
     pushReplacement(location, extra: extra);
+  }
+
+  void popAll({Object? extra}) {
+    while (canPop()) {
+      pop(extra);
+    }
   }
 }
 

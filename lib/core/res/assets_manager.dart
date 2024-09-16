@@ -17,4 +17,8 @@ abstract class AssetsManager {
   static const errorJson = '$_jsonPath/error.json';
   static const emptyCartJson = '$_jsonPath/empty_cart.json';
   static const clearIcon = '$_imagePath/clear.svg';
+  static const card = '$_imagePath/card.svg';
+  static const cash = '$_imagePath/cash.svg';
+  static const groceriesBucket = '$_imagePath/groceries_bucket.png';
+  static const success = '$_imagePath/success.png';
 }

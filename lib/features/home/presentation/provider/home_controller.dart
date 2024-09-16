@@ -28,5 +28,9 @@ class HomeController extends ChangeNotifier {
     }
   }
 
+  void backToHome() {
+    setIndex(0);
+  }
+
   int get index => _currentIndex;
 }

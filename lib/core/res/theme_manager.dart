@@ -27,7 +27,7 @@ ThemeData get appTheme {
         elevation: 0,
         color: ColorManager.white,
         systemOverlayStyle: SystemUiOverlayStyle(
-          statusBarColor: ColorManager.white,
+          statusBarColor: Colors.transparent,
           statusBarIconBrightness: Brightness.dark,
         ),
         centerTitle: true,
@@ -54,9 +54,5 @@ ThemeData get appTheme {
             borderRadius: BorderRadius.circular(AppSize.s8),
           ),
         ),
-      ),
-      dialogTheme: DialogTheme(
-        shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppSize.s8)),
       ));
 }
