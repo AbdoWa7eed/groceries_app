@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:groceries_app/core/res/assets_manager.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
+import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:groceries_app/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:groceries_app/features/checkout/presentation/widgets/checkout_list_item.dart';
 import 'package:groceries_app/features/checkout/presentation/widgets/checkout_list_view_item_model.dart';
 import 'package:groceries_app/features/checkout/presentation/widgets/payment_methods_dialog.dart';
+import 'package:groceries_app/features/checkout/presentation/widgets/payment_suffix_icon.dart';
 
 class CheckoutDataListView extends StatefulWidget {
   const CheckoutDataListView({super.key});
@@ -16,7 +18,7 @@ class CheckoutDataListView extends StatefulWidget {
 }
 
 class _CheckoutDataListViewState extends State<CheckoutDataListView> {
-  late final List<CheckoutListViewItemModel> _items;
+  late List<CheckoutListViewItemModel> _items;
 
   @override
   void initState() {
@@ -31,7 +33,7 @@ class _CheckoutDataListViewState extends State<CheckoutDataListView> {
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
-            return CheckoutListItem(model: _items[index]);
+            return CheckoutListItem(model: _buildItems()[index]);
           },
           separatorBuilder: (context, index) {
             return const Divider(color: ColorManager.lightGray);
@@ -39,8 +41,6 @@ class _CheckoutDataListViewState extends State<CheckoutDataListView> {
           itemCount: _items.length),
     );
   }
-
-
 
   List<CheckoutListViewItemModel> _buildItems() {
     return [
@@ -50,12 +50,16 @@ class _CheckoutDataListViewState extends State<CheckoutDataListView> {
           onTap: () {}),
       CheckoutListViewItemModel(
           title: AppStrings.paymentMethod,
-          suffix: SvgPicture.asset(AssetsManager.card),
+          suffix: const PaymentSuffixIcon(),
           onTap: _showPaymentMethodsDialog),
       CheckoutListViewItemModel(
-          title: AppStrings.totalAmount, suffix: _buildSuffixText('\$60.30')),
+        title: AppStrings.totalAmount,
+        suffix: _buildSuffixText('\$$totalPrice'),
+      ),
     ];
   }
+
+  String get totalPrice => context.read<CartCubit>().cartPrice;
 
   Widget _buildSuffixText(String text) {
     return Text(text,
@@ -63,11 +67,14 @@ class _CheckoutDataListViewState extends State<CheckoutDataListView> {
   }
 
   void _showPaymentMethodsDialog() {
+    final cubit = context.read<CheckoutCubit>();
     showDialog(
         context: context,
         builder: (context) {
-          return const PaymentMethodsDialog();
+          return BlocProvider<CheckoutCubit>.value(
+            value: cubit,
+            child: const PaymentMethodsDialog(),
+          );
         });
   }
-
 }

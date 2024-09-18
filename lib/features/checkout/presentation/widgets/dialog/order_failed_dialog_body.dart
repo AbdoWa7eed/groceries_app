@@ -11,7 +11,9 @@ import 'package:groceries_app/features/checkout/presentation/widgets/dialog/chec
 import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 
 class OrderFailedDialogBody extends StatelessWidget {
-  const OrderFailedDialogBody({super.key});
+  const OrderFailedDialogBody({super.key, required this.errorMessage});
+
+  final String errorMessage;
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +26,10 @@ class OrderFailedDialogBody extends StatelessWidget {
           AssetsManager.groceriesBucket,
         ),
         const SizedBox(height: AppSize.s20),
-        const CheckoutDialogTextWidget(
+        CheckoutDialogTextWidget(
           title: AppStrings.orderFailedTitle,
           // TODO: add error message
-          subTitle: 'Something Went Wrong',
+          subTitle: errorMessage,
         ),
         const SizedBox(height: AppSize.s30),
         CustomElevatedButtonWidget(

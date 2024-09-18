@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:get_it/get_it.dart';
 import 'package:groceries_app/core/data/data_source/cart_data_source.dart';
 import 'package:groceries_app/core/data/data_source/favorite_data_source.dart';
@@ -29,6 +27,13 @@ import 'package:groceries_app/features/cart/domain/usecases/get_cart_usecase.dar
 import 'package:groceries_app/features/cart/domain/usecases/remove_from_cart_usecase.dart';
 import 'package:groceries_app/features/cart/domain/usecases/update_item_quantity_usecase.dart';
 import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:groceries_app/features/checkout/data/api/checkout_api_service.dart';
+import 'package:groceries_app/features/checkout/data/data_source/checkout_data_source.dart';
+import 'package:groceries_app/features/checkout/data/repo/checkout_repo_impl.dart';
+import 'package:groceries_app/features/checkout/domain/repo/checkout_repository.dart';
+import 'package:groceries_app/features/checkout/domain/usecases/confirm_payment_usecase.dart';
+import 'package:groceries_app/features/checkout/domain/usecases/place_order_usecase.dart';
+import 'package:groceries_app/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:groceries_app/features/explore/data/api/explore_api_service.dart';
 import 'package:groceries_app/features/explore/data/data_source/explore_data_source.dart';
 import 'package:groceries_app/features/explore/data/repo/explore_repo_impl.dart';

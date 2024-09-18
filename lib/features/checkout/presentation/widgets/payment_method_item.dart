@@ -6,15 +6,20 @@ import 'package:groceries_app/core/res/values_manager.dart';
 
 class PaymentMethodItem extends StatelessWidget {
   const PaymentMethodItem(
-      {super.key, required this.title, required this.svgPath});
+      {super.key,
+      required this.title,
+      required this.svgPath,
+      required this.onTap});
 
   final String title;
   final String svgPath;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
+        onTap.call();
         context.pop();
       },
       child: Padding(

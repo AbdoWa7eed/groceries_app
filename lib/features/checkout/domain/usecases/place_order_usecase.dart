@@ -4,14 +4,14 @@ import 'package:groceries_app/features/checkout/data/models/place_order_request_
 import 'package:groceries_app/features/checkout/domain/entity/place_order_entity.dart';
 import 'package:groceries_app/features/checkout/domain/repo/checkout_repository.dart';
 
-class PlaceOrderUsecase
+class PlaceOrderUseCase
     extends BaseUseCase<PlaceOrderUseCaseInput, PlaceOrderEntity> {
   final CheckoutRepository _checkoutRepository;
 
-  PlaceOrderUsecase(this._checkoutRepository);
+  PlaceOrderUseCase(this._checkoutRepository);
 
   @override
-  ResultFuture<PlaceOrderEntity> execute(OrderRequestModel input) {
+  ResultFuture<PlaceOrderEntity> execute(PlaceOrderUseCaseInput input) {
     return _checkoutRepository.placeOrder(input);
   }
 }

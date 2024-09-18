@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:groceries_app/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:groceries_app/features/checkout/presentation/views/checkout_view.dart';
 
 class CheckoutButtonWidget extends StatelessWidget {
@@ -43,13 +45,21 @@ class CheckoutButtonWidget extends StatelessWidget {
             ],
           ),
           onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              builder: (context) {
-                return const CheckoutView();
-              },
-            );
+            _showCheckoutBottomSheet(context);
           },
+        );
+      },
+    );
+  }
+
+  void _showCheckoutBottomSheet(BuildContext context) {
+    initCheckoutDi();
+    showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return BlocProvider(
+          create: (context) => getIt<CheckoutCubit>(),
+          child: const CheckoutView(),
         );
       },
     );

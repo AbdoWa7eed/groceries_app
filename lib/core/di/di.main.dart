@@ -182,3 +182,20 @@ initCartDi() async {
           () => CartCubit(getIt(), getIt(), getIt(), getIt()));
   }
 }
+
+initCheckoutDi() {
+  if (!getIt.isRegistered<CheckoutCubit>()) {
+    getIt
+      ..registerLazySingleton<CheckoutApiService>(
+          () => CheckoutApiService(DioFactory.getDio()))
+      ..registerLazySingleton<CheckoutDataSource>(
+          () => CheckoutDataSourceImpl(getIt()))
+      ..registerLazySingleton<CheckoutRepository>(
+          () => CheckoutRepositoryImpl(getIt()))
+      ..registerLazySingleton<PlaceOrderUseCase>(
+          () => PlaceOrderUseCase(getIt()))
+      ..registerLazySingleton<ConfirmPaymentUseCase>(
+          () => ConfirmPaymentUseCase(getIt()))
+      ..registerFactory<CheckoutCubit>(() => CheckoutCubit(getIt(), getIt()));
+  }
+}
