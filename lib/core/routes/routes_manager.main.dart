@@ -97,8 +97,8 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.locationRoute,
         builder: (context, state) {
-          initLocationDi();
-          getIt<LocationCubit>().isAuth = state.extra as bool? ?? false;
+          final purpose = state.extra as LocationPurpose;
+          initLocationDi(purpose);
           return BlocProvider<LocationCubit>(
               create: (context) => getIt<LocationCubit>(),
               child: const SelectLocationView());

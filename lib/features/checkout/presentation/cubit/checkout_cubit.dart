@@ -16,15 +16,15 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   final PlaceOrderUseCase _placeOrderUseCase;
   final ConfirmPaymentUseCase _confirmPaymentUseCase;
 
-  late final PlaceOrderEntity _entity;
+  late final PlaceOrderEntity? _entity;
 
   void placeOrder() async {
     emit(PlaceOrderLoading());
-    final result = await _placeOrderUseCase
-        .execute(PlaceOrderUseCaseInput(paymentMethod: paymentMethod));
+    final result = await _placeOrderUseCase.execute(PlaceOrderUseCaseInput(
+        paymentMethod: paymentMethod, shippingAddress: deliveryAddress));
     if (result.isRight()) {
       _entity = result.right;
-      if (_entity.paymentLink != null) {
+      if (_entity!.paymentLink != null) {
         //TODO: Complete Order Payment Process
       }
       emit(PlaceOrderSuccess());
@@ -36,9 +36,11 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   confirmPayment() async {
     emit(ConfirmPaymentLoading());
     final result = await _confirmPaymentUseCase.execute(
-        ConfirmPaymentUseCaseInput(
-            orderId: _entity.orderId.toString(),
-            paymentLink: _entity.paymentLink.toString()));
+      ConfirmPaymentUseCaseInput(
+        orderId: _entity!.orderId.toString(),
+        paymentLink: _entity.paymentLink.toString(),
+      ),
+    );
     if (result.isRight()) {
       emit(ConfirmPaymentSuccess());
     } else {
@@ -47,6 +49,8 @@ class CheckoutCubit extends Cubit<CheckoutState> {
   }
 
   String? _paymentMethod;
+
+  String? deliveryAddress;
 
   String get paymentMethod => _paymentMethod ?? PaymentMethodsEnum.paymob.name;
 

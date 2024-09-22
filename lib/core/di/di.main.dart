@@ -38,7 +38,7 @@ initPhoneAuthDi() async {
   }
 }
 
-initLocationDi() async {
+initLocationDi(LocationPurpose purpose) async {
   if (!getIt.isRegistered<LocationCubit>()) {
     getIt
       ..registerLazySingleton<LocationApiService>(
@@ -57,8 +57,8 @@ initLocationDi() async {
           () => GetPlaceDetailsUseCase(getIt()))
       ..registerLazySingleton<UpdateUserAddressUseCase>(
           () => UpdateUserAddressUseCase(getIt()))
-      ..registerLazySingleton<LocationCubit>(
-          () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
+      ..registerFactory<LocationCubit>(
+          () => LocationCubit(getIt(), getIt(), getIt(), getIt(), purpose));
   }
 }
 
@@ -196,6 +196,12 @@ initCheckoutDi() {
           () => PlaceOrderUseCase(getIt()))
       ..registerLazySingleton<ConfirmPaymentUseCase>(
           () => ConfirmPaymentUseCase(getIt()))
-      ..registerFactory<CheckoutCubit>(() => CheckoutCubit(getIt(), getIt()));
+      ..registerLazySingleton<CheckoutCubit>(
+          () => CheckoutCubit(getIt(), getIt()));
+  } else {
+    getIt.unregister<CheckoutCubit>(
+        disposingFunction: (cubit) => cubit.isClosed ? null : cubit.close());
+    getIt.registerLazySingleton<CheckoutCubit>(
+        () => CheckoutCubit(getIt(), getIt()));
   }
 }

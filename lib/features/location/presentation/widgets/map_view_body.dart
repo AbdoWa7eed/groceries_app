@@ -19,8 +19,8 @@ class _MapViewBodyState extends State<MapViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<LocationCubit, LocationState>(
-      builder: (context, state) {
+    return BlocListener<LocationCubit, LocationState>(
+      listener: (context, state) {
         if (state is GetPositionSuccess) {
           _setLatLng(state.position.latitude, state.position.longitude);
         }
@@ -35,23 +35,22 @@ class _MapViewBodyState extends State<MapViewBody> {
             });
           });
         }
-
-        return Stack(
-          children: [
-            GoogleMap(
-              mapToolbarEnabled: false,
-              onMapCreated: (controller) => _mapController = controller,
-              markers: _marker == null ? {} : {_marker!},
-              initialCameraPosition: CameraPosition(target: latLng!, zoom: 16),
-              mapType: MapType.normal,
-              myLocationButtonEnabled: false,
-              zoomControlsEnabled: false,
-              myLocationEnabled: false,
-            ),
-            const SearchBarWidget(),
-          ],
-        );
       },
+      child: Stack(
+        children: [
+          GoogleMap(
+            mapToolbarEnabled: false,
+            onMapCreated: (controller) => _mapController = controller,
+            markers: _marker == null ? {} : {_marker!},
+            initialCameraPosition: CameraPosition(target: latLng!, zoom: 16),
+            mapType: MapType.normal,
+            myLocationButtonEnabled: false,
+            zoomControlsEnabled: false,
+            myLocationEnabled: false,
+          ),
+          const SearchBarWidget(),
+        ],
+      ),
     );
   }
 
@@ -84,16 +83,13 @@ class _MapViewBodyState extends State<MapViewBody> {
 
   _showConfirmationDialog(String address) {
     final cubit = context.read<LocationCubit>();
-    if (!cubit.isConfirmationDialogShown) {
-      cubit.confirmationDialogShown = true;
-      showDialog(
-          context: context,
-          barrierDismissible: false,
-          builder: (context) => BlocProvider.value(
-                value: cubit,
-                child: LocationConfirmationDialog(address: address),
-              ));
-    }
+    showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => BlocProvider.value(
+              value: cubit,
+              child: LocationConfirmationDialog(address: address),
+            ));
   }
 
   @override

@@ -6,6 +6,7 @@ class LocationInitial extends LocationState {}
 
 abstract class SelectLocationErrorStates extends LocationState {
   final String error;
+
   SelectLocationErrorStates(this.error);
 }
 
@@ -13,6 +14,7 @@ class GetPositionLoading extends LocationState {}
 
 class GetPositionSuccess extends LocationState {
   final Position position;
+
   GetPositionSuccess(this.position);
 }
 
@@ -42,6 +44,7 @@ class GetSuggestedPlacesSuccess extends LocationState {
 
 class GetSuggestedPlacesError extends LocationState {
   final String error;
+
   GetSuggestedPlacesError(this.error);
 }
 
@@ -53,12 +56,18 @@ class GetPlaceDetailsSuccess extends LocationState {
   GetPlaceDetailsSuccess(this.entity);
 }
 
+class GetPlaceDetailsError extends LocationState {
+  final String error;
+
+  GetPlaceDetailsError(this.error);
+}
+
 class UpdateUserAddressError extends LocationState {
   final String error;
+
   UpdateUserAddressError(this.error);
 }
 
 class UpdateUserAddressLoading extends LocationState {}
 
 class UpdateUserAddressSuccess extends LocationState {}
-

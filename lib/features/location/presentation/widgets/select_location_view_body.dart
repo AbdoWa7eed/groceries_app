@@ -38,7 +38,7 @@ class SelectLocationViewBody extends StatelessWidget {
                 child: const Text(AppStrings.selectCurrentLocation,
                     style: StylesManager.regular18),
                 onPressed: () {
-                  cubit.selectCurrentLocation();
+                  cubit.getCurrentLocation();
                 }),
             const SelectOtherLocationWidget(),
           ]),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
+import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
+import 'package:groceries_app/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:groceries_app/features/location/presentation/cubit/location_cubit.dart';
 
 class LocationConfirmationDialog extends StatelessWidget {
@@ -41,7 +44,7 @@ class LocationConfirmationDialog extends StatelessWidget {
                         height: AppSize.s45,
                         verticalPadding: 0,
                         onPressed: () {
-                          cubit.confirmationDialogShown = false;
+                          // cubit.confirmationDialogShown = false;
                           context.pop();
                         },
                         child: const Text(AppStrings.cancel,
@@ -53,7 +56,11 @@ class LocationConfirmationDialog extends StatelessWidget {
                         verticalPadding: 0,
                         height: AppSize.s45,
                         onPressed: () {
-                          cubit.updateUserAddress(address);
+                          if (cubit.purpose != LocationPurpose.delivery) {
+                            cubit.updateUserAddress(address);
+                          } else {
+                            navigateToCheckout(context);
+                          }
                         },
                         child: const Text(AppStrings.confirm,
                             style: StylesManager.regular18)),
@@ -65,5 +72,17 @@ class LocationConfirmationDialog extends StatelessWidget {
         );
       },
     );
+  }
+
+  void navigateToCheckout(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      var router = GoRouter.of(context);
+      var currentRoute = router.routerDelegate.currentConfiguration.routes;
+      while (currentRoute.length > 1) {
+        router.pop(address);
+        currentRoute = router.routerDelegate.currentConfiguration.routes;
+      }
+      getIt<CheckoutCubit>().deliveryAddress = address;
+    });
   }
 }
