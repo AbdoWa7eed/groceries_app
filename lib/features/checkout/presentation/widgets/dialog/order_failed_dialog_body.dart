@@ -28,7 +28,6 @@ class OrderFailedDialogBody extends StatelessWidget {
         const SizedBox(height: AppSize.s20),
         CheckoutDialogTextWidget(
           title: AppStrings.orderFailedTitle,
-          // TODO: add error message
           subTitle: errorMessage,
         ),
         const SizedBox(height: AppSize.s30),

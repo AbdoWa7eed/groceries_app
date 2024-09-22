@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
+import 'package:groceries_app/core/routes/routes_manager.dart';
+import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:groceries_app/features/checkout/presentation/cubit/checkout_cubit.dart';
 import 'package:groceries_app/features/checkout/presentation/widgets/checkout_list_item.dart';
@@ -47,7 +50,9 @@ class _CheckoutDataListViewState extends State<CheckoutDataListView> {
       CheckoutListViewItemModel(
           title: AppStrings.deliveryAddress,
           suffix: _buildSuffixText(AppStrings.change),
-          onTap: () {}),
+          onTap: () {
+            context.push(Routes.locationRoute, extra: LocationPurpose.delivery);
+          }),
       CheckoutListViewItemModel(
           title: AppStrings.paymentMethod,
           suffix: const PaymentSuffixIcon(),

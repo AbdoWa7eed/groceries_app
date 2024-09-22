@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/domain/entities/category_entity.dart';
 import 'package:groceries_app/core/utils/app_preferences.dart';
+import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
 import 'package:groceries_app/features/auth/presentation/views/register_view.dart';
@@ -22,6 +23,7 @@ import 'package:groceries_app/features/product_details/presentation/views/produc
 import 'package:groceries_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:groceries_app/features/search/presentation/views/search_result_view.dart';
 import 'package:groceries_app/features/shop/presentation/views/see_all_view.dart';
+
 import '../widgets/slide_transition.dart';
 
 part 'routes_manager.main.dart';

@@ -4,6 +4,7 @@ import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
+import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/skip_text_button.dart';
 import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
@@ -43,7 +44,7 @@ class PhoneAuthViewBody extends StatelessWidget {
                           onPressed: () {
                             context.popAllThenPush(
                               Routes.locationRoute,
-                              extra: true,
+                              extra: LocationPurpose.newAccount,
                             );
                           },
                         ),

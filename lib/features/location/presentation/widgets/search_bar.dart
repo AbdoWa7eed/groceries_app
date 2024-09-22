@@ -51,7 +51,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               top: AppMargin.m40, start: AppMargin.m20, end: AppMargin.m20),
           automaticallyImplyBackButton: false,
           automaticallyImplyDrawerHamburger: false,
-          leadingActions: _buildLeadingsList(),
+          leadingActions: _buildLeadingList(),
           controller: _searchBarController,
           elevation: AppSize.s4,
           hint: AppStrings.searchLocation,
@@ -69,7 +69,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
     );
   }
 
-  List<Widget> _buildLeadingsList() {
+  List<Widget> _buildLeadingList() {
     return [
       FloatingSearchBarAction.icon(
         showIfClosed: true,
