@@ -1,3 +1,5 @@
+import 'dart:developer' as dev;
+
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
@@ -52,7 +54,7 @@ extension NonNullDouble on double? {
 }
 
 extension ScrollControllerExtension on ScrollController {
-  bool isReached70PrecentPosition() {
+  bool isReached70PercentPosition() {
     final maxScroll = position.maxScrollExtent;
     final currentScroll = position.pixels;
     final delta = 0.3 * maxScroll;
@@ -69,4 +71,20 @@ extension GetOnlyNewItems<T> on List<T> {
   }
 
   int get nextPage => (length ~/ 8) + 1;
+}
+
+void logInfo(String msg) {
+  dev.log('\x1B[34m$msg\x1B[0m');
+}
+
+void logSuccess(String msg) {
+  dev.log('\x1B[32m$msg\x1B[0m');
+}
+
+void logWarning(String msg) {
+  dev.log('\x1B[33m$msg\x1B[0m');
+}
+
+void logError(String msg) {
+  dev.log('\x1B[31m$msg\x1B[0m');
 }

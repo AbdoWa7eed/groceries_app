@@ -9,3 +9,5 @@ enum LocationPurpose {
   changeAddress,
   delivery,
 }
+
+enum PaymentUrlType { success, redirect, pending, error }

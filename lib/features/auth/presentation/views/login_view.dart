@@ -16,10 +16,11 @@ class LoginView extends StatelessWidget {
     return const LoginViewListener(
       child: Scaffold(
         body: SafeArea(
-            child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: AppPadding.p16),
-          child: LoginViewBody(),
-        )),
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: AppPadding.p16),
+            child: LoginViewBody(),
+          ),
+        ),
       ),
     );
   }

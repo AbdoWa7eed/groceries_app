@@ -104,4 +104,7 @@ abstract class AppStrings {
   static const String orderFailedTitle = "Oops! Order Failed";
   static const String tryAgain = "Please Try Again";
   static const String backToHome = "Back To Home";
+  // Confirm Payment
+  static const String confirmPayment = "Confirm Payment";
+  static const String paymentFailed = "Payment Failed Try Again";
 }

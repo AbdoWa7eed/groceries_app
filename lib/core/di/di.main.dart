@@ -194,14 +194,25 @@ initCheckoutDi() {
           () => CheckoutRepositoryImpl(getIt()))
       ..registerLazySingleton<PlaceOrderUseCase>(
           () => PlaceOrderUseCase(getIt()))
-      ..registerLazySingleton<ConfirmPaymentUseCase>(
-          () => ConfirmPaymentUseCase(getIt()))
-      ..registerLazySingleton<CheckoutCubit>(
-          () => CheckoutCubit(getIt(), getIt()));
+      ..registerLazySingleton<CheckoutCubit>(() => CheckoutCubit(getIt()));
   } else {
     getIt.unregister<CheckoutCubit>(
         disposingFunction: (cubit) => cubit.isClosed ? null : cubit.close());
-    getIt.registerLazySingleton<CheckoutCubit>(
-        () => CheckoutCubit(getIt(), getIt()));
+    getIt.registerLazySingleton<CheckoutCubit>(() => CheckoutCubit(getIt()));
+  }
+}
+
+initConfirmPaymentDi() {
+  if (!getIt.isRegistered<ConfirmPaymentCubit>()) {
+    getIt
+      ..registerLazySingleton<ConfirmPaymentUseCase>(
+          () => ConfirmPaymentUseCase(getIt()))
+      ..registerFactory<ConfirmPaymentCubit>(
+          () => ConfirmPaymentCubit(getIt()));
+  } else {
+    getIt.unregister<ConfirmPaymentCubit>(
+        disposingFunction: (cubit) => cubit.isClosed ? null : cubit.close());
+    getIt.registerLazySingleton<ConfirmPaymentCubit>(
+        () => ConfirmPaymentCubit(getIt()));
   }
 }
