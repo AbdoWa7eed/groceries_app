@@ -15,6 +15,7 @@ abstract class Routes {
   static const String verifyPhoneRoute = "/verifyPhone";
   static const String seeAllRoute = '/seeAll';
   static const String searchResult = '/searchResult';
+  static const String confirmPayment = '/confirmPayment';
 }
 
 abstract class RouteGenerator {
@@ -164,6 +165,19 @@ abstract class RouteGenerator {
                 create: (context) =>
                     getIt<SearchCubit>()..getInitialProducts(query),
                 child: const SearchResultView()),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.confirmPayment,
+        pageBuilder: (context, state) {
+          initConfirmPaymentDi();
+          final entity = state.extra as PlaceOrderEntity;
+          return CustomSlideTransition(
+            child: BlocProvider<ConfirmPaymentCubit>(
+                create: (context) =>
+                    getIt<ConfirmPaymentCubit>()..setEntity(entity),
+                child: const ConfirmPaymentView()),
           );
         },
       ),

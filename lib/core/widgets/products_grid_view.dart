@@ -31,7 +31,7 @@ class _ProductsGridViewState extends State<ProductsGridView> {
 
   _fetchMoreData() async {
     if (_isFetching!) return;
-    if (_scrollController!.isReached70PrecentPosition()) {
+    if (_scrollController!.isReached70PercentPosition()) {
       _isFetching = true;
       await widget.onScroll?.call();
       await Future.delayed(const Duration(seconds: 1), () {
