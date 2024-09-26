@@ -16,7 +16,6 @@ class SelectOtherLocationWidget extends StatelessWidget {
         if (state is GetPositionLoading) {
           return const CircularProgressIndicator();
         }
-
         return TextButton(
           onPressed: () {
             cubit.getPosition();

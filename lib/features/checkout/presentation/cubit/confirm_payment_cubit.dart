@@ -45,8 +45,6 @@ class ConfirmPaymentCubit extends Cubit<ConfirmPaymentState> {
     return uri.queryParameters;
   }
 
-
-
   PaymentUrlType getUrlType() {
     final queryParameters = _getQueryParameters();
     final isRedirect = queryParameters.containsKey('payment_token') &&

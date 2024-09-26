@@ -16,23 +16,24 @@ class SelectLocationView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LocationViewListener(
-      child:
-          BlocBuilder<LocationCubit, LocationState>(builder: (context, state) {
-        final cubit = context.read<LocationCubit>();
-        return Scaffold(
-          appBar: AppBar(
-            actions: cubit.purpose == LocationPurpose.newAccount
-                ? [SkipTextButton(onPressed: () {})]
-                : [],
-            title: const Text(
-              AppStrings.location,
-              style: StylesManager.bold24,
+      child: BlocBuilder<LocationCubit, LocationState>(
+        builder: (context, state) {
+          final cubit = context.read<LocationCubit>();
+          return Scaffold(
+            appBar: AppBar(
+              actions: cubit.purpose == LocationPurpose.newAccount
+                  ? [SkipTextButton(onPressed: () {})]
+                  : [],
+              title: const Text(
+                AppStrings.location,
+                style: StylesManager.bold24,
+              ),
+              leading: context.canPop() ? const CustomBackButton() : null,
             ),
-            leading: context.canPop() ? const CustomBackButton() : null,
-          ),
-          body: const SelectLocationViewBody(),
-        );
-      }),
+            body: const SelectLocationViewBody(),
+          );
+        },
+      ),
     );
   }
 }

@@ -16,7 +16,6 @@ import 'package:groceries_app/core/network/dio_factory.dart';
 import 'package:groceries_app/core/network/favorites/favorite_api_service.dart';
 import 'package:groceries_app/core/network/products/product_api_service.dart';
 import 'package:groceries_app/core/utils/app_preferences.dart';
-import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/features/auth/data/api/auth_api_service.dart';
 import 'package:groceries_app/features/auth/data/data_source/auth_data_source.dart';
 import 'package:groceries_app/features/auth/data/repo/auth_repository_impl.dart';

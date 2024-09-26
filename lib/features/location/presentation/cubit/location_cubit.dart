@@ -19,14 +19,15 @@ class LocationCubit extends Cubit<LocationState> {
     this._suggestedPlacesUseCase,
     this._placeDetailsUseCase,
     this._updateUserAddressUseCase,
-    this._purpose,
   ) : super(LocationInitial());
 
   final GetPlaceFromCoordinatesUseCase _placeFromCoordinatesUseCase;
   final GetSuggestedPlacesUseCase _suggestedPlacesUseCase;
   final GetPlaceDetailsUseCase _placeDetailsUseCase;
   final UpdateUserAddressUseCase _updateUserAddressUseCase;
-  final LocationPurpose _purpose;
+  late final LocationPurpose _purpose;
+
+  void setPurpose(LocationPurpose purpose) => _purpose = purpose;
 
   LocationPurpose get purpose => _purpose;
 
