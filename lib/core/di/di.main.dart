@@ -38,7 +38,7 @@ initPhoneAuthDi() async {
   }
 }
 
-initLocationDi(LocationPurpose purpose) async {
+initLocationDi() async {
   if (!getIt.isRegistered<LocationCubit>()) {
     getIt
       ..registerLazySingleton<LocationApiService>(
@@ -57,8 +57,16 @@ initLocationDi(LocationPurpose purpose) async {
           () => GetPlaceDetailsUseCase(getIt()))
       ..registerLazySingleton<UpdateUserAddressUseCase>(
           () => UpdateUserAddressUseCase(getIt()))
-      ..registerFactory<LocationCubit>(
-          () => LocationCubit(getIt(), getIt(), getIt(), getIt(), purpose));
+      ..registerLazySingleton<LocationCubit>(
+          () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
+  } else {
+    final state = getIt<LocationCubit>().state;
+    if (state is! GetPositionSuccess) {
+      getIt.unregister<LocationCubit>(
+          disposingFunction: (cubit) => cubit.isClosed ? null : cubit.close());
+      getIt.registerLazySingleton<LocationCubit>(
+          () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
+    }
   }
 }
 

@@ -18,19 +18,25 @@ class _MapViewBodyState extends State<MapViewBody> {
   late final GoogleMapController _mapController;
 
   @override
+  void initState() {
+    super.initState();
+
+    final position = context.read<LocationCubit>().state;
+    if (position is GetPositionSuccess) {
+      _setLatLng(position.position.latitude, position.position.longitude);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return BlocListener<LocationCubit, LocationState>(
       listener: (context, state) {
-        if (state is GetPositionSuccess) {
-          _setLatLng(state.position.latitude, state.position.longitude);
-        }
-
         if (state is GetPlaceDetailsSuccess) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             setState(() {
+              final entity = state.entity;
               _setMarker(state);
-              _setLatLng(state.entity.location.latitude,
-                  state.entity.location.longitude);
+              _setLatLng(entity.location.latitude, entity.location.longitude);
               _animateToPosition(state.entity.address);
             });
           });
