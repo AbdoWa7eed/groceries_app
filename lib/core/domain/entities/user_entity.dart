@@ -8,8 +8,6 @@ class UserEntity extends Equatable {
   final String phoneNumber;
   final String imageUrl;
   final String role;
-  final String accessToken;
-  final String refreshToken;
 
   const UserEntity({
     required this.userId,
@@ -19,8 +17,6 @@ class UserEntity extends Equatable {
     required this.phoneNumber,
     required this.imageUrl,
     required this.role,
-    required this.accessToken,
-    required this.refreshToken,
   });
 
   @override
@@ -32,7 +28,5 @@ class UserEntity extends Equatable {
         phoneNumber,
         imageUrl,
         role,
-        accessToken,
-        refreshToken,
       ];
 }

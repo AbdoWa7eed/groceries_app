@@ -1,5 +1,5 @@
 import 'package:dartz/dartz.dart';
-import 'package:groceries_app/core/data/models/mapper.dart';
+import 'package:groceries_app/core/data/mapper/category_mapper.dart';
 import 'package:groceries_app/core/domain/entities/category_entity.dart';
 import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/network/error_handler.dart';

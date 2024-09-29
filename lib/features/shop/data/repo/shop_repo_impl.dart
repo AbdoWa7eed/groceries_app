@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
+import 'package:groceries_app/core/data/mapper/product_mapper.dart';
 import 'package:groceries_app/core/domain/entities/product_entity.dart';
-import 'package:groceries_app/core/data/models/mapper.dart';
 import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/network/error_handler.dart';
 import 'package:groceries_app/core/network/failure.dart';
@@ -20,7 +20,9 @@ class ShopRepositoryImpl implements ShopRepository {
       if (result.data == null) {
         return Left(Failure.apiInternalError(result.message));
       }
-      return Right(result.data!.items?.map((product) => product.toEntity()).toList() ?? []);
+      return Right(
+          result.data!.items?.map((product) => product.toEntity()).toList() ??
+              []);
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);
     }
@@ -33,7 +35,9 @@ class ShopRepositoryImpl implements ShopRepository {
       if (result.data == null) {
         return Left(Failure.apiInternalError(result.message));
       }
-      return Right(result.data!.items?.map((product) => product.toEntity()).toList() ?? []);
+      return Right(
+          result.data!.items?.map((product) => product.toEntity()).toList() ??
+              []);
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);
     }
@@ -46,7 +50,9 @@ class ShopRepositoryImpl implements ShopRepository {
       if (result.data == null) {
         return Left(Failure.apiInternalError(result.message));
       }
-      return Right(result.data!.items?.map((banner) => banner.toEntity()).toList() ?? []);
+      return Right(
+          result.data!.items?.map((banner) => banner.toEntity()).toList() ??
+              []);
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);
     }
