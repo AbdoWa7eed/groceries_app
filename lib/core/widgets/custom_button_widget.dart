@@ -9,9 +9,12 @@ class CustomElevatedButtonWidget extends StatelessWidget {
   final double verticalPadding;
   final double horizontalPadding;
   final bool isLoading;
+  final ButtonStyle? style;
+
   const CustomElevatedButtonWidget(
       {super.key,
       required this.child,
+      this.style,
       this.onPressed,
       this.width = double.infinity,
       this.height = AppSize.s65,
@@ -30,6 +33,7 @@ class CustomElevatedButtonWidget extends StatelessWidget {
         child: isLoading
             ? const Center(child: CircularProgressIndicator())
             : ElevatedButton(
+                style: style,
                 onPressed: onPressed,
                 child: child,
               ),

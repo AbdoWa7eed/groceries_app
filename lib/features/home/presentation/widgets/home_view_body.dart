@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:groceries_app/core/res/color_manager.dart';
+import 'package:groceries_app/features/account/presentation/views/account_view.dart';
 import 'package:groceries_app/features/cart/presentation/views/cart_view.dart';
 import 'package:groceries_app/features/explore/presentation/views/explore_view.dart';
 import 'package:groceries_app/features/favorites/presentation/views/favorites_view.dart';
@@ -27,7 +27,7 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             ExploreView(),
             CartView(),
             FavoritesView(),
-            Placeholder(color: ColorManager.deepOrange),
+            AccountView(),
           ],
         );
       },

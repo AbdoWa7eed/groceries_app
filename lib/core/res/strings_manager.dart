@@ -107,4 +107,11 @@ abstract class AppStrings {
   // Confirm Payment
   static const String confirmPayment = "Confirm Payment";
   static const String paymentFailed = "Payment Failed Try Again";
+
+  //Account
+  static const String myOrders = 'My Orders';
+  static const String logout = 'Logout';
+  static const String myDetails = 'My Details';
+  static const String help = 'Help';
+  static const String aboutUs = 'About Us';
 }

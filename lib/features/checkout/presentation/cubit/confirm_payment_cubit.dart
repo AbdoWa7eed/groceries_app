@@ -58,10 +58,11 @@ class ConfirmPaymentCubit extends Cubit<ConfirmPaymentState> {
     }
   }
 
-  double progress = 0;
+  double _progress = 0;
 
+  double get progress => _progress;
   void updateProgress(int progress) {
-    this.progress = progress / 100;
+    _progress = progress / 100;
     emit(ChangeProgressState());
   }
 }
