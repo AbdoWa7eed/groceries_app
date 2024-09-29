@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:groceries_app/core/data/data_source/favorite_data_source.dart';
-import 'package:groceries_app/core/data/models/mapper.dart';
+import 'package:groceries_app/core/data/mapper/product_mapper.dart';
 import 'package:groceries_app/core/domain/entities/product_entity.dart';
 import 'package:groceries_app/core/domain/repo/favorite_repo.dart';
 import 'package:groceries_app/core/network/api_result.dart';

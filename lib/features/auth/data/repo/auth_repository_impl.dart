@@ -6,7 +6,7 @@ import 'package:groceries_app/features/auth/data/data_source/auth_data_source.da
 import 'package:groceries_app/features/auth/data/mapper/auth_mapper.dart';
 import 'package:groceries_app/features/auth/data/models/login_request.dart';
 import 'package:groceries_app/features/auth/data/models/register_request.dart';
-import 'package:groceries_app/features/auth/domain/entity/user_entity.dart';
+import 'package:groceries_app/features/auth/domain/entities/auth_entity.dart';
 import 'package:groceries_app/features/auth/domain/repo/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
@@ -14,13 +14,12 @@ class AuthRepositoryImpl implements AuthRepository {
 
   AuthRepositoryImpl(this._authDataSource);
   @override
-  ResultFuture<UserEntity> login(LoginRequest loginRequest) async {
+  ResultFuture<AuthEntity> login(LoginRequest loginRequest) async {
     try {
       final result = await _authDataSource.login(loginRequest);
 
       if (result.data == null) {
-        return Left(
-            Failure.apiInternalError(result.message));
+        return Left(Failure.apiInternalError(result.message));
       }
       return Right(result.data!.toUserEntity());
     } catch (error) {
@@ -29,13 +28,12 @@ class AuthRepositoryImpl implements AuthRepository {
   }
 
   @override
-  ResultFuture<UserEntity> register(RegisterRequest registerRequest) async {
+  ResultFuture<AuthEntity> register(RegisterRequest registerRequest) async {
     try {
       final result = await _authDataSource.register(registerRequest);
 
       if (result.data == null) {
-        return Left(
-           Failure.apiInternalError(result.message));
+        return Left(Failure.apiInternalError(result.message));
       }
       return Right(result.data!.toUserEntity());
     } catch (error) {
