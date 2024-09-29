@@ -13,7 +13,6 @@ class ConfirmPaymentViewBody extends StatefulWidget {
 }
 
 class _ConfirmPaymentViewBodyState extends State<ConfirmPaymentViewBody> {
-  double progress = 0;
   late final WebViewController controller;
 
   @override
@@ -27,32 +26,29 @@ class _ConfirmPaymentViewBodyState extends State<ConfirmPaymentViewBody> {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<ConfirmPaymentCubit>();
-    return BlocListener<ConfirmPaymentCubit, ConfirmPaymentState>(
-      listener: (context, state) {},
-      child: Stack(
-        alignment: AlignmentDirectional.topCenter,
-        children: [
-          WebViewWidget(
-            controller: controller
-              ..setNavigationDelegate(
-                NavigationDelegate(
-                  onProgress: (int progress) {
-                    cubit.updateProgress(progress);
-                  },
-                  onNavigationRequest: (NavigationRequest request) {
-                    cubit.updateUrl(request.url);
-                    if (cubit.getUrlType() == PaymentUrlType.success) {
-                      cubit.confirmPayment();
-                      return NavigationDecision.prevent;
-                    }
-                    return NavigationDecision.navigate;
-                  },
-                ),
+    return Stack(
+      alignment: AlignmentDirectional.topCenter,
+      children: [
+        WebViewWidget(
+          controller: controller
+            ..setNavigationDelegate(
+              NavigationDelegate(
+                onProgress: (int progress) {
+                  cubit.updateProgress(progress);
+                },
+                onNavigationRequest: (NavigationRequest request) {
+                  cubit.updateUrl(request.url);
+                  if (cubit.getUrlType() == PaymentUrlType.success) {
+                    cubit.confirmPayment();
+                    return NavigationDecision.prevent;
+                  }
+                  return NavigationDecision.navigate;
+                },
               ),
-          ),
-          const LinearIndicatorWidget(),
-        ],
-      ),
+            ),
+        ),
+        const LinearIndicatorWidget(),
+      ],
     );
   }
 }
