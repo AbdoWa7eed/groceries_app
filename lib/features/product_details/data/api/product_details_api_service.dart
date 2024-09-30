@@ -13,5 +13,4 @@ abstract class ProductDetailsApiService {
   Future<ProductDetailsResponse> getProductDetails(
     @Path('productId') String productId,
   );
-
 }
