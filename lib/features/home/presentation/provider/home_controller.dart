@@ -25,6 +25,9 @@ class HomeController extends ChangeNotifier {
       case 3:
         getIt<FavoriteCubit>().initFavorite();
         break;
+      case 4:
+        initAccountDi();
+        break;
     }
   }
 
