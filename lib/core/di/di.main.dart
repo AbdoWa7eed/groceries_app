@@ -224,3 +224,20 @@ initConfirmPaymentDi() {
         () => ConfirmPaymentCubit(getIt()));
   }
 }
+
+initAccountDi() {
+  if (!getIt.isRegistered<AccountCubit>()) {
+    getIt
+      ..registerLazySingleton<AccountApiService>(
+          () => AccountApiService(DioFactory.getDio()))
+      ..registerLazySingleton<AccountDataSource>(
+          () => AccountDataSourceImpl(getIt()))
+      ..registerLazySingleton<AccountRepository>(
+          () => AccountRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetProfileUseCase>(
+          () => GetProfileUseCase(getIt()))
+      ..registerLazySingleton<LogoutUseCase>(() => LogoutUseCase(getIt()))
+      ..registerLazySingleton<AccountCubit>(
+          () => AccountCubit(getIt(), getIt(), getIt()));
+  }
+}

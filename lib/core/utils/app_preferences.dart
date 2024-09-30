@@ -31,4 +31,9 @@ class AppPreferences {
   bool isOnboardingViewed() {
     return _sharedPreferences.getBool(userSeenOnboarding) ?? false;
   }
+
+  Future<void> logout() async {
+    await _sharedPreferences.remove(userAccessToken);
+    await _sharedPreferences.remove(userRefreshToken);
+  }
 }
