@@ -8,11 +8,11 @@ import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/utils/ui_constants.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/core/widgets/custom_form_field.dart';
+import 'package:groceries_app/core/widgets/password_field_widget.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/auth_texts_widget.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/custom_logo_widget.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/custom_rich_text.dart';
-import 'package:groceries_app/features/auth/presentation/widgets/password_suffix_icon.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/toggle_screens_widget.dart';
 
 class RegisterViewBody extends StatefulWidget {
@@ -23,7 +23,6 @@ class RegisterViewBody extends StatefulWidget {
 }
 
 class _RegisterViewBodyState extends State<RegisterViewBody> {
-  late bool _isObscure;
   late final GlobalKey<FormState> _formKey;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
@@ -31,7 +30,6 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
   @override
   initState() {
     super.initState();
-    _isObscure = true;
     _formKey = GlobalKey<FormState>();
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
@@ -74,21 +72,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   const SizedBox(
                     height: AppSize.s30,
                   ),
-                  CustomTextFormField(
-                    controller: _passwordController,
-                    validator: ValidationBuilder()
-                        .regExp(UiConstants.passwordRegex,
-                            AppStrings.passwordValidationMessage)
-                        .build(),
-                    obscureText: _isObscure,
+                  PasswordFieldWidget(
                     labelText: AppStrings.password,
-                    suffix: PasswordSuffixIcon(
-                      onTap: (value) {
-                        setState(() {
-                          _isObscure = !_isObscure;
-                        });
-                      },
-                    ),
+                    controller: _passwordController,
                   ),
                   const CustomRichTextWidget(),
                   CustomElevatedButtonWidget(

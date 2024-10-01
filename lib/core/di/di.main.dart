@@ -18,6 +18,10 @@ initAuthDi() async {
       ..registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(getIt()))
       ..registerLazySingleton<AuthCubit>(
           () => AuthCubit(getIt(), getIt(), getIt()));
+  } else {
+    getIt.unregister<AuthCubit>();
+    getIt.registerLazySingleton<AuthCubit>(
+        () => AuthCubit(getIt(), getIt(), getIt()));
   }
 }
 
@@ -254,5 +258,21 @@ initProfileDi() {
       ..registerLazySingleton<UpdateProfileUseCase>(
           () => UpdateProfileUseCase(getIt()))
       ..registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
+  }
+}
+
+initChangePasswordDi() {
+  if (!getIt.isRegistered<ChangePasswordCubit>()) {
+    getIt
+      ..registerLazySingleton<ChangePasswordApiService>(
+          () => ChangePasswordApiService(DioFactory.getDio()))
+      ..registerLazySingleton<ChangePasswordDataSource>(
+          () => ChangePasswordDataSourceImpl(getIt()))
+      ..registerLazySingleton<ChangePasswordRepository>(
+          () => ChangePasswordRepositoryImpl(getIt()))
+      ..registerLazySingleton<ChangePasswordUseCase>(
+          () => ChangePasswordUseCase(getIt()))
+      ..registerFactory<ChangePasswordCubit>(
+          () => ChangePasswordCubit(getIt()));
   }
 }

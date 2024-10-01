@@ -58,6 +58,13 @@ class _ActionsListViewWidgetState extends State<ActionsListViewWidget> {
           },
         ),
         ActionItemModel(
+          title: AppStrings.changePassword,
+          assetImagePath: AssetsManager.passwordIcon,
+          onTab: () {
+            context.push(Routes.changePassword);
+          },
+        ),
+        ActionItemModel(
           title: AppStrings.help,
           assetImagePath: AssetsManager.helpIcon,
           onTab: () {},

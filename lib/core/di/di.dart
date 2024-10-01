@@ -34,6 +34,11 @@ import 'package:groceries_app/features/cart/domain/usecases/get_cart_usecase.dar
 import 'package:groceries_app/features/cart/domain/usecases/remove_from_cart_usecase.dart';
 import 'package:groceries_app/features/cart/domain/usecases/update_item_quantity_usecase.dart';
 import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
+import 'package:groceries_app/features/change_password/data/api/change_password_api_service.dart';
+import 'package:groceries_app/features/change_password/data/data_source/change_password_data_source.dart';
+import 'package:groceries_app/features/change_password/data/repo/change_password_repo_impl.dart';
+import 'package:groceries_app/features/change_password/domain/repo/change_password_repo.dart';
+import 'package:groceries_app/features/change_password/domain/usecase/change_password_usecase.dart';
 import 'package:groceries_app/features/checkout/data/api/checkout_api_service.dart';
 import 'package:groceries_app/features/checkout/data/data_source/checkout_data_source.dart';
 import 'package:groceries_app/features/checkout/data/repo/checkout_repo_impl.dart';
@@ -92,5 +97,7 @@ import 'package:groceries_app/features/shop/domain/usecases/get_best_selling_use
 import 'package:groceries_app/features/shop/domain/usecases/get_exclusive_offers_usecase.dart';
 import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../../features/change_password/presentation/cubit/change_password_cubit.dart';
 
 part 'di.main.dart';
