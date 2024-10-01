@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/assets_manager.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
+import 'package:groceries_app/features/account/presentation/cubit/account_cubit.dart';
 import 'package:groceries_app/features/account/presentation/widgets/action_item_model.dart';
 import 'package:groceries_app/features/account/presentation/widgets/action_item_widget.dart';
 
@@ -51,7 +53,8 @@ class _ActionsListViewWidgetState extends State<ActionsListViewWidget> {
           title: AppStrings.personalDetails,
           assetImagePath: AssetsManager.detailsIcon,
           onTab: () {
-            context.push(Routes.profileRoute);
+            final user = context.read<AccountCubit>().user;
+            context.push(Routes.profileRoute, extra: user);
           },
         ),
         ActionItemModel(

@@ -118,4 +118,7 @@ abstract class AppStrings {
   static const String update = 'Update';
   static const String fromGallery = 'Image From Gallery';
   static const String fromCamera = 'Image From Camera';
+  static const String profileUpdated = 'Profile updated successfully';
+  static const String noChanges =
+      'No changes detected. Please update your profile with new information.';
 }

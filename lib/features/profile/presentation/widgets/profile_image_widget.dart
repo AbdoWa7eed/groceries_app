@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:groceries_app/core/res/assets_manager.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
-import 'package:groceries_app/core/widgets/custom_network_image.dart';
+import 'package:groceries_app/features/profile/presentation/widgets/displayed_image_widget.dart';
 import 'package:groceries_app/features/profile/presentation/widgets/pick_image_button_widget.dart';
 
 class ProfileImageWidget extends StatelessWidget {
@@ -16,18 +15,12 @@ class ProfileImageWidget extends StatelessWidget {
       alignment: AlignmentDirectional.center, // Aligns image at the center
       children: [
         Container(
-          clipBehavior: Clip.antiAliasWithSaveLayer,
-          decoration: BoxDecoration(
-            color: ColorManager.primaryWith10Opacity,
-            borderRadius: BorderRadius.circular(AppSize.s12),
-          ),
-          child: const CustomNetworkImage(
-            imageUrl: 'user.imageUrl',
-            errorImageAssetPath: AssetsManager.userImage,
-            height: AppSize.s150,
-            width: AppSize.s150,
-          ),
-        ),
+            clipBehavior: Clip.antiAliasWithSaveLayer,
+            decoration: BoxDecoration(
+              color: ColorManager.primaryWith10Opacity,
+              borderRadius: BorderRadius.circular(AppSize.s12),
+            ),
+            child: const DisplayedImageWidget()),
         const Positioned(
           bottom: -AppSize.s8,
           right: -AppSize.s8,
