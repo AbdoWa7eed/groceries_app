@@ -1,6 +1,6 @@
 import 'package:groceries_app/core/data/models/base_response.dart';
+import 'package:groceries_app/core/data/models/profile/profile_response.dart';
 import 'package:groceries_app/features/account/data/api/account_api_service.dart';
-import 'package:groceries_app/features/account/data/models/profile_response.dart';
 
 abstract class AccountDataSource {
   Future<BaseResponse> logout();
