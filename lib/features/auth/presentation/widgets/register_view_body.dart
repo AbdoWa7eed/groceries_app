@@ -61,7 +61,7 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                     validator: ValidationBuilder()
                         .minLength(UiConstants.usernameMinLength)
                         .build(),
-                    labelText: AppStrings.userName,
+                    labelText: AppStrings.username,
                   ),
                   const SizedBox(
                     height: AppSize.s30,
