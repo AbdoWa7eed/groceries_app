@@ -23,6 +23,7 @@ import 'package:groceries_app/features/phone_auth/presentation/views/phone_auth_
 import 'package:groceries_app/features/phone_auth/presentation/views/verify_phone_view.dart';
 import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
 import 'package:groceries_app/features/product_details/presentation/views/product_details_view.dart';
+import 'package:groceries_app/features/profile/presentation/views/profile_view.dart';
 import 'package:groceries_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:groceries_app/features/search/presentation/views/search_result_view.dart';
 import 'package:groceries_app/features/shop/presentation/views/see_all_view.dart';

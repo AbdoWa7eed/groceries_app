@@ -17,7 +17,7 @@ abstract class AppStrings {
   static const String signUpSubtitle = "Enter your credentials to continue";
   static const String email = "Email";
   static const String password = "Password";
-  static const String userName = "Username";
+  static const String username = "Username";
   static const String forgotPassword = "Forgot password?";
   static const String doNotHaveAnAccount = "Don't have an account?";
   static const String alreadyHaveAnAccount = "Already have an account?";
@@ -111,7 +111,11 @@ abstract class AppStrings {
   //Account
   static const String myOrders = 'My Orders';
   static const String logout = 'Logout';
-  static const String myDetails = 'My Details';
+  static const String personalDetails = 'Personal Details';
   static const String help = 'Help';
   static const String aboutUs = 'About Us';
+  //Profile
+  static const String update = 'Update';
+  static const String fromGallery = 'Image From Gallery';
+  static const String fromCamera = 'Image From Camera';
 }

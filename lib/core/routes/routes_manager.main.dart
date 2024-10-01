@@ -181,6 +181,14 @@ abstract class RouteGenerator {
           );
         },
       ),
+      GoRoute(
+        path: Routes.profileRoute,
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(
+            child: const ProfileView(),
+          );
+        },
+      ),
     ];
   }
 }
