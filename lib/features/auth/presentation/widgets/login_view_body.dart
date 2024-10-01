@@ -6,14 +6,13 @@ import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
-import 'package:groceries_app/core/utils/ui_constants.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/core/widgets/custom_form_field.dart';
+import 'package:groceries_app/core/widgets/password_field_widget.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/auth_texts_widget.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/custom_logo_widget.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/forget_password_widget.dart';
-import 'package:groceries_app/features/auth/presentation/widgets/password_suffix_icon.dart';
 import 'package:groceries_app/features/auth/presentation/widgets/toggle_screens_widget.dart';
 
 class LoginViewBody extends StatefulWidget {
@@ -27,13 +26,11 @@ class _LoginViewBodyState extends State<LoginViewBody> {
   late final GlobalKey<FormState> _formKey;
   late final TextEditingController _emailController;
   late final TextEditingController _passwordController;
-  late bool _obscureText;
 
   @override
   void initState() {
     super.initState();
     _formKey = GlobalKey<FormState>();
-    _obscureText = true;
     _emailController = TextEditingController();
     _passwordController = TextEditingController();
   }
@@ -62,21 +59,9 @@ class _LoginViewBodyState extends State<LoginViewBody> {
                 const SizedBox(
                   height: AppSize.s30,
                 ),
-                CustomTextFormField(
-                  controller: _passwordController,
-                  validator: ValidationBuilder()
-                      .regExp(UiConstants.passwordRegex,
-                          AppStrings.passwordValidationMessage)
-                      .build(),
-                  obscureText: _obscureText,
+                PasswordFieldWidget(
                   labelText: AppStrings.password,
-                  suffix: PasswordSuffixIcon(
-                    onTap: (value) {
-                      setState(() {
-                        _obscureText = value;
-                      });
-                    },
-                  ),
+                  controller: _passwordController,
                 ),
                 const ForgetPasswordButtonWidget(),
                 CustomElevatedButtonWidget(

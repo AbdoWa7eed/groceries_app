@@ -9,6 +9,8 @@ import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
 import 'package:groceries_app/features/auth/presentation/views/register_view.dart';
+import 'package:groceries_app/features/change_password/presentation/cubit/change_password_cubit.dart';
+import 'package:groceries_app/features/change_password/presentation/views/change_password_view.dart';
 import 'package:groceries_app/features/checkout/domain/entity/place_order_entity.dart';
 import 'package:groceries_app/features/checkout/presentation/cubit/confirm_payment_cubit.dart';
 import 'package:groceries_app/features/checkout/presentation/views/confirm_payment_view.dart';

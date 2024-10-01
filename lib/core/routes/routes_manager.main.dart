@@ -16,6 +16,7 @@ abstract class Routes {
   static const String seeAllRoute = '/seeAll';
   static const String searchResult = '/searchResult';
   static const String confirmPayment = '/confirmPayment';
+  static const String changePassword = '/changePassword';
 }
 
 abstract class RouteGenerator {
@@ -190,6 +191,18 @@ abstract class RouteGenerator {
             child: BlocProvider<ProfileCubit>(
               create: (context) => getIt()..setUser(user),
               child: const ProfileView(),
+            ),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.changePassword,
+        pageBuilder: (context, state) {
+          initChangePasswordDi();
+          return CustomSlideTransition(
+            child: BlocProvider<ChangePasswordCubit>(
+              create: (context) => getIt(),
+              child: const ChangePasswordView(),
             ),
           );
         },
