@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/domain/entities/category_entity.dart';
+import 'package:groceries_app/core/domain/entities/user_entity.dart';
 import 'package:groceries_app/core/utils/app_preferences.dart';
 import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
@@ -23,6 +24,7 @@ import 'package:groceries_app/features/phone_auth/presentation/views/phone_auth_
 import 'package:groceries_app/features/phone_auth/presentation/views/verify_phone_view.dart';
 import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
 import 'package:groceries_app/features/product_details/presentation/views/product_details_view.dart';
+import 'package:groceries_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:groceries_app/features/profile/presentation/views/profile_view.dart';
 import 'package:groceries_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:groceries_app/features/search/presentation/views/search_result_view.dart';

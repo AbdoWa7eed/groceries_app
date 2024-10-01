@@ -241,3 +241,18 @@ initAccountDi() {
           () => AccountCubit(getIt(), getIt(), getIt()));
   }
 }
+
+initProfileDi() {
+  if (!getIt.isRegistered<ProfileCubit>()) {
+    getIt
+      ..registerLazySingleton<ProfileApiService>(
+          () => ProfileApiService(DioFactory.getDio()))
+      ..registerLazySingleton<ProfileDataSource>(
+          () => ProfileDataSourceImpl(getIt()))
+      ..registerLazySingleton<ProfileRepository>(
+          () => ProfileRepositoryImpl(getIt()))
+      ..registerLazySingleton<UpdateProfileUseCase>(
+          () => UpdateProfileUseCase(getIt()))
+      ..registerFactory<ProfileCubit>(() => ProfileCubit(getIt()));
+  }
+}

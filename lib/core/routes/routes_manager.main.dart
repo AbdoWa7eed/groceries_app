@@ -184,8 +184,13 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.profileRoute,
         pageBuilder: (context, state) {
+          initProfileDi();
+          final user = state.extra as UserEntity;
           return CustomSlideTransition(
-            child: const ProfileView(),
+            child: BlocProvider<ProfileCubit>(
+              create: (context) => getIt()..setUser(user),
+              child: const ProfileView(),
+            ),
           );
         },
       ),
