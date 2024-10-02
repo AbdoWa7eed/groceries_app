@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/domain/entities/user_entity.dart';
 import 'package:groceries_app/core/utils/app_preferences.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
