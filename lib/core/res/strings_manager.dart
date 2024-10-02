@@ -121,6 +121,7 @@ abstract class AppStrings {
   static const String profileUpdated = 'Profile updated successfully';
   static const String noChanges =
       'No changes detected. Please update your profile with new information.';
+  static const String addressUpdated = 'Address updated successfully!';
   // Change Password
   static const String changePassword = 'Change Password';
   static const String currentPassword = 'Current Password';

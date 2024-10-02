@@ -5,7 +5,6 @@ import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
-import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
@@ -19,12 +18,7 @@ class LocationConfirmationDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<LocationCubit, LocationState>(
-      listener: (context, state) {
-        if (state is UpdateUserAddressSuccess) {
-          context.popAllThenPush(Routes.homeRoute);
-        }
-      },
+    return BlocBuilder<LocationCubit, LocationState>(
       builder: (context, state) {
         final cubit = context.read<LocationCubit>();
         return Dialog(
@@ -38,34 +32,43 @@ class LocationConfirmationDialog extends StatelessWidget {
                 const SizedBox(
                   height: AppSize.s20,
                 ),
-                Row(children: [
-                  Expanded(
-                    child: CustomElevatedButtonWidget(
-                        height: AppSize.s45,
-                        verticalPadding: 0,
-                        onPressed: () {
-                          // cubit.confirmationDialogShown = false;
-                          context.pop();
-                        },
-                        child: const Text(AppStrings.cancel,
-                            style: StylesManager.regular18)),
-                  ),
-                  const SizedBox(width: AppSize.s12),
-                  Expanded(
-                    child: CustomElevatedButtonWidget(
-                        verticalPadding: 0,
-                        height: AppSize.s45,
-                        onPressed: () {
-                          if (cubit.purpose != LocationPurpose.delivery) {
-                            cubit.updateUserAddress(address);
-                          } else {
-                            navigateToCheckout(context);
-                          }
-                        },
-                        child: const Text(AppStrings.confirm,
-                            style: StylesManager.regular18)),
-                  ),
-                ]),
+                Builder(
+                  builder: (context) {
+                    if (state is UpdateUserAddressLoading) {
+                      return const Center(child: CircularProgressIndicator());
+                    }
+                    return Row(
+                      children: [
+                        Expanded(
+                          child: CustomElevatedButtonWidget(
+                              height: AppSize.s45,
+                              verticalPadding: 0,
+                              onPressed: () {
+                                // cubit.confirmationDialogShown = false;
+                                context.pop();
+                              },
+                              child: const Text(AppStrings.cancel,
+                                  style: StylesManager.regular18)),
+                        ),
+                        const SizedBox(width: AppSize.s12),
+                        Expanded(
+                          child: CustomElevatedButtonWidget(
+                              verticalPadding: 0,
+                              height: AppSize.s45,
+                              onPressed: () {
+                                if (cubit.purpose != LocationPurpose.delivery) {
+                                  cubit.updateUserAddress(address);
+                                } else {
+                                  navigateToCheckout(context);
+                                }
+                              },
+                              child: const Text(AppStrings.confirm,
+                                  style: StylesManager.regular18)),
+                        ),
+                      ],
+                    );
+                  },
+                ),
               ],
             ),
           ),
@@ -76,12 +79,7 @@ class LocationConfirmationDialog extends StatelessWidget {
 
   void navigateToCheckout(BuildContext context) {
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      var router = GoRouter.of(context);
-      var currentRoute = router.routerDelegate.currentConfiguration.routes;
-      while (currentRoute.length > 1) {
-        router.pop(address);
-        currentRoute = router.routerDelegate.currentConfiguration.routes;
-      }
+      context.popAllButOne();
       getIt<CheckoutCubit>().deliveryAddress = address;
     });
   }

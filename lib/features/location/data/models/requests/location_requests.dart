@@ -83,7 +83,7 @@ class PlaceGeocodeRequestParams extends LocationRequest {
 
   Map<String, dynamic> toJson() => _$PlaceGeocodeRequestParamsToJson(this);
 
-  copyWith({
+  PlaceGeocodeRequestParams copyWith({
     String? apiKey,
     String? latlng,
   }) {

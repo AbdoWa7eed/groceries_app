@@ -10,9 +10,18 @@ extension NavigationExtension on BuildContext {
     pushReplacement(location, extra: extra);
   }
 
-  void popAll({Object? extra}) {
+  Future<void> popAll({Object? extra}) async {
     while (canPop()) {
       pop(extra);
+    }
+  }
+
+  void popAllButOne() {
+    var router = GoRouter.of(this);
+    var currentRoute = router.routerDelegate.currentConfiguration.routes;
+    while (currentRoute.length > 1) {
+      router.pop();
+      currentRoute = router.routerDelegate.currentConfiguration.routes;
     }
   }
 }
@@ -23,13 +32,26 @@ extension EitherX<Failure, R> on Either<Failure, R> {
   Failure get failure => (this as Left<Failure, R>).value;
 }
 
-extension NonNullString on String? {
+extension StringExtenstions on String? {
   String orEmpty() {
     if (this == null) {
       return "";
     } else {
       return this!;
     }
+  }
+
+  bool get isFormattedAddress => RegExp(
+          r'^[A-Za-z0-9]+\+?[A-Za-z0-9]*,\s*[A-Za-z\s]+,\s*[A-Za-z\s]+,\s*[A-Za-z\s]+,\s*[A-Za-z\s]+$')
+      .hasMatch(this ?? '');
+
+  String formattedAddress() {
+    final parts = this?.split(',');
+    if (RegExp(r'^[A-Za-z0-9]+\+[A-Za-z0-9]+').hasMatch(parts?[0] ?? '')) {
+      return '${parts?.sublist(1).join(',')}';
+    }
+
+    return this!;
   }
 }
 

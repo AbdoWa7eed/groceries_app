@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/network/error_handler.dart';
 import 'package:groceries_app/core/network/failure.dart';
+import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/location/data/data_source/location_data_source.dart';
 import 'package:groceries_app/features/location/data/mapper/place_details_mapper.dart';
 import 'package:groceries_app/features/location/data/mapper/suggested_place_mapper.dart';
@@ -59,7 +60,9 @@ class LocationRepositoryImpl extends LocationRepository {
         return Left(Failure.apiInternalError(result.status));
       }
 
-      return Right(result.places!.first.toEntity());
+      return Right(result.places!
+          .firstWhere((e) => e.address.isFormattedAddress)
+          .toEntity());
     } catch (error) {
       return Left(ErrorHandler.handle(error).failure);
     }
