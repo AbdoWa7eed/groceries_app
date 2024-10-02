@@ -27,4 +27,5 @@ abstract class AssetsManager {
   static const String ordersIcon = '$_imagePath/orders.svg';
   static const String userImage = '$_imagePath/user.png';
   static const String passwordIcon = '$_imagePath/password.svg';
+  static const String addressIcon = '$_imagePath/address.svg';
 }

@@ -6,7 +6,7 @@ extension PlaceDetailsMapper on PlaceDetailsDataModel {
   PlaceDetailsEntity toEntity() {
     return PlaceDetailsEntity(
       placeId: placeId.orEmpty(),
-      address: address.orEmpty(),
+      address: address.orEmpty().formattedAddress(),
       location: LocationEntity(
         latitude: geometry?.location?.lat ?? 0.0,
         longitude: geometry?.location?.lng ?? 0.0,
@@ -16,7 +16,6 @@ extension PlaceDetailsMapper on PlaceDetailsDataModel {
 }
 
 extension LocationMapper on LocationModel {
-  
   LocationEntity toEntity() {
     return LocationEntity(
       latitude: lat.orZero(),

@@ -1,6 +1,6 @@
 part of 'location_cubit.dart';
 
-abstract class LocationState {}
+sealed class LocationState {}
 
 class LocationInitial extends LocationState {}
 

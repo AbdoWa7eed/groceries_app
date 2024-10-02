@@ -9,8 +9,8 @@ class HomeController extends ChangeNotifier {
 
   void setIndex(int index) {
     _currentIndex = index;
-    pageController.jumpToPage(index);
     _setDi(index);
+    pageController.jumpToPage(index);
     notifyListeners();
   }
 
