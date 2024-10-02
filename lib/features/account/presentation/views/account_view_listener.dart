@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/custom_snackbar.dart';
 import 'package:groceries_app/features/account/presentation/cubit/account_cubit.dart';
-import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 
 class AccountViewListener extends StatelessWidget {
   const AccountViewListener({super.key, required this.child});
@@ -20,11 +20,23 @@ class AccountViewListener extends StatelessWidget {
         }
 
         if (state is AccountLogoutSuccess) {
-          context.popAllThenPush(Routes.loginRoute);
-          context.read<HomeController>().backToHome();
+          _handleLogoutSuccess(context);
         }
       },
       child: child,
     );
+  }
+
+  _handleLogoutSuccess(BuildContext context) async {
+    if (context.mounted) {
+      await resetDis();
+      if (context.mounted) {
+        navigateToLogin(context);
+      }
+    }
+  }
+
+  void navigateToLogin(BuildContext context) {
+    context.popAllThenPush(Routes.loginRoute);
   }
 }

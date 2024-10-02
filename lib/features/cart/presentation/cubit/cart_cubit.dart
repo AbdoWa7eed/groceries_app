@@ -27,11 +27,11 @@ class CartCubit extends Cubit<CartState> {
 
   void initCart() async {
     if (_cart == null || _cart!.cartItems.isEmpty) {
-      getCart();
+      await getCart();
     }
   }
 
-  void getCart() async {
+  Future getCart() async {
     emit(CartLoading());
     final result = await _getCartUsecase.execute();
     if (result.isRight()) {

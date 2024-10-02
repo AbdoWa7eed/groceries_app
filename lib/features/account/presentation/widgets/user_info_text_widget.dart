@@ -13,14 +13,17 @@ class UserInfoTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = context.select((AccountCubit cubit) => cubit.user);
+    bool isAddressExist = user.address != null || user.address!.isEmpty;
     return Expanded(
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(user.username, maxLines: 1, style: StylesManager.bold18),
-        Text(user.email, style: StylesManager.regular16),
         Visibility(
-            visible: user.address != null || user.address!.isEmpty,
+            visible: !isAddressExist,
+            child: Text(user.email, style: StylesManager.regular16)),
+        Visibility(
+            visible: isAddressExist,
             child: Row(
               children: [
                 SvgPicture.asset(
