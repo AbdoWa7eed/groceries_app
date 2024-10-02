@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:get_it/get_it.dart';
 import 'package:groceries_app/core/data/data_source/cart_data_source.dart';
 import 'package:groceries_app/core/data/data_source/favorite_data_source.dart';

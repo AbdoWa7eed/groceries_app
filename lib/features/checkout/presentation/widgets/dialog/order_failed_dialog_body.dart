@@ -9,6 +9,7 @@ import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/features/checkout/presentation/widgets/dialog/checkout_dialog_text_widget.dart';
 import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
+import 'package:provider/provider.dart';
 
 class OrderFailedDialogBody extends StatelessWidget {
   const OrderFailedDialogBody({super.key, required this.errorMessage});

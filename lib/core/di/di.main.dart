@@ -276,3 +276,8 @@ initChangePasswordDi() {
           () => ChangePasswordCubit(getIt()));
   }
 }
+
+Future<void> resetDis() async {
+  await getIt.reset();
+  await initDi();
+}

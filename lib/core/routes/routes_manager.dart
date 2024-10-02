@@ -6,9 +6,11 @@ import 'package:groceries_app/core/domain/entities/category_entity.dart';
 import 'package:groceries_app/core/domain/entities/user_entity.dart';
 import 'package:groceries_app/core/utils/app_preferences.dart';
 import 'package:groceries_app/core/utils/enums.dart';
+import 'package:groceries_app/features/account/presentation/cubit/account_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:groceries_app/features/auth/presentation/views/login_view.dart';
 import 'package:groceries_app/features/auth/presentation/views/register_view.dart';
+import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:groceries_app/features/change_password/presentation/cubit/change_password_cubit.dart';
 import 'package:groceries_app/features/change_password/presentation/views/change_password_view.dart';
 import 'package:groceries_app/features/checkout/domain/entity/place_order_entity.dart';
@@ -16,6 +18,8 @@ import 'package:groceries_app/features/checkout/presentation/cubit/confirm_payme
 import 'package:groceries_app/features/checkout/presentation/views/confirm_payment_view.dart';
 import 'package:groceries_app/features/explore/presentation/cubit/explore_cubit.dart';
 import 'package:groceries_app/features/explore/presentation/views/category_products_view.dart';
+import 'package:groceries_app/features/favorites/presentation/cubit/favorite_cubit.dart';
+import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 import 'package:groceries_app/features/home/presentation/views/home_view.dart';
 import 'package:groceries_app/features/location/presentation/cubit/location_cubit.dart';
 import 'package:groceries_app/features/location/presentation/views/map_view.dart';
@@ -30,7 +34,9 @@ import 'package:groceries_app/features/profile/presentation/cubit/profile_cubit.
 import 'package:groceries_app/features/profile/presentation/views/profile_view.dart';
 import 'package:groceries_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:groceries_app/features/search/presentation/views/search_result_view.dart';
+import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
 import 'package:groceries_app/features/shop/presentation/views/see_all_view.dart';
+import 'package:provider/provider.dart';
 
 import '../widgets/slide_transition.dart';
 

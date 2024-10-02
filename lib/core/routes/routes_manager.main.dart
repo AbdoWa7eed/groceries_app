@@ -119,7 +119,26 @@ abstract class RouteGenerator {
         path: Routes.homeRoute,
         builder: (context, state) {
           initHomeDi();
-          return const HomeView();
+          return MultiBlocProvider(providers: [
+            ChangeNotifierProvider<HomeController>(
+              create: (context) => getIt(),
+            ),
+            BlocProvider<ShopCubit>(
+              create: (context) => getIt()..initShopData(),
+            ),
+            BlocProvider<ExploreCubit>(
+              create: (context) => getIt()..getCategories(),
+            ),
+            BlocProvider<CartCubit>(
+              create: (context) => getIt(),
+            ),
+            BlocProvider<FavoriteCubit>(
+              create: (context) => getIt(),
+            ),
+            BlocProvider<AccountCubit>(
+              create: (context) => getIt()..getProfile(),
+            ),
+          ], child: const HomeView());
         },
       ),
       GoRoute(
@@ -127,7 +146,10 @@ abstract class RouteGenerator {
         pageBuilder: (context, state) {
           String title = state.extra as String;
           return CustomSlideTransition(
-            child: SeeAllProductsView(title: title),
+            child: BlocProvider<ShopCubit>.value(
+              value: getIt(),
+              child: SeeAllProductsView(title: title),
+            ),
           );
         },
       ),
@@ -137,9 +159,16 @@ abstract class RouteGenerator {
           initProductDetailsDi();
           int productId = state.extra as int;
           return CustomSlideTransition(
-            child: BlocProvider(
-              create: (context) =>
-                  getIt<ProductDetailsCubit>()..getProductDetails(productId),
+            child: MultiBlocProvider(
+              providers: [
+                BlocProvider<CartCubit>.value(
+                  value: getIt<CartCubit>(),
+                ),
+                BlocProvider<ProductDetailsCubit>(
+                  create: (context) => getIt<ProductDetailsCubit>()
+                    ..getProductDetails(productId),
+                ),
+              ],
               child: const ProductDetailsView(),
             ),
           );
@@ -149,10 +178,12 @@ abstract class RouteGenerator {
         path: Routes.categoryProducts,
         pageBuilder: (context, state) {
           final category = state.extra as CategoryEntity;
-          getIt<ExploreCubit>()
-              .getCategoryProducts(categoryId: category.categoryId);
           return CustomSlideTransition(
-            child: CategoryProductsView(entity: category),
+            child: BlocProvider<ExploreCubit>.value(
+              value: getIt()
+                ..getCategoryProducts(categoryId: category.categoryId),
+              child: CategoryProductsView(entity: category),
+            ),
           );
         },
       ),

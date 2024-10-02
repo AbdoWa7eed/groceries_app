@@ -57,8 +57,11 @@ class CheckoutButtonWidget extends StatelessWidget {
     showModalBottomSheet(
       context: context,
       builder: (context) {
-        return BlocProvider(
-          create: (context) => getIt<CheckoutCubit>(),
+        return MultiBlocProvider(
+          providers: [
+            BlocProvider<CheckoutCubit>(create: (context) => getIt()),
+            BlocProvider<CartCubit>.value(value: getIt()),
+          ],
           child: const CheckoutView(),
         );
       },

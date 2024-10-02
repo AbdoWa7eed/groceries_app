@@ -20,9 +20,11 @@ class HomeController extends ChangeNotifier {
         initExploreDi();
         break;
       case 2:
+        initCartDi();
         getIt<CartCubit>().initCart();
         break;
       case 3:
+        initFavoriteDi();
         getIt<FavoriteCubit>().initFavorite();
         break;
       case 4:

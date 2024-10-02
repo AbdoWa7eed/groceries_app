@@ -8,6 +8,7 @@ class CheckoutDialogTextWidget extends StatelessWidget {
 
   final String title;
   final String subTitle;
+
   @override
   Widget build(BuildContext context) {
     return Center(
