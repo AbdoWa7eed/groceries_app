@@ -37,7 +37,7 @@ class PhoneAuthViewBody extends StatelessWidget {
                       height: AppSize.s12,
                     ),
                     Visibility(
-                      visible: cubit.isAuth,
+                      visible: cubit.purpose == PhoneAuthPurpose.newAccount,
                       child: Align(
                         alignment: AlignmentDirectional.bottomEnd,
                         child: SkipTextButton(

@@ -1,4 +1,6 @@
 import 'package:bloc/bloc.dart';
+import 'package:groceries_app/core/di/di.dart';
+import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/features/phone_auth/domain/usecase/send_otp_usecase.dart';
 import 'package:groceries_app/features/phone_auth/domain/usecase/verify_phone_usecase.dart';
@@ -11,6 +13,15 @@ class PhoneAuthCubit extends Cubit<PhoneAuthState> {
 
   final SendOTPUsecase _sendOTPUsecase;
   final VerifyPhoneUsecase _verifyPhoneUsecase;
+
+  late PhoneAuthPurpose _purpose;
+
+  void setPurpose(PhoneAuthPurpose purpose) {
+    _purpose = purpose;
+  }
+
+  PhoneAuthPurpose get purpose => _purpose;
+
   String? verificationId;
   late String? _phoneNumber;
   String? _code;
@@ -47,8 +58,9 @@ class PhoneAuthCubit extends Cubit<PhoneAuthState> {
     }
   }
 
-  // UI Function
-
-  bool isAuth = false;
-  
+  @override
+  Future<void> close() {
+    getIt.unregister<PhoneAuthCubit>();
+    return super.close();
+  }
 }

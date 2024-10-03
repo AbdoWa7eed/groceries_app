@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:groceries_app/core/di/di.dart';
 import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/utils/location_helper.dart';
@@ -102,5 +103,11 @@ class LocationCubit extends Cubit<LocationState> {
     } else {
       emit(UpdateUserAddressError(data.failure.message));
     }
+  }
+
+  @override
+  Future<void> close() {
+    getIt.unregister<LocationCubit>();
+    return super.close();
   }
 }

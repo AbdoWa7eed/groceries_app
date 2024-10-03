@@ -77,12 +77,14 @@ abstract class RouteGenerator {
       ),
       GoRoute(
         path: Routes.phoneAuthRoute,
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           initPhoneAuthDi();
-          getIt<PhoneAuthCubit>().isAuth = state.extra as bool? ?? false;
-          return BlocProvider<PhoneAuthCubit>(
-            create: (context) => getIt<PhoneAuthCubit>(),
-            child: const PhoneAuthView(),
+          final purpose = state.extra as PhoneAuthPurpose;
+          return CustomSlideTransition(
+            child: BlocProvider<PhoneAuthCubit>(
+              create: (context) => getIt()..setPurpose(purpose),
+              child: const PhoneAuthView(),
+            ),
           );
         },
       ),
@@ -90,28 +92,34 @@ abstract class RouteGenerator {
         path: Routes.verifyPhoneRoute,
         pageBuilder: (context, state) {
           return CustomSlideTransition(
-              child: BlocProvider<PhoneAuthCubit>.value(
-            value: getIt<PhoneAuthCubit>(),
-            child: const VerifyPhoneView(),
-          ));
+            child: BlocProvider<PhoneAuthCubit>.value(
+              value: getIt<PhoneAuthCubit>(),
+              child: const VerifyPhoneView(),
+            ),
+          );
         },
       ),
       GoRoute(
         path: Routes.locationRoute,
-        builder: (context, state) {
+        pageBuilder: (context, state) {
           final purpose = state.extra as LocationPurpose;
           initLocationDi();
-          return BlocProvider<LocationCubit>(
-              create: (context) => getIt<LocationCubit>()..setPurpose(purpose),
-              child: const SelectLocationView());
+          return CustomSlideTransition(
+            child: BlocProvider<LocationCubit>(
+                create: (context) =>
+                    getIt<LocationCubit>()..setPurpose(purpose),
+                child: const SelectLocationView()),
+          );
         },
       ),
       GoRoute(
         path: Routes.mapRoute,
-        builder: (context, state) {
-          return BlocProvider<LocationCubit>.value(
-            value: getIt<LocationCubit>(),
-            child: const MapView(),
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(
+            child: BlocProvider<LocationCubit>.value(
+              value: getIt(),
+              child: const MapView(),
+            ),
           );
         },
       ),

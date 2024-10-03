@@ -10,4 +10,9 @@ enum LocationPurpose {
   delivery,
 }
 
+enum PhoneAuthPurpose {
+  newAccount,
+  change,
+}
+
 enum PaymentUrlType { success, redirect, pending, error }

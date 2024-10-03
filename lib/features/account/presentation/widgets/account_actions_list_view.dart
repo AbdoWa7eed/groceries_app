@@ -74,6 +74,13 @@ class _ActionsListViewWidgetState extends State<ActionsListViewWidget> {
           },
         ),
         ActionItemModel(
+          title: AppStrings.phoneNumber,
+          assetImagePath: AssetsManager.phoneIcon,
+          onTab: () {
+            context.push(Routes.phoneAuthRoute, extra: PhoneAuthPurpose.change);
+          },
+        ),
+        ActionItemModel(
           title: AppStrings.help,
           assetImagePath: AssetsManager.helpIcon,
           onTab: () {},

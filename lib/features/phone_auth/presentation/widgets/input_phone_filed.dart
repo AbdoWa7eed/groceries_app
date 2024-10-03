@@ -35,10 +35,7 @@ class _InputPhoneFieldState extends State<InputPhoneField> {
             spaceBetweenSelectorAndTextField: AppPadding.p4,
             onFieldSubmitted: (value) {},
             validator: ValidationBuilder().phone().build(),
-            keyboardType: TextInputType.phone,
-            countrySelectorScrollControlled: false,
-            selectorConfig: const SelectorConfig(
-                selectorType: PhoneInputSelectorType.BOTTOM_SHEET),
+            countries: const ['EG'],
             onSubmit: () {
               if (_formKey.currentState!.validate()) {
                 showDialog(

@@ -129,4 +129,7 @@ abstract class AppStrings {
   static const String confirmPassword = 'Confirm Password';
   static const String passwordChanged = 'Password changed successfully';
   static const String passwordMismatch = 'Passwords do not match';
+
+  //Change PhoneNumber
+  static const String phoneNumberChanged = 'Phone number changed successfully';
 }

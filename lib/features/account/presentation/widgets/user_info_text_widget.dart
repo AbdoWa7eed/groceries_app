@@ -13,7 +13,7 @@ class UserInfoTextWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final user = context.select((AccountCubit cubit) => cubit.user);
-    bool isAddressExist = user.address != null || user.address!.isEmpty;
+    bool isAddressExist = user.address != null && user.address!.isNotEmpty;
     return Expanded(
         child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
