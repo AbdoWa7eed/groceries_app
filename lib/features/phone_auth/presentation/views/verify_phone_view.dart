@@ -19,11 +19,12 @@ class VerifyPhoneView extends StatelessWidget {
         }
 
         if (state is VerifyOTPSuccessState) {
-          if (context.read<PhoneAuthCubit>().isAuth) {
+          if (context.read<PhoneAuthCubit>().purpose ==
+              PhoneAuthPurpose.newAccount) {
             context.popAllThenPush(Routes.locationRoute,
                 extra: LocationPurpose.newAccount);
           } else {
-            //TODO: Added pop navigation after finishing account feature
+            context.popAll();
           }
         }
       },

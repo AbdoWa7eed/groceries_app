@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
+import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
 import 'package:groceries_app/core/widgets/custom_snackbar.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 
 class RegisterViewListener extends StatelessWidget {
   const RegisterViewListener({super.key, required this.child});
+
   final Widget child;
 
   @override
@@ -21,7 +23,8 @@ class RegisterViewListener extends StatelessWidget {
         }
 
         if (state is RegisterSuccessState) {
-          context.popAllThenPush(Routes.phoneAuthRoute, extra: true);
+          context.popAllThenPush(Routes.phoneAuthRoute,
+              extra: PhoneAuthPurpose.newAccount);
         }
       },
       child: child,

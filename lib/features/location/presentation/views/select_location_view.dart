@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
+import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/widgets/custom_back_button.dart';
 import 'package:groceries_app/core/widgets/skip_text_button.dart';
@@ -22,7 +23,11 @@ class SelectLocationView extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               actions: cubit.purpose == LocationPurpose.newAccount
-                  ? [SkipTextButton(onPressed: () {})]
+                  ? [
+                      SkipTextButton(onPressed: () {
+                        context.push(Routes.homeRoute);
+                      }),
+                    ]
                   : [],
               title: const Text(
                 AppStrings.location,

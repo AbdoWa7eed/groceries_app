@@ -26,7 +26,7 @@ initAuthDi() async {
 }
 
 initPhoneAuthDi() async {
-  if (!getIt.isRegistered<PhoneAuthCubit>()) {
+  if (!getIt.isRegistered<VerifyPhoneUsecase>()) {
     getIt
       ..registerLazySingleton<PhoneAuthApiService>(
           () => PhoneAuthApiService(DioFactory.getDio()))
@@ -36,14 +36,16 @@ initPhoneAuthDi() async {
           () => PhoneAuthRepositoryImpl(getIt()))
       ..registerLazySingleton<SendOTPUsecase>(() => SendOTPUsecase(getIt()))
       ..registerLazySingleton<VerifyPhoneUsecase>(
-          () => VerifyPhoneUsecase(getIt()))
-      ..registerLazySingleton<PhoneAuthCubit>(
-          () => PhoneAuthCubit(getIt(), getIt()));
+          () => VerifyPhoneUsecase(getIt()));
+  }
+  if (!getIt.isRegistered<PhoneAuthCubit>()) {
+    getIt.registerLazySingleton<PhoneAuthCubit>(
+        () => PhoneAuthCubit(getIt(), getIt()));
   }
 }
 
 initLocationDi() async {
-  if (!getIt.isRegistered<LocationCubit>()) {
+  if (!getIt.isRegistered<UpdateUserAddressUseCase>()) {
     getIt
       ..registerLazySingleton<LocationApiService>(
           () => LocationApiService(DioFactory.getDio()))
@@ -60,17 +62,12 @@ initLocationDi() async {
       ..registerLazySingleton<GetPlaceDetailsUseCase>(
           () => GetPlaceDetailsUseCase(getIt()))
       ..registerLazySingleton<UpdateUserAddressUseCase>(
-          () => UpdateUserAddressUseCase(getIt()))
-      ..registerLazySingleton<LocationCubit>(
-          () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
-  } else {
-    final state = getIt<LocationCubit>().state;
-    if (state is! GetPositionSuccess) {
-      getIt.unregister<LocationCubit>(
-          disposingFunction: (cubit) => cubit.isClosed ? null : cubit.close());
-      getIt.registerLazySingleton<LocationCubit>(
-          () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
-    }
+          () => UpdateUserAddressUseCase(getIt()));
+  }
+
+  if (!getIt.isRegistered<LocationCubit>()) {
+    getIt.registerLazySingleton<LocationCubit>(
+        () => LocationCubit(getIt(), getIt(), getIt(), getIt()));
   }
 }
 
