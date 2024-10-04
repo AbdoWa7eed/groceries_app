@@ -1,6 +1,6 @@
+import 'package:groceries_app/core/data/models/otp/otp_response.dart';
+import 'package:groceries_app/core/domain/entities/otp_entity.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
-import 'package:groceries_app/features/phone_auth/data/models/otp_response/otp_response.dart';
-import 'package:groceries_app/features/phone_auth/domain/entity/otp_entity.dart';
 
 extension OTPResponseToEntityMapper on OTPResponse {
   OTPEntity toEntity() {
