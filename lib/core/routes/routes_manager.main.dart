@@ -252,8 +252,12 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.forgetPassword,
         pageBuilder: (context, state) {
+          initForgetPasswordDi();
           return CustomSlideTransition(
-            child: const ForgetPasswordView(),
+            child: BlocProvider<ForgetPasswordCubit>(
+              create: (context) => getIt(),
+              child: const ForgetPasswordView(),
+            ),
           );
         },
       ),
@@ -261,7 +265,10 @@ abstract class RouteGenerator {
         path: Routes.verifyEmail,
         pageBuilder: (context, state) {
           return CustomSlideTransition(
-            child: const VerifyEmailView(),
+            child: BlocProvider<ForgetPasswordCubit>.value(
+              value: getIt(),
+              child: const VerifyEmailView(),
+            ),
           );
         },
       ),
@@ -269,7 +276,10 @@ abstract class RouteGenerator {
         path: Routes.resetPassword,
         pageBuilder: (context, state) {
           return CustomSlideTransition(
-            child: const ResetPasswordView(),
+            child: BlocProvider<ForgetPasswordCubit>.value(
+              value: getIt(),
+              child: const ResetPasswordView(),
+            ),
           );
         },
       ),

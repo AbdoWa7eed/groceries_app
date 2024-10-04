@@ -56,6 +56,14 @@ import 'package:groceries_app/features/explore/presentation/cubit/explore_cubit.
 import 'package:groceries_app/features/favorites/domain/usecases/add_all_to_cart_usecase.dart';
 import 'package:groceries_app/features/favorites/domain/usecases/get_favorite_usecase.dart';
 import 'package:groceries_app/features/favorites/presentation/cubit/favorite_cubit.dart';
+import 'package:groceries_app/features/forget_password/data/api/forget_password_api_service.dart';
+import 'package:groceries_app/features/forget_password/data/data_source/reset_password_data_source.dart';
+import 'package:groceries_app/features/forget_password/data/repo/forget_password_repo_impl.dart';
+import 'package:groceries_app/features/forget_password/domain/repo/forget_password_repo.dart';
+import 'package:groceries_app/features/forget_password/domain/usecases/reset_password_usecase.dart';
+import 'package:groceries_app/features/forget_password/domain/usecases/send_verification_code_usecase.dart';
+import 'package:groceries_app/features/forget_password/domain/usecases/verify_email_usecase.dart';
+import 'package:groceries_app/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:groceries_app/features/home/presentation/provider/home_controller.dart';
 import 'package:groceries_app/features/location/data/api/location_api_service.dart';
 import 'package:groceries_app/features/location/data/api/update_address_api_service.dart';

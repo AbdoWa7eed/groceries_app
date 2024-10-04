@@ -3,10 +3,10 @@ import 'package:groceries_app/core/network/api_result.dart';
 import 'package:groceries_app/core/utils/base_usecase.dart';
 import 'package:groceries_app/features/forget_password/domain/repo/forget_password_repo.dart';
 
-class SendVerificationCodeUseCase extends BaseUseCase<String, OTPEntity> {
+class SendEmailVerificationCodeUseCase extends BaseUseCase<String, OTPEntity> {
   final ForgetPasswordRepository _forgetPasswordRepository;
 
-  SendVerificationCodeUseCase(this._forgetPasswordRepository);
+  SendEmailVerificationCodeUseCase(this._forgetPasswordRepository);
 
   @override
   ResultFuture<OTPEntity> execute(String input) async {
