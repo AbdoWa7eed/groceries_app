@@ -1,5 +1,5 @@
+import 'package:groceries_app/core/data/models/auth/auth_response.dart';
 import 'package:groceries_app/features/auth/data/api/auth_api_service.dart';
-import 'package:groceries_app/features/auth/data/models/auth_response.dart';
 import 'package:groceries_app/features/auth/data/models/login_request.dart';
 import 'package:groceries_app/features/auth/data/models/register_request.dart';
 

@@ -1,7 +1,8 @@
 import 'package:json_annotation/json_annotation.dart';
+
 part 'verify_otp_request.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(createFactory: false)
 class VerifyOTPRequest {
   String verificationId;
   String code;
@@ -11,8 +12,5 @@ class VerifyOTPRequest {
     required this.code,
   });
 
-  factory VerifyOTPRequest.fromJson(Map<String, dynamic> json) =>
-      _$VerifyOTPRequestFromJson(json);
-
-  Map<String , dynamic> toJson() => _$VerifyOTPRequestToJson(this);
+  Map<String, dynamic> toJson() => _$VerifyOTPRequestToJson(this);
 }
