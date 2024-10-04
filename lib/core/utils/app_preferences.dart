@@ -8,7 +8,7 @@ class AppPreferences {
   final SharedPreferences _sharedPreferences;
   AppPreferences(this._sharedPreferences);
 
-  void setUserAccessToken(String token) async {
+  Future setUserAccessToken(String token) async {
     await _sharedPreferences.setString(userAccessToken, token);
   }
 
@@ -16,7 +16,7 @@ class AppPreferences {
     return _sharedPreferences.getString(userAccessToken);
   }
 
-  void setUserRefreshToken(String token) async {
+  Future setUserRefreshToken(String token) async {
     await _sharedPreferences.setString(userRefreshToken, token);
   }
 

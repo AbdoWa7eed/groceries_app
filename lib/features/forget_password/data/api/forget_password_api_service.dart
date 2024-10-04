@@ -16,7 +16,7 @@ abstract class ForgetPasswordApiService {
   @POST('password/send-code')
   Future<OTPResponse> sendEmailVerificationCode(@Field() String email);
 
-  @POST('password/send-code')
+  @POST('password/verify-email')
   Future<OTPResponse> verifyEmail(@Body() VerifyOTPRequest verifyOTPRequest);
 
   @POST('password/reset')

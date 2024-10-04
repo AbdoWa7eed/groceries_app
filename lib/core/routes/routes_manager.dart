@@ -19,6 +19,7 @@ import 'package:groceries_app/features/checkout/presentation/views/confirm_payme
 import 'package:groceries_app/features/explore/presentation/cubit/explore_cubit.dart';
 import 'package:groceries_app/features/explore/presentation/views/category_products_view.dart';
 import 'package:groceries_app/features/favorites/presentation/cubit/favorite_cubit.dart';
+import 'package:groceries_app/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:groceries_app/features/forget_password/presentation/views/forget_password_view.dart';
 import 'package:groceries_app/features/forget_password/presentation/views/reset_password_view.dart';
 import 'package:groceries_app/features/forget_password/presentation/views/verify_email_view.dart';

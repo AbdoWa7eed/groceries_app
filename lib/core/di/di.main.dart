@@ -274,6 +274,39 @@ initChangePasswordDi() {
   }
 }
 
+void initForgetPasswordDi() {
+  if (!getIt.isRegistered<ForgetPasswordCubit>()) {
+    getIt
+      ..registerLazySingleton<ForgetPasswordApiService>(
+          () => ForgetPasswordApiService(DioFactory.getDio()))
+      ..registerLazySingleton<ForgetPasswordDataSource>(
+          () => ForgetPasswordDataSourceImpl(getIt()))
+      ..registerLazySingleton<ForgetPasswordRepository>(
+          () => ForgetPasswordRepositoryImpl(getIt()))
+      ..registerLazySingleton<SendEmailVerificationCodeUseCase>(
+          () => SendEmailVerificationCodeUseCase(getIt()))
+      ..registerLazySingleton<VerifyEmailUseCase>(
+          () => VerifyEmailUseCase(getIt()))
+      ..registerLazySingleton<ResetPasswordUseCase>(
+          () => ResetPasswordUseCase(getIt()))
+      ..registerLazySingleton<ForgetPasswordCubit>(
+          () => ForgetPasswordCubit(getIt(), getIt(), getIt(), getIt()));
+  }
+}
+
+void unregisterForgetPasswordDi() {
+  if (getIt.isRegistered<ForgetPasswordCubit>()) {
+    getIt
+      ..unregister<ForgetPasswordCubit>()
+      ..unregister<ResetPasswordUseCase>()
+      ..unregister<VerifyEmailUseCase>()
+      ..unregister<SendEmailVerificationCodeUseCase>()
+      ..unregister<ForgetPasswordRepository>()
+      ..unregister<ForgetPasswordDataSource>()
+      ..unregister<ForgetPasswordApiService>();
+  }
+}
+
 Future<void> resetDis() async {
   await getIt.reset();
   await initDi();

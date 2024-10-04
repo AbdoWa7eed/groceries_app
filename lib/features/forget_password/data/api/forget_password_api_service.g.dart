@@ -62,7 +62,7 @@ class _ForgetPasswordApiService implements ForgetPasswordApiService {
     )
             .compose(
               _dio.options,
-              'password/send-code',
+              'password/verify-email',
               queryParameters: queryParameters,
               data: _data,
             )
