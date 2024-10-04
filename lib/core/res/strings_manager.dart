@@ -132,4 +132,10 @@ abstract class AppStrings {
 
   //Change PhoneNumber
   static const String phoneNumberChanged = 'Phone number changed successfully';
+
+  // Forget Password
+  static const String enterYourEmail = 'Enter your email address';
+  static const String sendVerificationCode = 'Send verification code';
+  static const String resetPassword = 'Reset Password';
+  static const String enterEmailCode = 'Enter the code sent to your email';
 }

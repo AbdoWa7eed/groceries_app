@@ -3,12 +3,25 @@ import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
-import 'package:groceries_app/features/phone_auth/presentation/widgets/code_input_widget.dart';
+import 'package:groceries_app/core/widgets/code_input_widget.dart';
 import 'package:groceries_app/features/phone_auth/presentation/widgets/custom_header_widget.dart';
 import 'package:groceries_app/features/phone_auth/presentation/widgets/resend_verify_code_widget.dart';
 
-class VerifyPhoneViewBody extends StatelessWidget {
+class VerifyPhoneViewBody extends StatefulWidget {
   const VerifyPhoneViewBody({super.key});
+
+  @override
+  State<VerifyPhoneViewBody> createState() => _VerifyPhoneViewBodyState();
+}
+
+class _VerifyPhoneViewBodyState extends State<VerifyPhoneViewBody> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    _controller = TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,12 +43,14 @@ class VerifyPhoneViewBody extends StatelessWidget {
                 const SizedBox(
                   height: AppSize.s20,
                 ),
-                const CodeInputWidget(),
+                CodeInputWidget(
+                  controller: _controller,
+                ),
                 const SizedBox(
                   height: AppSize.s16,
                 ),
-                const VerifyResendButtonsWidget(
-                  code: "1234",
+                VerifyResendButtonsWidget(
+                  code: _controller.text,
                 ),
               ],
             ),

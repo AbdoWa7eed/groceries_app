@@ -24,13 +24,6 @@ class PhoneAuthCubit extends Cubit<PhoneAuthState> {
 
   String? verificationId;
   late String? _phoneNumber;
-  String? _code;
-
-  void setCode(String code) {
-    _code = code;
-  }
-
-  String? get code => _code;
 
   void sendOTP([String? phoneNumber]) async {
     _phoneNumber = phoneNumber;
@@ -46,10 +39,10 @@ class PhoneAuthCubit extends Cubit<PhoneAuthState> {
     }
   }
 
-  void verifyOTP() async {
+  void verifyOTP({required String code}) async {
     emit(VerifyOTPLoadingState());
     final data = await _verifyPhoneUsecase.execute(VerifyPhoneUsecaseInput(
-        verificationId: verificationId ?? '', code: _code!));
+        verificationId: verificationId ?? '', code: code));
     if (data.isRight()) {
       emit(VerifyOTPSuccessState());
       return;

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/core/routes/routes_manager.dart';
 
 class ForgetPasswordButtonWidget extends StatelessWidget {
   const ForgetPasswordButtonWidget({super.key});
@@ -15,7 +17,9 @@ class ForgetPasswordButtonWidget extends StatelessWidget {
       child: Align(
         alignment: AlignmentDirectional.bottomEnd,
         child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              context.push(Routes.forgetPassword);
+            },
             child: Text(
               AppStrings.forgotPassword,
               style: StylesManager.medium16.copyWith(color: ColorManager.dark),
