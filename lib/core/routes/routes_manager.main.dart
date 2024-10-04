@@ -17,6 +17,9 @@ abstract class Routes {
   static const String searchResult = '/searchResult';
   static const String confirmPayment = '/confirmPayment';
   static const String changePassword = '/changePassword';
+  static const String forgetPassword = '/forgetPassword';
+  static const String verifyEmail = '/verifyEmail';
+  static const String resetPassword = '/resetPassword';
 }
 
 abstract class RouteGenerator {
@@ -243,6 +246,30 @@ abstract class RouteGenerator {
               create: (context) => getIt(),
               child: const ChangePasswordView(),
             ),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.forgetPassword,
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(
+            child: const ForgetPasswordView(),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.verifyEmail,
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(
+            child: const VerifyEmailView(),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.resetPassword,
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(
+            child: const ResetPasswordView(),
           );
         },
       ),

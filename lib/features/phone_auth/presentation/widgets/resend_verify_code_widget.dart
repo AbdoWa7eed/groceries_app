@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
@@ -10,6 +11,7 @@ import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_
 
 class VerifyResendButtonsWidget extends StatefulWidget {
   const VerifyResendButtonsWidget({super.key, required this.code});
+
   final String code;
 
   @override
@@ -51,61 +53,58 @@ class _VerifyResendButtonsWidgetState extends State<VerifyResendButtonsWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<PhoneAuthCubit, PhoneAuthState>(
-      builder: (context, state) {
-        final cubit = context.read<PhoneAuthCubit>();
-        return Row(
-          children: [
-            Expanded(
-              child: CustomElevatedButtonWidget(
-                  onPressed: _currentTime == 0
-                      ? () {
-                          setState(() {
-                            cubit.sendOTP();
-                            startTimer();
-                          });
-                        }
-                      : null,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(AppStrings.resendCode,
-                          style: StylesManager.medium14.copyWith(
-                              color: _currentTime == 0
-                                  ? ColorManager.white
-                                  : ColorManager.primary)),
-                      Visibility(
-                        visible: _currentTime != 0,
-                        child: Text('$_currentTime s',
-                            style: StylesManager.medium14.copyWith(
-                                color: _currentTime == 0
-                                    ? ColorManager.white
-                                    : ColorManager.primary)),
-                      ),
-                    ],
-                  )),
+    final cubit = context.read<PhoneAuthCubit>();
+
+    return Row(
+      children: [
+        Expanded(
+          child: CustomElevatedButtonWidget(
+              onPressed: _currentTime == 0
+                  ? () {
+                      setState(() {
+                        cubit.sendOTP();
+                        startTimer();
+                      });
+                    }
+                  : null,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(AppStrings.resendCode,
+                      style: StylesManager.medium14.copyWith(
+                          color: _currentTime == 0
+                              ? ColorManager.white
+                              : ColorManager.primary)),
+                  Visibility(
+                    visible: _currentTime != 0,
+                    child: Text('$_currentTime s',
+                        style: StylesManager.medium14.copyWith(
+                            color: _currentTime == 0
+                                ? ColorManager.white
+                                : ColorManager.primary)),
+                  ),
+                ],
+              )),
+        ),
+        const SizedBox(
+          width: 20,
+        ),
+        Expanded(
+          child: CustomElevatedButtonWidget(
+            onPressed: () {
+              if (widget.code.length < 6) {
+                showSnackBar(context, text: AppStrings.codeIsNotCompleted);
+              } else {
+                cubit.verifyOTP(code: widget.code);
+              }
+            },
+            child: Text(
+              AppStrings.verify,
+              style: StylesManager.medium14.copyWith(color: ColorManager.white),
             ),
-            const SizedBox(
-              width: 20,
-            ),
-            Expanded(
-                child: CustomElevatedButtonWidget(
-              onPressed: () {
-                if ((cubit.code?.length ?? 0) < 6) {
-                  showSnackBar(context, text: AppStrings.codeIsNotCompleted);
-                } else {
-                  cubit.verifyOTP();
-                }
-              },
-              child: Text(
-                AppStrings.verify,
-                style:
-                    StylesManager.medium14.copyWith(color: ColorManager.white),
-              ),
-            )),
-          ],
-        );
-      },
+          ),
+        ),
+      ],
     );
   }
 }
