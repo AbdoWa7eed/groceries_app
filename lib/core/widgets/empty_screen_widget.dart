@@ -11,8 +11,10 @@ class CustomEmptyScreen extends StatelessWidget {
     required this.text,
     this.onTryAgain,
   });
+
   final String text;
   final Function()? onTryAgain;
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -22,8 +24,8 @@ class CustomEmptyScreen extends StatelessWidget {
         children: [
           LottieBuilder.asset(
             AssetsManager.emptyCartJson,
-            height: 200,
-            width: 200,
+            height: AppSize.s200,
+            width: AppSize.s200,
           ),
           Text(
             text,

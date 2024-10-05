@@ -287,8 +287,12 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.ordersRoute,
         pageBuilder: (context, state) {
+          initOrdersDi();
           return CustomSlideTransition(
-            child: const OrdersView(),
+            child: BlocProvider<OrdersCubit>(
+              create: (context) => getIt()..getOrders(),
+              child: const OrdersView(),
+            ),
           );
         },
       ),

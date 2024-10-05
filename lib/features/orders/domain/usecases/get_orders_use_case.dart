@@ -4,7 +4,7 @@ import 'package:groceries_app/features/orders/domain/entities/order_entity.dart'
 import 'package:groceries_app/features/orders/domain/repo/orders_repo.dart';
 
 class GetOrdersUseCase extends BaseUseCase<void, List<OrderEntity>> {
-  final OrderRepository _orderRepository;
+  final OrdersRepository _orderRepository;
 
   GetOrdersUseCase(this._orderRepository);
 

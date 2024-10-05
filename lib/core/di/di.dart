@@ -75,6 +75,13 @@ import 'package:groceries_app/features/location/domain/usecases/get_suggested_pl
 import 'package:groceries_app/features/location/domain/usecases/place_from_coordinates_usecase.dart';
 import 'package:groceries_app/features/location/domain/usecases/update_user_address_usecase.dart';
 import 'package:groceries_app/features/location/presentation/cubit/location_cubit.dart';
+import 'package:groceries_app/features/orders/data/api/orders_api_service.dart';
+import 'package:groceries_app/features/orders/data/data_source/orders_data_source.dart';
+import 'package:groceries_app/features/orders/data/repo/orders_repo_impl.dart';
+import 'package:groceries_app/features/orders/domain/repo/orders_repo.dart';
+import 'package:groceries_app/features/orders/domain/usecases/cancel_order_use_case.dart';
+import 'package:groceries_app/features/orders/domain/usecases/get_orders_use_case.dart';
+import 'package:groceries_app/features/orders/presentation/cubit/orders_cubit.dart';
 import 'package:groceries_app/features/phone_auth/data/api/phone_auth_api_service.dart';
 import 'package:groceries_app/features/phone_auth/data/data_source/phone_auth_data_source.dart';
 import 'package:groceries_app/features/phone_auth/data/repo/phone_auth_repo_impl.dart';

@@ -18,9 +18,10 @@ extension OrderResponseModelMapper on OrderResponseModel {
           orElse: () => OrderStatus.processing),
       paymentMethod: PaymentMethodsEnum.values.firstWhere(
           (e) => e.name == paymentMethod?.toLowerCase(),
-          orElse: () => PaymentMethodsEnum.cash),
-      paymentStatus: OrderPaymentStatus.values
-          .firstWhereOrNull((e) => e.name == paymentStatus?.toLowerCase()),
+          orElse: () => PaymentMethodsEnum.other),
+      paymentStatus: OrderPaymentStatus.values.firstWhere(
+          (e) => e.name == paymentStatus?.toLowerCase(),
+          orElse: () => OrderPaymentStatus.pending),
       totalPrice: totalPrice.orZero(),
       orderItems: orderItems?.map((item) => item.toEntity()).toList() ?? [],
       paymentLink: paymentLink.orEmpty(),

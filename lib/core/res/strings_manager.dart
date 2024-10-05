@@ -150,4 +150,8 @@ abstract class AppStrings {
       "Your order has been shipped and is on its way.";
   static const String close = "Close";
   static const String trackOrder = 'Track Order';
+  static const String pay = 'Pay Order';
+  static const String cannotPayOrder =
+      "You cannot pay for this order please create new one";
+  static const String noOrdersYet = "You haven't made any orders yet.";
 }
