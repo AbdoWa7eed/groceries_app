@@ -90,12 +90,21 @@ extension ScrollControllerExtension on ScrollController {
   }
 }
 
-extension GetOnlyNewItems<T> on List<T> {
-  List<T> getOnlyNewItems(Iterable<T> newItems) {
+extension IterableExensions<T> on Iterable<T> {
+  Iterable<T> getOnlyNewItems(Iterable<T> newItems) {
     final existingItems = Set<T>.from(this);
 
     newItems = newItems.where((element) => !existingItems.contains(element));
     return newItems.toList();
+  }
+
+  T? firstWhereOrNull(bool Function(T element) test) {
+    for (var element in this) {
+      if (test(element)) {
+        return element;
+      }
+    }
+    return null;
   }
 
   int get nextPage => (length ~/ 8) + 1;
