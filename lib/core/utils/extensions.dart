@@ -33,12 +33,18 @@ extension EitherX<Failure, R> on Either<Failure, R> {
 }
 
 extension StringExtenstions on String? {
+  bool get _isNull => this == null;
   String orEmpty() {
-    if (this == null) {
+    if (_isNull) {
       return "";
     } else {
       return this!;
     }
+  }
+
+  String get capitalizeFirstLetter {
+    if (_isNull || this!.isEmpty) return "";
+    return '${this![0].toUpperCase()}${this!.substring(1)}';
   }
 
   bool get isFormattedAddress => RegExp(

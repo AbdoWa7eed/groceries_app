@@ -48,7 +48,9 @@ class _ActionsListViewWidgetState extends State<ActionsListViewWidget> {
         ActionItemModel(
           title: AppStrings.myOrders,
           assetImagePath: AssetsManager.ordersIcon,
-          onTab: () {},
+          onTab: () {
+            context.push(Routes.ordersRoute);
+          },
         ),
         ActionItemModel(
           title: AppStrings.personalDetails,
