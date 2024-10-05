@@ -20,6 +20,7 @@ abstract class Routes {
   static const String forgetPassword = '/forgetPassword';
   static const String verifyEmail = '/verifyEmail';
   static const String resetPassword = '/resetPassword';
+  static const String ordersRoute = '/orders';
 }
 
 abstract class RouteGenerator {
@@ -280,6 +281,14 @@ abstract class RouteGenerator {
               value: getIt(),
               child: const ResetPasswordView(),
             ),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.ordersRoute,
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(
+            child: const OrdersView(),
           );
         },
       ),

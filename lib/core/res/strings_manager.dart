@@ -138,4 +138,16 @@ abstract class AppStrings {
   static const String sendVerificationCode = 'Send verification code';
   static const String resetPassword = 'Reset Password';
   static const String enterEmailCode = 'Enter the code sent to your email';
+
+  // Orders
+  static const String orders = 'Orders';
+  static const String orderTracking = 'Order Tracking';
+  static const String processingOrder = "Your order is being processed.";
+  static const String processedOrder = "Your order has been processed.";
+  static const String deliveredOrder = "Your order has been delivered.";
+  static const String orderCancelled = "Your order has been cancelled.";
+  static const String shippedOrder =
+      "Your order has been shipped and is on its way.";
+  static const String close = "Close";
+  static const String trackOrder = 'Track Order';
 }

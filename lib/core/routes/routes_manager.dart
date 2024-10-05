@@ -29,6 +29,7 @@ import 'package:groceries_app/features/location/presentation/cubit/location_cubi
 import 'package:groceries_app/features/location/presentation/views/map_view.dart';
 import 'package:groceries_app/features/location/presentation/views/select_location_view.dart';
 import 'package:groceries_app/features/onboarding/onboarding_view.dart';
+import 'package:groceries_app/features/orders/presentation/views/orders_view.dart';
 import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
 import 'package:groceries_app/features/phone_auth/presentation/views/phone_auth_view.dart';
 import 'package:groceries_app/features/phone_auth/presentation/views/verify_phone_view.dart';
