@@ -1,4 +1,4 @@
-enum PaymentMethodsEnum { cash, paymob }
+enum PaymentMethodsEnum { cash, paymob, other }
 
 enum LocationPurpose {
   newAccount,

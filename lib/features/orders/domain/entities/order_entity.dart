@@ -8,22 +8,22 @@ class OrderEntity {
   final String shippingAddress;
   final OrderStatus status;
   final PaymentMethodsEnum paymentMethod;
-  final OrderPaymentStatus? paymentStatus;
+  final OrderPaymentStatus paymentStatus;
   final double totalPrice;
   final List<OrderItemEntity> orderItems;
   final String? paymentLink;
 
-  OrderEntity({
+  const OrderEntity({
     required this.orderId,
     required this.orderDate,
-    this.shippingDate,
+    required this.shippingDate,
     required this.shippingAddress,
     required this.status,
     required this.paymentMethod,
     required this.paymentStatus,
     required this.totalPrice,
     required this.orderItems,
-    this.paymentLink,
+    required this.paymentLink,
   });
 }
 

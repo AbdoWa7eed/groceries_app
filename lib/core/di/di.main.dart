@@ -192,15 +192,22 @@ initCartDi() async {
   }
 }
 
-initCheckoutDi() {
-  if (!getIt.isRegistered<CheckoutCubit>()) {
+initCheckoutResouces() {
+  if (!getIt.isRegistered<CheckoutRepository>()) {
     getIt
       ..registerLazySingleton<CheckoutApiService>(
           () => CheckoutApiService(DioFactory.getDio()))
       ..registerLazySingleton<CheckoutDataSource>(
           () => CheckoutDataSourceImpl(getIt()))
       ..registerLazySingleton<CheckoutRepository>(
-          () => CheckoutRepositoryImpl(getIt()))
+          () => CheckoutRepositoryImpl(getIt()));
+  }
+}
+
+initCheckoutDi() {
+  initCheckoutResouces();
+  if (!getIt.isRegistered<CheckoutCubit>()) {
+    getIt
       ..registerLazySingleton<PlaceOrderUseCase>(
           () => PlaceOrderUseCase(getIt()))
       ..registerLazySingleton<CheckoutCubit>(() => CheckoutCubit(getIt()));
@@ -212,6 +219,7 @@ initCheckoutDi() {
 }
 
 initConfirmPaymentDi() {
+  initCheckoutResouces();
   if (!getIt.isRegistered<ConfirmPaymentCubit>()) {
     getIt
       ..registerLazySingleton<ConfirmPaymentUseCase>(
@@ -304,6 +312,22 @@ void unregisterForgetPasswordDi() {
       ..unregister<ForgetPasswordRepository>()
       ..unregister<ForgetPasswordDataSource>()
       ..unregister<ForgetPasswordApiService>();
+  }
+}
+
+void initOrdersDi() {
+  if (!getIt.isRegistered<CancelOrderUseCase>()) {
+    getIt
+      ..registerLazySingleton<OrdersApiService>(
+          () => OrdersApiService(DioFactory.getDio()))
+      ..registerLazySingleton<OrdersDataSource>(
+          () => OrdersDataSourceImpl(getIt()))
+      ..registerLazySingleton<OrdersRepository>(
+          () => OrdersRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetOrdersUseCase>(() => GetOrdersUseCase(getIt()))
+      ..registerLazySingleton<CancelOrderUseCase>(
+          () => CancelOrderUseCase(getIt()))
+      ..registerFactory<OrdersCubit>(() => OrdersCubit(getIt(), getIt()));
   }
 }
 

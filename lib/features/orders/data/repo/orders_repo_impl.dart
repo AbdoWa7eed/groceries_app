@@ -7,10 +7,10 @@ import 'package:groceries_app/features/orders/data/mappers/order_mapper.dart';
 import 'package:groceries_app/features/orders/domain/entities/order_entity.dart';
 import 'package:groceries_app/features/orders/domain/repo/orders_repo.dart';
 
-class OrderRepositoryImpl extends OrderRepository {
+class OrdersRepositoryImpl extends OrdersRepository {
   final OrdersDataSource _orderDataSource;
 
-  OrderRepositoryImpl(this._orderDataSource);
+  OrdersRepositoryImpl(this._orderDataSource);
 
   @override
   ResultFuture<List<OrderEntity>> getOrders() async {
