@@ -18,3 +18,8 @@ enum OrderStatus {
   shipped,
   delivered,
 }
+
+enum OrderPaymentStatus {
+  pending,
+  paid,
+}
