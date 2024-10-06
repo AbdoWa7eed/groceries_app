@@ -28,12 +28,20 @@ class ShopCubit extends Cubit<ShopState> {
 
   Future<void> initShopData() async {
     emit(ShopLoading());
-    final results = await Future.wait([
-      _fetchData(_getBestSellingUseCase.execute, bestSelling),
-      _fetchData(_getExclusiveOffersUseCase.execute, exclusiveOffers),
-      _fetchData(_getGroceriesUseCase.execute, groceries),
-      _fetchData(_getBannersUseCase.execute, banners),
-    ]);
+    final bestSellingResult =
+        await _fetchData(_getBestSellingUseCase.execute, bestSelling);
+    final exclusiveOffersResult =
+        await _fetchData(_getExclusiveOffersUseCase.execute, exclusiveOffers);
+    final groceriesResult =
+        await _fetchData(_getGroceriesUseCase.execute, groceries);
+    final bannersResult = await _fetchData(_getBannersUseCase.execute, banners);
+
+    final results = [
+      bestSellingResult,
+      exclusiveOffersResult,
+      groceriesResult,
+      bannersResult
+    ];
 
     final error =
         results.firstWhere((result) => result != null, orElse: () => null);

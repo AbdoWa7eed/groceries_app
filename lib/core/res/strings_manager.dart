@@ -74,6 +74,8 @@ abstract class AppStrings {
 
   //Explore
   static const String findProducts = 'Find Products';
+  static const String noProductsFound = 'No products found';
+
 
   // Cart
   static const String myCart = 'My Cart';
@@ -154,4 +156,9 @@ abstract class AppStrings {
   static const String cannotPayOrder =
       "You cannot pay for this order please create new one";
   static const String noOrdersYet = "You haven't made any orders yet.";
+
+  // Session
+  static const String loginAgain = 'Your session has expired. Please log in again.';
+  static const String sessionExpired = "Session Expired";
+
 }

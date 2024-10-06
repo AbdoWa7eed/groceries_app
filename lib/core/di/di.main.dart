@@ -5,6 +5,8 @@ final getIt = GetIt.instance;
 initDi() async {
   final instance = await SharedPreferences.getInstance();
   getIt.registerLazySingleton<AppPreferences>(() => AppPreferences(instance));
+  getIt.registerLazySingleton<RefreshTokenApiService>(
+      () => RefreshTokenApiService(DioFactory.getNewDioInstance()));
 }
 
 initAuthDi() async {
@@ -247,7 +249,7 @@ initAccountDi() {
           () => GetProfileUseCase(getIt()))
       ..registerLazySingleton<LogoutUseCase>(() => LogoutUseCase(getIt()))
       ..registerLazySingleton<AccountCubit>(
-          () => AccountCubit(getIt(), getIt(), getIt()));
+          () => AccountCubit(getIt(), getIt()));
   }
 }
 
@@ -332,6 +334,7 @@ void initOrdersDi() {
 }
 
 Future<void> resetDis() async {
+  await getIt<AppPreferences>().logout();
   await getIt.reset();
   await initDi();
 }
