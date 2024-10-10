@@ -76,7 +76,6 @@ abstract class AppStrings {
   static const String findProducts = 'Find Products';
   static const String noProductsFound = 'No products found';
 
-
   // Cart
   static const String myCart = 'My Cart';
   static const String goToCheckout = 'Go To Checkout';
@@ -158,7 +157,20 @@ abstract class AppStrings {
   static const String noOrdersYet = "You haven't made any orders yet.";
 
   // Session
-  static const String loginAgain = 'Your session has expired. Please log in again.';
+  static const String loginAgain =
+      'Your session has expired. Please log in again.';
   static const String sessionExpired = "Session Expired";
 
+  //Reviews
+  static const String reviews = "Reviews";
+  static const String leaveReview = "Leave a Review";
+  static const String addReviewSubtitle =
+      "Please take a moment to leave a review";
+  static const String editReview = "Edit Review";
+  static const String editReviewSubtitle = "Edit your review below";
+  static const String updateReview = "Update Review";
+  static const String submitReview = "Submit Review";
+  static const String reviewSubmitted = "Review submitted successfully";
+  static const String reviewDeleted = "Review deleted successfully";
+  static const String reviewUpdated = "Review updated successfully";
 }

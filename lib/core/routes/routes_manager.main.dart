@@ -21,6 +21,7 @@ abstract class Routes {
   static const String verifyEmail = '/verifyEmail';
   static const String resetPassword = '/resetPassword';
   static const String ordersRoute = '/orders';
+  static const String reviewsRoute = '/reviews';
 }
 
 abstract class RouteGenerator {
@@ -293,6 +294,14 @@ abstract class RouteGenerator {
               create: (context) => getIt()..getOrders(),
               child: const OrdersView(),
             ),
+          );
+        },
+      ),
+      GoRoute(
+        path: Routes.reviewsRoute,
+        pageBuilder: (context, state) {
+          return CustomSlideTransition(
+            child: const ReviewsView(),
           );
         },
       ),

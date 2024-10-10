@@ -38,6 +38,7 @@ import 'package:groceries_app/features/product_details/presentation/cubit/produc
 import 'package:groceries_app/features/product_details/presentation/views/product_details_view.dart';
 import 'package:groceries_app/features/profile/presentation/cubit/profile_cubit.dart';
 import 'package:groceries_app/features/profile/presentation/views/profile_view.dart';
+import 'package:groceries_app/features/reviews/presentation/views/reviews_view.dart';
 import 'package:groceries_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:groceries_app/features/search/presentation/views/search_result_view.dart';
 import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
