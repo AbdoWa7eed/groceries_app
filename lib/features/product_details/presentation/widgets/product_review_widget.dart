@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
+import 'package:groceries_app/core/routes/routes_manager.dart';
+import 'package:groceries_app/core/widgets/custom_rating_widget.dart';
 import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
 
 class ProductReviewWidget extends StatelessWidget {
@@ -23,24 +25,14 @@ class ProductReviewWidget extends StatelessWidget {
                   StylesManager.semiBold18.copyWith(color: ColorManager.dark),
             ),
           ),
-          RatingBar.builder(
-            ignoreGestures: true,
-            minRating: 0,
+          CustomRatingWidget(
             initialRating:
                 context.read<ProductDetailsCubit>().productDetailsEntity.rate,
-            allowHalfRating: true,
-            itemCount: 5,
-            itemSize: AppSize.s20,
-            glow: false,
-            unratedColor: ColorManager.lightGray,
-            itemPadding: const EdgeInsets.symmetric(horizontal: 1),
-            itemBuilder: (context, index) {
-              return const Icon(Icons.star, color: ColorManager.deepOrange);
-            },
-            onRatingUpdate: (value) {},
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.push(Routes.reviewsRoute);
+              },
               iconSize: AppSize.s22,
               icon: const Icon(Icons.arrow_forward_ios_rounded))
         ],
