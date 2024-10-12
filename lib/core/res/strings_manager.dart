@@ -169,8 +169,12 @@ abstract class AppStrings {
   static const String editReview = "Edit Review";
   static const String editReviewSubtitle = "Edit your review below";
   static const String updateReview = "Update Review";
+  static const String nothingToUpdate = "Nothing to update";
+  static const String noRating = "Please give a rating";
   static const String submitReview = "Submit Review";
+  static const String delete = "Delete";
   static const String reviewSubmitted = "Review submitted successfully";
   static const String reviewDeleted = "Review deleted successfully";
   static const String reviewUpdated = "Review updated successfully";
+  static const String noReviewsFound = "No reviews found, Add yours ";
 }

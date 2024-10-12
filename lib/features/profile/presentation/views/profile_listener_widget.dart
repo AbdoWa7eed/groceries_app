@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/profile/presentation/cubit/profile_cubit.dart';
 
 class ProfileListenerWidget extends StatelessWidget {

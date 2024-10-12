@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
 import 'package:groceries_app/features/phone_auth/presentation/widgets/phone_auth_view_body.dart';
 

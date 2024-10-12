@@ -14,6 +14,7 @@ class ProductReviewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final product = context.read<ProductDetailsCubit>().productDetailsEntity;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: AppPadding.p4),
       child: Row(
@@ -26,12 +27,11 @@ class ProductReviewWidget extends StatelessWidget {
             ),
           ),
           CustomRatingWidget(
-            initialRating:
-                context.read<ProductDetailsCubit>().productDetailsEntity.rate,
+            initialRating: product.rate,
           ),
           IconButton(
               onPressed: () {
-                context.push(Routes.reviewsRoute);
+                context.push(Routes.reviewsRoute, extra: product.productId);
               },
               iconSize: AppSize.s22,
               icon: const Icon(Icons.arrow_forward_ios_rounded))

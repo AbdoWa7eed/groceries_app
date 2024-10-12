@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/location/presentation/cubit/location_cubit.dart';
 import 'package:groceries_app/features/location/presentation/widgets/location_confirmation_dialog.dart';
 

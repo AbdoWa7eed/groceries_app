@@ -3,6 +3,7 @@ import 'dart:developer' as dev;
 import 'package:dartz/dartz.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intl/intl.dart';
 
 extension NavigationExtension on BuildContext {
   void popAllThenPush(String location, {Object? extra}) {
@@ -34,6 +35,7 @@ extension EitherX<Failure, R> on Either<Failure, R> {
 
 extension StringExtenstions on String? {
   bool get _isNull => this == null;
+
   String orEmpty() {
     if (_isNull) {
       return "";
@@ -108,6 +110,18 @@ extension IterableExensions<T> on Iterable<T> {
   }
 
   int get nextPage => (length ~/ 8) + 1;
+}
+
+extension DateTimeExtensions on DateTime {
+  String get formatedDateTime {
+    DateTime now = DateTime.now();
+
+    if (year == now.year && month == now.month && day == now.day) {
+      return "Today";
+    } else {
+      return DateFormat('MMM dd, yyyy').format(this);
+    }
+  }
 }
 
 void logInfo(String msg) {
