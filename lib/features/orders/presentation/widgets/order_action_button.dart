@@ -5,7 +5,7 @@ import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/enums.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/checkout/domain/entity/place_order_entity.dart';
 import 'package:groceries_app/features/orders/domain/entities/order_entity.dart';
 import 'package:groceries_app/features/orders/presentation/widgets/order_tracker_dialog.dart';

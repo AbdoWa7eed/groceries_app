@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groceries_app/core/routes/routes_manager.dart';
 import 'package:groceries_app/core/utils/enums.dart';
 import 'package:groceries_app/core/utils/extensions.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/auth/presentation/cubit/auth_cubit.dart';
 
 class RegisterViewListener extends StatelessWidget {

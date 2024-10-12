@@ -9,12 +9,16 @@ class CustomNetworkImage extends StatelessWidget {
       this.width,
       this.height,
       this.errorImageAssetPath = AssetsManager.noProductImage,
-      this.fit = BoxFit.cover});
+      this.fit = BoxFit.cover,
+      this.imageBuilder});
+
   final double? width;
   final double? height;
   final String imageUrl;
   final BoxFit fit;
   final String errorImageAssetPath;
+  final Widget Function(BuildContext context, ImageProvider imageProvider)?
+      imageBuilder;
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +26,7 @@ class CustomNetworkImage extends StatelessWidget {
       imageUrl: imageUrl,
       width: width,
       height: height,
+      imageBuilder: imageBuilder,
       fit: fit,
       errorWidget: (context, url, error) {
         return Image.asset(errorImageAssetPath);

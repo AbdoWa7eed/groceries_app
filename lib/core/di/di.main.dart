@@ -333,6 +333,51 @@ void initOrdersDi() {
   }
 }
 
+void initReviewsDi() {
+  if (!getIt.isRegistered<GetReviewsUseCase>()) {
+    getIt
+      ..registerLazySingleton<ReviewsApiService>(
+          () => ReviewsApiService(DioFactory.getDio()))
+      ..registerLazySingleton<ReviewsDataSource>(
+          () => ReviewsDataSourceImpl(getIt()))
+      ..registerLazySingleton<ReviewsRepository>(
+          () => ReviewsRepositoryImpl(getIt()))
+      ..registerLazySingleton<GetReviewsUseCase>(
+          () => GetReviewsUseCase(getIt()));
+  }
+
+  if (!getIt.isRegistered<ReviewsCubit>()) {
+    getIt.registerLazySingleton<ReviewsCubit>(() => ReviewsCubit(getIt()));
+  }
+}
+
+void initAddReviewDi() {
+  initReviewsDi();
+  if (!getIt.isRegistered<AddReviewUseCase>()) {
+    getIt.registerLazySingleton<AddReviewUseCase>(
+        () => AddReviewUseCase(getIt()));
+  }
+
+  if (!getIt.isRegistered<AddReviewCubit>()) {
+    getIt.registerFactory<AddReviewCubit>(() => AddReviewCubit(getIt()));
+  }
+}
+
+void initManageReviewDi() {
+  initReviewsDi();
+  if (!getIt.isRegistered<UpdateReviewUseCase>()) {
+    getIt
+      ..registerLazySingleton<DeleteReviewUseCase>(
+          () => DeleteReviewUseCase(getIt()))
+      ..registerLazySingleton<UpdateReviewUseCase>(
+          () => UpdateReviewUseCase(getIt()));
+  }
+
+  if (!getIt.isRegistered<ManageReviewCubit>()) {
+    getIt.registerFactory(() => ManageReviewCubit(getIt(), getIt()));
+  }
+}
+
 Future<void> resetDis() async {
   await getIt<AppPreferences>().logout();
   await getIt.reset();

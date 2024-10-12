@@ -6,7 +6,7 @@ import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
 
 class VerifyResendButtonsWidget extends StatefulWidget {

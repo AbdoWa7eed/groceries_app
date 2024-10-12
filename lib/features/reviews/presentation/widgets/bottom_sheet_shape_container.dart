@@ -9,21 +9,23 @@ class BottomSheetShapeContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-      child: Container(
-        padding: const EdgeInsetsDirectional.symmetric(
-          vertical: AppPadding.p12,
-          horizontal: AppPadding.p18,
+    return SingleChildScrollView(
+      child: Padding(
+        padding:
+        EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+        child: Container(
+          padding: const EdgeInsetsDirectional.symmetric(
+            vertical: AppPadding.p12,
+            horizontal: AppPadding.p18,
+          ),
+          decoration: const BoxDecoration(
+              color: ColorManager.white,
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(AppSize.s20),
+                topRight: Radius.circular(AppSize.s20),
+              )),
+          child: child,
         ),
-        decoration: const BoxDecoration(
-            color: ColorManager.white,
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(AppSize.s20),
-              topRight: Radius.circular(AppSize.s20),
-            )),
-        child: child,
       ),
     );
   }

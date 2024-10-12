@@ -24,7 +24,13 @@ class ProductDetailsCubit extends Cubit<ProductDetailsState> {
 
   ProductDetailsEntity get productDetailsEntity => _productDetailsEntity;
 
-  void getProductDetails(int productId) async {
+  late int productId;
+  void initProductDetails(int productId) {
+    this.productId = productId;
+    getProductDetails();
+  }
+
+  void getProductDetails() async {
     emit(GetProductDetailsLoading());
     final result = await _productDetailsUseCase.execute(productId);
 

@@ -103,6 +103,17 @@ import 'package:groceries_app/features/profile/data/repo/profile_repo_impl.dart'
 import 'package:groceries_app/features/profile/domain/repo/profile_repository.dart';
 import 'package:groceries_app/features/profile/domain/usecase/update_profile_usecase.dart';
 import 'package:groceries_app/features/profile/presentation/cubit/profile_cubit.dart';
+import 'package:groceries_app/features/reviews/data/api/reviews_api_service.dart';
+import 'package:groceries_app/features/reviews/data/data_source/reviews_data_source.dart';
+import 'package:groceries_app/features/reviews/data/repo/reviews_repo_impl.dart';
+import 'package:groceries_app/features/reviews/domain/repo/reviews_repo.dart';
+import 'package:groceries_app/features/reviews/domain/usecases/add_review_usecase.dart';
+import 'package:groceries_app/features/reviews/domain/usecases/delete_review_usecase.dart';
+import 'package:groceries_app/features/reviews/domain/usecases/get_reviews_usecase.dart';
+import 'package:groceries_app/features/reviews/domain/usecases/update_review_usecase.dart';
+import 'package:groceries_app/features/reviews/presentation/cubit/add_review/add_review_cubit.dart';
+import 'package:groceries_app/features/reviews/presentation/cubit/manage_review/manage_review_cubit.dart';
+import 'package:groceries_app/features/reviews/presentation/cubit/reviews/reviews_cubit.dart';
 import 'package:groceries_app/features/search/presentation/cubit/search_cubit.dart';
 import 'package:groceries_app/features/shop/data/api/shop_api_service.dart';
 import 'package:groceries_app/features/shop/data/data_source/shop_data_source.dart';

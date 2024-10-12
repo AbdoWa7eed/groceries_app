@@ -4,7 +4,7 @@ import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/widgets/code_input_widget.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/forget_password/presentation/cubit/forget_password_cubit.dart';
 import 'package:groceries_app/features/forget_password/presentation/widgets/forget_password_feature_button.dart';
 

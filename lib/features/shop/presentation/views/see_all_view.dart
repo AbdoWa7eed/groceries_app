@@ -3,9 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/widgets/custom_back_button.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
-import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/core/widgets/products_grid_view.dart';
+import 'package:groceries_app/features/shop/presentation/cubit/shop_cubit.dart';
 
 class SeeAllProductsView extends StatefulWidget {
   const SeeAllProductsView({super.key, required this.title});

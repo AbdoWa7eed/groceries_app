@@ -179,7 +179,7 @@ abstract class RouteGenerator {
                 ),
                 BlocProvider<ProductDetailsCubit>(
                   create: (context) => getIt<ProductDetailsCubit>()
-                    ..getProductDetails(productId),
+                    ..initProductDetails(productId),
                 ),
               ],
               child: const ProductDetailsView(),
@@ -300,8 +300,13 @@ abstract class RouteGenerator {
       GoRoute(
         path: Routes.reviewsRoute,
         pageBuilder: (context, state) {
+          initReviewsDi();
+          final productId = state.extra as int;
           return CustomSlideTransition(
-            child: const ReviewsView(),
+            child: BlocProvider<ReviewsCubit>(
+              create: (context) => getIt()..initReviews(productId),
+              child: const ReviewsView(),
+            ),
           );
         },
       ),

@@ -4,7 +4,7 @@ import 'package:groceries_app/core/domain/entities/category_entity.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/widgets/add_item_to_cart_listener.dart';
 import 'package:groceries_app/core/widgets/custom_back_button.dart';
-import 'package:groceries_app/core/widgets/custom_snackbar.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/core/widgets/error_widget.dart';
 import 'package:groceries_app/core/widgets/products_grid_view.dart';
 import 'package:groceries_app/features/explore/presentation/cubit/explore_cubit.dart';
