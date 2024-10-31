@@ -51,8 +51,6 @@ class ConfirmPaymentCubit extends Cubit<ConfirmPaymentState> {
         queryParameters.containsKey('trx_id');
     if (isRedirect) {
       return PaymentUrlType.redirect;
-    } else if (queryParameters['success'] == 'true') {
-      return PaymentUrlType.success;
     } else {
       return PaymentUrlType.pending;
     }
