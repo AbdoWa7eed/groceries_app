@@ -4,6 +4,7 @@ import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
+import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:groceries_app/features/product_details/presentation/cubit/product_details_cubit.dart';
 
@@ -17,6 +18,14 @@ class AddToBasketButtonWidget extends StatelessWidget {
           style: StylesManager.semiBold18.copyWith(color: ColorManager.white)),
       onPressed: () {
         final cubit = context.read<ProductDetailsCubit>();
+        if (cubit.productDetailsEntity.quantityInStock == 0) {
+          showSnackBar(
+            context,
+            text: AppStrings.outOfStock,
+            color: ColorManager.error,
+          );
+          return;
+        }
         context.read<CartCubit>().addToCart(
             cubit.productDetailsEntity.productId,
             quantity: cubit.quantity);

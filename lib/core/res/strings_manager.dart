@@ -71,6 +71,7 @@ abstract class AppStrings {
   static const String noNutritionData =
       "Nutrition is not available for this product";
   static const String grams = '100gr';
+  static const String outOfStock = 'Currently this product is out of stock';
 
   //Explore
   static const String findProducts = 'Find Products';
