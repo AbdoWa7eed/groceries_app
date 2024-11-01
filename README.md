@@ -1,16 +1,85 @@
-# groceries_app
 
-A new Flutter project.
+# Groceries App
 
-## Getting Started
+A feature-packed mobile application designed to streamline grocery shopping, integrated with modern location services and optimized for efficiency.
 
-This project is a starting point for a Flutter application.
+## 📱 Features
 
-A few resources to get you started if this is your first Flutter project:
+- **Account Management**: Manage your account information, change passwords, and keep your profile up-to-date.
+- **Authentication**: Secure login and registration with email/password and phone number OTP verification.
+- **Shopping Cart**: Easily add and manage items in your cart, and the checkout process will be smooth.
+- **Explore & Favorites**: Browse and discover grocery items, and save favorites for easy access.
+- **Order Tracking**: View and manage your orders with detailed tracking information.
+- **Location Services**: Use Google Maps and Geolocation to detect your location. The API key is stored securely in a `.env` file.
+- **Search**: Use a floating search bar to find products efficiently.
+- **Reviews**: Read and leave reviews, with user-specific options to edit them.
+- **Payment Handling**: Use `webview_flutter` for secure payment processing with integration for Paymob.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🛠️ Tech Stack
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Frontend**: Built with Flutter
+- **State Management**: Bloc for efficient state management
+- **Location**: Google Maps and Geolocator for real-time location services
+- **Network**: Dio with Retrofit for API handling and Pretty Dio Logger for logging
+- **Caching**: Cached Network Image for efficient image loading
+- **Backend**: Dart Frog for backend services
+
+## 📦 Dependencies
+
+Here are the key packages used in the project:
+
+- **State Management**: `flutter_bloc`, `bloc`, `equatable`
+- **Networking**: `dio`, `retrofit`, `pretty_dio_logger`, `dartz` for functional programming
+- **Location & Maps**: `google_maps_flutter`, `geolocator`
+- **UI Enhancements**: `flutter_native_splash`, `flutter_svg`, `carousel_slider`, `shimmer`, `lottie`, `blur`, `material_floating_search_bar_2`
+- **Form Handling**: `form_validator`, `intl_phone_number_input`, `pinput`
+- **Storage**: `shared_preferences` for local storage, `flutter_dotenv` for environment variables
+- **Miscellaneous**: `uuid`, `provider`, `timeline_tile`, `flutter_rating_bar`, `image_picker`, `fluttertoast`, `readmore`, `dart_jsonwebtoken`, `intl`, `webview_flutter`
+
+## ⚙️ Installation and Setup
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/AbdoWa7eed/groceries_app.git
+   ```
+2. **Navigate to the project directory**:
+   ```bash
+   cd groceries_app
+   ```
+3. **Install dependencies**:
+   ```bash
+   flutter pub get
+   ```
+4. **Set up API Keys**:
+   - Create a `.env` file in the project root and add your Google Maps API key:
+     ```
+     GOOGLE_MAPS_API_KEY=your_api_key_here
+     ```
+5. **Run the app**:
+   ```bash
+   flutter run
+   ```
+
+## 🗂️ Project Structure
+
+```plaintext
+lib/
+│
+├── core/               # Core utilities and helpers
+├── features/           # All features organized in subdirectories
+├── app.dart            # Main app widget
+├── bloc_observer.dart  # Bloc observer for debugging
+└── main.dart           # Entry point of the app
+```
+
+## 🔗 Backend Repository
+
+The app communicates with a Dart Frog backend. You can find the backend repository [here](https://github.com/AbdoWa7eed/groceries_app_backend).
+
+## 🤝 Contribution
+
+We welcome contributions! Fork the repository, make your changes, and submit a pull request.
+
+## 📬 Contact
+
+For any inquiries or support, please reach out to [Abdelrahman Waheed](https://github.com/AbdoWa7eed).
