@@ -52,10 +52,22 @@ Here are the key packages used in the project:
    ```
 4. **Set up API Keys**:
    - Create a `.env` file in the project root and add your Google Maps API key:
+     
      ```
      GOOGLE_MAPS_API_KEY=your_api_key_here
      ```
-5. **Run the app**:
+5. **Configure Backend URL**:
+   - The app works on the hostname `192.168.1.19` and port `8080`
+   - If you want to change it, modify the `baseUrl` variable in the `lib/core/network/api_constants.dart` file from:
+     
+     ```bash
+     static const String baseUrl = "http://192.168.1.19:8080/";
+     ```
+     
+   - Set it to the hostname and port where your backend is running.
+
+     
+6. **Run the app**:
    ```bash
    flutter run
    ```
