@@ -20,6 +20,9 @@ class _VerifyPhoneViewBodyState extends State<VerifyPhoneViewBody> {
   @override
   void initState() {
     _controller = TextEditingController();
+    _controller.addListener(() {
+      setState(() {});
+    });
     super.initState();
   }
 

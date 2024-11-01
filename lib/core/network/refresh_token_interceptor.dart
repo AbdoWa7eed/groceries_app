@@ -17,6 +17,7 @@ class RefreshTokenInterceptor extends Interceptor {
   final AppPreferences _appPreferences;
 
   bool _isRefreshing = false;
+
   RefreshTokenInterceptor(this.apiService, this._appPreferences);
 
   ResultFuture<String> refreshAccessToken() async {
@@ -45,8 +46,7 @@ class RefreshTokenInterceptor extends Interceptor {
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) async {
-    if (err.response?.statusCode == HttpStatus.unauthorized &&
-        refreshToken != null) {
+    if (isUnAuthorizedDueToTheToken(err)) {
       final newTokenResult = await refreshAccessToken();
       if (newTokenResult.isRight()) {
         final newToken = newTokenResult.right;
@@ -73,6 +73,16 @@ class RefreshTokenInterceptor extends Interceptor {
     } else {
       handler.next(err);
     }
+  }
+
+  bool isUnAuthorizedDueToTheToken(DioException error) {
+    final handler = ErrorHandler.handle(error);
+    if (handler.failure.message
+        .toLowerCase()
+        .contains(ApiErrorMessages.unAuthorized.toLowerCase())) {
+      return refreshToken != null && error.response?.statusCode == 401;
+    }
+    return false;
   }
 
   String? get refreshToken => _appPreferences.getUserRefreshToken();

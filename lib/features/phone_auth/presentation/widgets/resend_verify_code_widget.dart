@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:groceries_app/core/res/color_manager.dart';
 import 'package:groceries_app/core/res/strings_manager.dart';
 import 'package:groceries_app/core/res/styles_manager.dart';
+import 'package:groceries_app/core/res/values_manager.dart';
 import 'package:groceries_app/core/widgets/custom_button_widget.dart';
 import 'package:groceries_app/core/widgets/custom_floating_widgets.dart';
 import 'package:groceries_app/features/phone_auth/presentation/cubit/phone_auth_cubit.dart';
@@ -54,53 +55,42 @@ class _VerifyResendButtonsWidgetState extends State<VerifyResendButtonsWidget> {
   @override
   Widget build(BuildContext context) {
     final cubit = context.read<PhoneAuthCubit>();
-
-    return Row(
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Expanded(
-          child: CustomElevatedButtonWidget(
-              onPressed: _currentTime == 0
-                  ? () {
-                      setState(() {
-                        cubit.sendOTP();
-                        startTimer();
-                      });
-                    }
-                  : null,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(AppStrings.resendCode,
-                      style: StylesManager.medium14.copyWith(
-                          color: _currentTime == 0
-                              ? ColorManager.white
-                              : ColorManager.primary)),
-                  Visibility(
-                    visible: _currentTime != 0,
-                    child: Text('$_currentTime s',
-                        style: StylesManager.medium14.copyWith(
-                            color: _currentTime == 0
-                                ? ColorManager.white
-                                : ColorManager.primary)),
-                  ),
-                ],
-              )),
+        CustomElevatedButtonWidget(
+          verticalPadding: AppPadding.p16,
+          onPressed: () {
+            if (widget.code.length < 6) {
+              showSnackBar(context, text: AppStrings.codeIsNotCompleted);
+            } else {
+              cubit.verifyOTP(code: widget.code);
+            }
+          },
+          child: const Text(
+            AppStrings.verify,
+            style: StylesManager.semiBold18,
+          ),
         ),
-        const SizedBox(
-          width: 20,
-        ),
-        Expanded(
-          child: CustomElevatedButtonWidget(
-            onPressed: () {
-              if (widget.code.length < 6) {
-                showSnackBar(context, text: AppStrings.codeIsNotCompleted);
-              } else {
-                cubit.verifyOTP(code: widget.code);
-              }
-            },
+        Center(
+          child: TextButton(
+            onPressed: _currentTime == 0
+                ? () {
+                    setState(() {
+                      cubit.sendOTP();
+                      startTimer();
+                    });
+                  }
+                : null,
             child: Text(
-              AppStrings.verify,
-              style: StylesManager.medium14.copyWith(color: ColorManager.white),
+              _currentTime == 0
+                  ? AppStrings.resendCode
+                  : '${AppStrings.resendCode} ($_currentTime s)',
+              style: StylesManager.medium14.copyWith(
+                color: _currentTime == 0
+                    ? ColorManager.primary
+                    : ColorManager.darkGray,
+              ),
             ),
           ),
         ),

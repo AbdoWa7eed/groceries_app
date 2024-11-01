@@ -24,4 +24,5 @@ abstract class ApiErrorMessages {
   static const String badCertificateError =
       "The server's SSL certificate is not trusted or expired, causing a security risk.";
   static const String sessionExpiredError = "Your session has expired";
+  static const String unAuthorized = "UnAuthorized Access";
 }
