@@ -88,6 +88,10 @@ lib/
 
 The app communicates with a Dart Frog backend. You can find the backend repository [here](https://github.com/AbdoWa7eed/groceries_app_backend).
 
+## 📹 Demo
+
+https://github.com/user-attachments/assets/4cb33adf-92e1-463f-94de-953824e55bd7
+
 ## 🤝 Contribution
 
 We welcome contributions! Fork the repository, make your changes, and submit a pull request.
