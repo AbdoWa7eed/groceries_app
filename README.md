@@ -1,5 +1,5 @@
 
-# Groceries App
+# Nectar App
 
 A feature-packed mobile application designed to streamline grocery shopping, integrated with modern location services and optimized for efficiency.
 
